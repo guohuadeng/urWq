@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest versionCode="0.5,0.51">
+    <identifie><![CDATA[ur_v1]]></identifie>
+    <title><![CDATA[ur默认模板]]></title>
+    <description><![CDATA[建新科技]]></description>
+    <author><![CDATA[jxTech Team]]></author>
+    <url><![CDATA[http://bbs.we7.cc]]></url>
+	<type><![CDATA[often]]></type>
+</manifest>
