@@ -7,7 +7,7 @@
  */
 defined('IN_IA') or exit('Access Denied');
 
-class We7_surveyModule extends WeModule {
+class Ur_surveyModule extends WeModule {
 	//用
 	public function fieldsFormDisplay($rid = 0) {
 		global $_W;

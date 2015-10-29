@@ -8,7 +8,7 @@
  */
 defined('IN_IA') or exit('Access Denied');
 
-class We7_surveyModuleSite extends WeModuleSite {
+class Ur_surveyModuleSite extends WeModuleSite {
 
     public function getHomeTiles() {
         global $_W;

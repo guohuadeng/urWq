@@ -1,12 +1,12 @@
 {template 'header'}
-<link rel="stylesheet" type="text/css" href="../addons/we7_survey/template/mobile/common.css" media="all">
-<link rel="stylesheet" type="text/css" href="../addons/we7_survey/template/mobile/survey.css" media="all">
+<link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/common.css" media="all">
+<link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/survey.css" media="all">
 <div style="height: 25px;"></div>
 <div class="content-w1 survey-title">
 	<div class="content-w2">
 		<div class="content">
 			<div class="title">{$activity['title']}</div>
-			<img class="connect" src="../addons/we7_survey/template/mobile/connect.png">
+			<img class="connect" src="../addons/ur_survey/template/mobile/connect.png">
 			<div class="desc-cont">
 				{$activity['content']}
 				{if $pererror == "1"}<div style="margin-top:20px; color:red;">抱歉，您已经提交过该调研，请下次再来哦！ ^_^</div>{/if}
@@ -47,8 +47,8 @@
 				<div class="options"{if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="2"{/if} >
 					{loop $row['options'] $v}
 						<div class="option">
-							<img class="oimg" src="../addons/we7_survey/template/mobile/option_bg.png">
-							<img class="oimg-sel" src="../addons/we7_survey/template/mobile/option_sel_bg.png">
+							<img class="oimg" src="../addons/ur_survey/template/mobile/option_bg.png">
+							<img class="oimg-sel" src="../addons/ur_survey/template/mobile/option_sel_bg.png">
 							<div class="text">
 								<div class="otext" data-value="{$v}" data-type="{$row['type']}">
 									{php echo preg_replace('/\[_\]/', '<input type="text">', $v);}
@@ -60,7 +60,7 @@
 				</div>
 				<div class="tip" style="padding-right:20px">说明：{$row['description']}</div>
 				<div class="submit" {if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="100"{/if}>
-					<img src="../addons/we7_survey/template/mobile/next_btn.png">
+					<img src="../addons/ur_survey/template/mobile/next_btn.png">
 					<span>下一步</span>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 				<div class="content-w2">
 					<div class="content">
 						<div class="title" style="font-size:16px;font-weight:bold">{$row['title']}</div>
-						<img class="connect" src="../addons/we7_survey/template/mobile//connect.png">
+						<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">
 						<div class="desc-cont">
 							<textarea  class="form-control" name="field_{$row['sfid']}" rows="5" style="color:#ccc;border:1px solid #ccc;width:100%"></textarea>
 						</div>
@@ -85,7 +85,7 @@
 			<div class="content-w2">
 				<div class="content">
 					<div class="title" style="font-size:16px;font-weight:bold;color:#000;">意见和建议</div>
-					<img class="connect" src="../addons/we7_survey/template/mobile//connect.png">
+					<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">
 					<div class="desc-cont">
 						<textarea id="suggest" name="suggest" rows="5" style="color:#ccc;border:1px solid #ccc;width:100%">有什么建议给我们？</textarea>
 					</div>
@@ -100,7 +100,7 @@
 			<div class="content-w2">
 				<div class="content">
 					<div class="title" style="font-size:16px;font-weight:bold"></div>
-					<img class="connect" src="../addons/we7_survey/template/mobile//connect.png">	
+					<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">	
 					<div>感谢您的参与</div>
 						<input type="hidden" name="token" value="{$_W['token']}" />
 						<input type="submit" class="next-btn" id="finish" value="立即提交" name="submit">
@@ -110,7 +110,7 @@
 	{/if}
 </div>
 </form>
-<audio id="musicClick" src="../addons/we7_survey/template/mobile/click.mp3" preload="auto"></audio>
+<audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>
 
 <script>
 $(function(){

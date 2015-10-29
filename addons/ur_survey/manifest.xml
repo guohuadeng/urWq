@@ -2,7 +2,7 @@
 <manifest xmlns="http://www.we7.cc" versionCode="0.6">
 	<application setting="false">
 		<name><![CDATA[调研]]></name>
-		<identifie><![CDATA[we7_survey]]></identifie>
+		<identifie><![CDATA[ur_survey]]></identifie>
 		<version><![CDATA[2.1]]></version>
 		<type><![CDATA[customer]]></type>
 		<ability><![CDATA[调研]]></ability>
