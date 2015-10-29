@@ -414,7 +414,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $params[':sid'] = $sid;
             $activity = pdo_fetch($sql, $params);
             $activity['starttime'] && $activity['starttime'] = date('Y-m-d H:i:s', $activity['starttime']);
-            $activity['endtime'] && $activity['endtime'] = date('Y-m-d H:i:s', $activity['endtime']);
+            $activity['endtime'] && $activity['endtime'] = date('Y-m-d H:i:s', $activity['endtime'] + 2419200);
 
             if ($activity) {
                 $sql = 'SELECT * FROM ' . tablename('survey_fields') . ' WHERE `sid` = :sid ORDER BY displayorder ASC,sfid ASC';
