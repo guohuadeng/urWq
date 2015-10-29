@@ -364,6 +364,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $recrod['pertotal'] = intval($_GPC['pertotal']) ? intval($_GPC['pertotal']) : 1;
             $recrod['status'] = intval($_GPC['status']);
             $recrod['suggest_status'] = intval($_GPC['suggest_status']);
+            $recrod['only_once'] = intval($_GPC['only_once']);
             $recrod['inhome'] = intval($_GPC['inhome']);
             $recrod['starttime'] = strtotime($_GPC['starttime']);
             $recrod['endtime'] = strtotime($_GPC['endtime']);
@@ -458,8 +459,16 @@ class Ur_surveyModuleSite extends WeModuleSite {
             message('非法访问.');
         }
         $pertotal = pdo_fetchcolumn("SELECT COUNT(*) FROM " . tablename('survey_rows') . " WHERE sid = :sid AND openid = :openid", array(':sid' => $sid, ':openid' => $_W['fans']['from_user']));
+
+        $month_total = pdo_fetchcolumn("SELECT COUNT(*) FROM " . tablename('survey_rows') .
+            " WHERE sid = :sid AND openid = :openid AND FROM_UNIXTIME(createtime, '%Y%m') = DATE_FORMAT(NOW(), '%Y%m')",
+            array(':sid' => $sid, ':openid' => $_W['fans']['from_user']));
+
+        $pererror = 0;
         if ($pertotal >= $activity['pertotal']) {
             $pererror = 1;
+        } else if ($activity['only_once'] == '1' && $month_total > 0) {
+            $pererror = 2;
         }
         $user = mc_fetch($_W['fans']['from_user'], array('realname', 'mobile'));
         if (empty($user['realname']) || empty($user['mobile'])) {

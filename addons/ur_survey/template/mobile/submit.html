@@ -10,8 +10,9 @@
 			<div class="desc-cont">
 				{$activity['content']}
 				{if $pererror == "1"}<div style="margin-top:20px; color:red;">抱歉，您已经提交过该调研，请下次再来哦！ ^_^</div>{/if}
+				{if $pererror == "2"}<div style="margin-top:20px; color:red;">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</div>{/if}
 			</div>
-			{if $pererror != "1"}<!-- 提交调研超过设定的次数，不显示按钮 -->
+			{if $pererror == "0"}<!-- 提交调研超过设定的次数，不显示按钮 -->
 			<a class="next-btn" href="javascript:void(0)" style="text-decoration:none;">马上开始</a>
 			{/if}
 		</div>

@@ -43,6 +43,7 @@ CREATE TABLE IF NOT EXISTS `ims_survey` (
   `pertotal` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `suggest_status` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `only_once` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`sid`),
   KEY `weid` (`weid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;

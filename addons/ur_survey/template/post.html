@@ -99,6 +99,13 @@
                         <label class="radio-inline"><input type="radio" name="suggest_status" value="0" {if !empty($activity) && $activity['suggest_status'] == 0} checked="checked"{/if} /> 关闭</label>
                 	</div>
                 </div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">每月只允许1次</label>
+					<div class="col-xs-12 col-sm-9">
+						<label class="radio-inline"><input type="radio" name="only_once" value="1" {if $activity['only_once'] == 1 || empty($activity['only_once'])} checked="checked"{/if} />开启</label>
+						<label class="radio-inline"><input type="radio" name="only_once" value="0" {if !empty($activity) && $activity['only_once'] == 0} checked="checked"{/if} /> 关闭</label>
+					</div>
+				</div>
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">开始时间</label>
                     <div class="col-xs-12 col-sm-9">
