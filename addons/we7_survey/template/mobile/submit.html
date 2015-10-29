@@ -188,6 +188,14 @@ $(function(){
 			alert("本题最多只能选择个"+maxsel+"答案!");
 			return;
 		}
+		var checkInput = true;
+		$answer.find('.otext input').each(function () {
+			checkInput = $.trim($(this).val()) !== '';
+		});
+		if(!checkInput) {
+			alert("选项内容不能为空!");
+			return;
+		}
 		
 		$(".xuan").hide();
 		parent.next().show();
