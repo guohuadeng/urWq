@@ -1,4 +1,7 @@
+#不必要的文件
 ~*.*
+s.*.*
+org.*
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
