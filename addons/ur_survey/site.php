@@ -143,8 +143,9 @@ class Ur_surveyModuleSite extends WeModuleSite {
                 $value = explode("\r\n", $field['value']);
                 foreach ($value as $val) {
                     $sql = "SELECT COUNT(*) FROM " . tablename('survey_data') . " WHERE `sid`=:sid AND `sfid`=:sfid AND `createtime` > {$starttime}
-                            AND `createtime` < {$endtime} AND `data` = :data";
-                    $params = array(':sfid' => $field['sfid'], ':sid' => $sid, ':data' => $val);
+                            AND `createtime` < {$endtime} and `data` like :data";
+                    $params = array(':sfid' => $field['sfid'], ':sid' => $sid,
+                        ':data' => preg_replace('/\[_\]/', '%', $val));
                     $num = pdo_fetchcolumn($sql, $params);
                     if ($field['type'] == 'radio') {
                         $datas[$key]['str'] .= $a . "\"" . $val . "({$num}人)" . "\"";
