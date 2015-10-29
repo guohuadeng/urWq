@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="_doc/广州浪驰接口（含DEMO）/PHP"/>
+	<buildpathentry kind="src" path="addons/we7_survey"/>
+	<buildpathentry kind="src" path="app/source/mc"/>
+	<buildpathentry kind="src" path="framework/model"/>
+	<buildpathentry kind="con" path="org.eclipse.php.core.LANGUAGE"/>
+</buildpath>

@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+.hide {
+  visibility:hidden;
+  }
+
+
+.login .logo a,.register .logo a{background:url('../images/logo.png') no-repeat; display:inline-block;width:420px;height:95px;margin-left:0 !important;}
+
+.gw-logo{background:url('../images/logo.png') no-repeat;display:inline-block;width:420px;height:95px;margin-left:0 !important;}
+
+.gw-container .footer{font-size:1.1em;padding:2em 0;}
