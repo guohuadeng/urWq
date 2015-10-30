@@ -44,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `ims_survey` (
   `suggest_status` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `only_once` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `activity_store` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`sid`),
   KEY `weid` (`weid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
@@ -84,6 +85,7 @@ CREATE TABLE IF NOT EXISTS `ims_survey_rows` (
   `sid` int(11) NOT NULL,
   `openid` varchar(50) NOT NULL,
   `suggest` varchar(500) NOT NULL,
+  `store` varchar(500) NOT NULL,
   `createtime` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`srid`),
   KEY `sid` (`sid`)

@@ -234,3 +234,11 @@ html,body {
 .xuan{display:none}
 body {text-align:center; background:url('bg.jpg');}
 #footer, #footer a{position:inherit; color:#FFF;}
+
+.content-w3 {
+	padding: 10px;
+	width: 360px;
+}
+.tpl-district {
+	display: none !important;
+}

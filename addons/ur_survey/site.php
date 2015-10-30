@@ -365,6 +365,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $recrod['status'] = intval($_GPC['status']);
             $recrod['suggest_status'] = intval($_GPC['suggest_status']);
             $recrod['only_once'] = intval($_GPC['only_once']);
+            $recrod['activity_store'] = intval($_GPC['activity_store']);
             $recrod['inhome'] = intval($_GPC['inhome']);
             $recrod['starttime'] = strtotime($_GPC['starttime']);
             $recrod['endtime'] = strtotime($_GPC['endtime']);
@@ -486,6 +487,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $row['sid'] = $sid;
             $row['openid'] = $_W['fans']['from_user'];
             $row['suggest'] = trim($_GPC['suggest']);
+            $row['store'] = trim($_GPC['store']);
             $row['createtime'] = TIMESTAMP;
             $datas = array();
             $fields = array();
@@ -548,6 +550,11 @@ class Ur_surveyModuleSite extends WeModuleSite {
                 $r['options'] = explode("\r\n", $r['value']);
             }
         }
+        load()->func('tpl');
+        $stores = pdo_fetchall('SELECT * FROM '.tablename('activity_stores').
+            " WHERE uniacid = :uniacid",
+            array(':uniacid' => $_W['uniacid']));
+
         include $this->template('submit');
     }
 

@@ -120,12 +120,19 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">微站首页展示</label>
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">开启门店选择</label>
                     <div class="col-xs-12 col-sm-9">
-                		<label class="radio-inline"><input type="radio" name="inhome" value="1" {if $activity['inhome'] == 1} checked="checked"{/if} /> 显示</label>
-		 				<label class="radio-inline"><input type="radio" name="inhome" value="0" {if empty($activity) || $activity['inhome'] == 0} checked="checked"{/if} /> 不显示</label>
+                		<label class="radio-inline"><input type="radio" name="activity_store" value="1" {if $activity['activity_store'] == 1} checked="checked"{/if} /> 是</label>
+		 				<label class="radio-inline"><input type="radio" name="activity_store" value="0" {if empty($activity) || $activity['activity_store'] == 0} checked="checked"{/if} /> 否</label>
                     </div>
                 </div>
+				<div class="form-group">
+					<label class="col-xs-12 col-sm-3 col-md-2 control-label">微站首页展示</label>
+					<div class="col-xs-12 col-sm-9">
+						<label class="radio-inline"><input type="radio" name="inhome" value="1" {if $activity['inhome'] == 1} checked="checked"{/if} /> 显示</label>
+						<label class="radio-inline"><input type="radio" name="inhome" value="0" {if empty($activity) || $activity['inhome'] == 0} checked="checked"{/if} /> 不显示</label>
+					</div>
+				</div>
             </div>
         </div>
 		<div class="panel panel-default">
