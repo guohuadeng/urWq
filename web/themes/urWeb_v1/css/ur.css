@@ -8,5 +8,19 @@
 .login .logo a,.register .logo a{background:url('../images/logo.png') no-repeat; display:inline-block;width:420px;height:95px;margin-left:0 !important;}
 
 .gw-logo{background:url('../images/logo.png') no-repeat;display:inline-block;width:420px;height:95px;margin-left:0 !important;}
+.gw-container{background:#93732B;}
+.gw-container .navbar-nav .tile{background:#efe5b1}
+.gw-container .navbar-nav .tile:hover{background:#af9433}
+.gw-container .navbar-nav .tile.active{background:#af9433}
 
-.gw-container .footer{font-size:1.1em;padding:2em 0;}
+
+.list-group .list-group-item.active{background-color:#af9433;border-color:#af9433;}
+.home .footer a:hover{color:#af9433; text-decoration:none;}
+.nav.nav-tabs{margin-bottom:20px; border-color:#af9433;}
+.nav-tabs>li>a:hover{border-color:#eee #eee #af9433 #eee;}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{color:#FFF; background-color:#af9433; border-color:#af9433;}
+.modal-dialog .avatar-browser{min-height:480px;line-height:0;color:#af9433;}
+.modal-dialog .avatar-browser .thumbnail:hover{border-color:#af9433;}
+.modal-dialog .avatar-browser{min-height:480px;line-height:0;color:#af9433;}
+.modal-dialog .avatar-browser .thumbnail:hover{border-color:#af9433;}
+.notice-show h5{color:#af9433; border-left:3px solid #af9433; padding-left:15px;}
