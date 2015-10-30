@@ -115,7 +115,8 @@
                 <div class="form-group">
                 	<label class="col-xs-12 col-sm-3 col-md-2 control-label">结束时间</label>
                     <div class="col-xs-12 col-sm-9">
-                 		{php echo tpl_form_field_date('endtime', $activity['endtime'], true)}
+						{php $endtime = empty($activity['endtime']) ? date('Y-m-d H:i:s', strtotime('+1 month')) : $activity['endtime'];}
+                 		{php echo tpl_form_field_date('endtime', $endtime, true)}
                     </div>
                 </div>
                 <div class="form-group">
