@@ -165,6 +165,14 @@
 			</div>
 		</div>
 		{/if}
+		{if !empty($mcFields['jd_account'])}
+		<div class="form-group">
+			<label class="col-xs-12 col-sm-12 control-label">{$mcFields['jd_account']['title']}</label>
+			<div class="col-sm-12 col-xs-12">
+				{php echo tpl_fans_form('jd_account',$profile['jd_account']);}
+			</div>
+		</div>
+		{/if}
 		{if !empty($mcFields['studentid'])}
 		<h5 class="form-header empty" style="border:none;"></h5>
 		<h5 class="form-header">教育情况</h5>
