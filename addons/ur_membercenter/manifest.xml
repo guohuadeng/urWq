@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://www.we7.cc" versionCode="0.6">
+	<application setting="true">
+		<name><![CDATA[UR会员中心]]></name>
+		<identifie><![CDATA[ur_membercenter]]></identifie>
+		<version><![CDATA[1.0]]></version>
+		<type><![CDATA[services]]></type>
+		<ability><![CDATA[会员注册以及管理]]></ability>
+		<description><![CDATA[增加手机验证码注册功能]]></description>
+		<author><![CDATA[cupid]]></author>
+		<url><![CDATA[http://bbs.we7.cc/]]></url>
+	</application>
+	<platform>
+		<subscribes>
+			<message type="text" />
+			<message type="image" />
+			<message type="voice" />
+			<message type="video" />
+			<message type="shortvideo" />
+			<message type="location" />
+			<message type="link" />
+			<message type="subscribe" />
+			<message type="unsubscribe" />
+			<message type="qr" />
+			<message type="trace" />
+			<message type="click" />
+			<message type="view" />
+			<message type="merchant_order" />
+		</subscribes>
+		<handles>
+			<message type="image" />
+			<message type="voice" />
+			<message type="video" />
+			<message type="shortvideo" />
+			<message type="location" />
+			<message type="link" />
+			<message type="subscribe" />
+			<message type="qr" />
+			<message type="trace" />
+			<message type="click" />
+			<message type="merchant_order" />
+			<message type="text" />
+		</handles>
+		<rule embed="true" />
+		<card embed="true" />
+	</platform>
+	<bindings>
+		<cover>
+			<entry title="UR会员注册" do="register" state="" direct="true" />
+		</cover>
+		<rule>
+			<entry title="规则列表" do="rule" state="" direct="false" />
+		</rule>
+		<menu>
+			<entry title="管理中心菜单1" do="nav1" state="" direct="false" />
+			<entry title="管理中心菜单2" do="nav2" state="" direct="false" />
+		</menu>
+		<home>
+			<entry title="微站首页导航图标1" do="webside1" state="" direct="true" />
+			<entry title="微站首页导航图标2" do="webside2" state="" direct="false" />
+		</home>
+		<profile>
+			<entry title="微站个人中心导航1" do="mobile1" state="" direct="false" />
+			<entry title="微站个人中心导航2" do="mobile2" state="" direct="false" />
+		</profile>
+		<shortcut>
+			<entry title="微站快捷导航功能" do="shortcut" state="" direct="false" />
+		</shortcut>
+		<function>
+			<entry title="微站独立功能" do="special" state="" direct="false" />
+		</function>
+	</bindings>
+	<permissions>
+	</permissions>
+	<install><![CDATA[]]></install>
+	<uninstall><![CDATA[]]></uninstall>
+	<upgrade><![CDATA[]]></upgrade>
+</manifest>
