@@ -422,79 +422,128 @@ function cloud_t_build($name) {
 
 }
 
-function cloud_sms_send($mobile, $content) {
-
+/**
+ * 系统原有的短信发送函数，备份在此
+ * @param unknown $mobile
+ * @param unknown $content
+ * @return multitype:unknown string |boolean
+ */
+function cloud_sms_send_bak($mobile, $content) {
 	global $_W;
-
-	$row = pdo_fetch("SELECT `notify` FROM ".tablename('uni_settings') . " WHERE uniacid = :uniacid", array(':uniacid' => $_W['uniacid']));
-
-	$row['notify'] = @iunserializer($row['notify']);
-
-	if(!empty($row['notify']) && !empty($row['notify']['sms'])) {
-
-		$config = $row['notify']['sms'];
-
-		$balance = intval($config['balance']);
-
-		if($balance <= 0) {
-
-			return error(-1, '发送短信失败, 请联系系统管理人员. 错误详情: 短信余额不足');
-
+	$row = pdo_fetch ( "SELECT `notify` FROM " . tablename ( 'uni_settings' ) . " WHERE uniacid = :uniacid", array (
+			':uniacid' => $_W ['uniacid'] 
+	) );
+	$row ['notify'] = @iunserializer ( $row ['notify'] );
+	if (! empty ( $row ['notify'] ) && ! empty ( $row ['notify'] ['sms'] )) {
+		$config = $row ['notify'] ['sms'];
+		$balance = intval ( $config ['balance'] );
+		if ($balance <= 0) {
+			return error ( - 1, '发送短信失败, 请联系系统管理人员. 错误详情: 短信余额不足' );
 		}
-
-		$sign = $config['signature'];
-
-		if(empty($sign) && IMS_FAMILY == 'x') {
-
-			$sign = $_W['setting']['copyright']['sitename'];
-
+		$sign = $config ['signature'];
+		if (empty ( $sign ) && IMS_FAMILY == 'x') {
+			$sign = $_W ['setting'] ['copyright'] ['sitename'];
 		}
-
-		if(empty($sign)) {
-
+		if (empty ( $sign )) {
 			$sign = '微擎';
-
 		}
-
 		
-
-		$pars = _cloud_build_params();
-
-		$pars['method'] = 'sms.send';
-
-		$pars['mobile'] = $mobile;
-
-		$pars['content'] = $content . " 【{$sign}】";
-
-		$dat = cloud_request('http://v2.addons.we7.cc/gateway.php', $pars);
-
+		$pars = _cloud_build_params ();
+		$pars ['method'] = 'sms.send';
+		$pars ['mobile'] = $mobile;
+		$pars ['content'] = $content . " 【{$sign}】";
+		$dat = cloud_request ( 'http://v2.addons.we7.cc/gateway.php', $pars );
 		$file = IA_ROOT . '/data/sms.send';
-
-		$ret = _cloud_shipping_parse($dat, $file);
-
-		if (is_error($ret)) {
-
-			return error($ret['errno'], $ret['message']);
-
+		$ret = _cloud_shipping_parse ( $dat, $file );
+		if (is_error ( $ret )) {
+			return error ( $ret ['errno'], $ret ['message'] );
 		}
-
 		if ($ret == 'success') {
-
 			return true;
-
 		} else {
-
-			return error(-1, $ret);
-
+			return error ( - 1, $ret );
 		}
-
+	}
+	return error ( - 1, '发送短信失败, 请联系系统管理人员. 错误详情: 没有设置短信配额或参数' );
+}
+/**
+ * by zhangsd
+ *
+ * @return boolean
+ */
+function cloud_sms_send($mobile, $content) {
+	global $_W;
+	$sign = '时尚荟';	
+	$ret=ur_httpPost("/LANZGateway/DirectSendSMSs.asp", "UserID=873995&Account=hkcrm&Password=2C314ABC02A92ACB6B26C0C88455D4AF526C18F5&SMSType=1&Phones=".$mobile."&Content=".urlencode(iconv( "UTF-8", "gb2312//IGNORE" , $content . " 【{$sign}】" ))."&SendDate=&Sendtime=", "", 1 );
+	if ( $ret['status']=='faild') {
+		return error ( $ret ['code'], $ret ['message'] );
+	}
+	if ($ret['status'] == 'success') {
+		return true;
+	} else {
+		return error ( - 1, $ret );
+	}
+	return error ( - 1, '发送短信失败, 请联系系统管理人员. 错误详情: 没有设置短信配额或参数' );
+}
+/**
+ * by zhangsd
+ *
+ * @return boolean
+ */
+function ur_httpPost($sURL, $aPostVars, $sessid, $nMaxReturn) {
+	$srv_ip = '219.136.252.188'; // 你的目标服务地址或频道.
+	$srv_port = 80;
+	$url = $sURL; // 接收你post的URL具体地址
+	$fp = '';
+	$resp_str = '';
+	$errno = 0;
+	$errstr = '';
+	$timeout = 300;
+	$post_str = $aPostVars; // 要提交的内容.
+	
+	$result='';//返回结果
+	$fp = fsockopen ( $srv_ip, $srv_port, $errno, $errstr, $timeout );
+	if (! $fp) {
+		$result=array('status'=>'faild','code'=>'9099','message'=>'fp faild');
 	}
 
-	return error(-1, '发送短信失败, 请联系系统管理人员. 错误详情: 没有设置短信配额或参数');
+	$content_length = strlen ( $post_str );
+	$post_header = "POST $url HTTP/1.1\r\n";
+	$post_header .= "Content-Type:application/x-www-form-urlencoded\r\n";
+	$post_header .= "User-Agent: MSIE\r\n";
+	$post_header .= "Host: " . $srv_ip . "\r\n";
+	$post_header .= "Cookie: " . $sessid . "\r\n";
+	$post_header .= "Content-Length: " . $content_length . "\r\n";
+	$post_header .= "Connection: close\r\n\r\n";
+	$post_header .= $post_str . "\r\n\r\n";
 
+	fwrite ( $fp, $post_header );
+
+	$inheader = 1;
+	while ( ! feof ( $fp ) ) {
+		$resp_str .= fgets ( $fp, 4096 ); // 返回值放入$resp_str
+		if ($inheader && ($resp_str == "\n" || $resp_str == "\r\n")) {
+			$inheader = 0;
+		}
+	}
+
+	if ($nMaxReturn == 0) {
+		$_SESSION ["session_id"] = substr ( $resp_str, strpos ( $resp_str, "Set-Cookie: " ) + 12, 45 );
+		if (substr ( $resp_str, strpos ( $resp_str, "<ErrorNum>" ) + 10, strpos ( $resp_str, "</ErrorNum>" ) - strpos ( $resp_str, "<ErrorNum>" ) - 10 ) == 0) {
+			$_SESSION ["activeid"] = substr ( $resp_str, strpos ( $resp_str, "<ActiveID>" ) + 10, strpos ( $resp_str, "</ActiveID>" ) - strpos ( $resp_str, "<ActiveID>" ) - 10 );
+		}
+	} else {
+		if (substr ( $resp_str, strpos ( $resp_str, "<ErrorNum>" ) + 10, strpos ( $resp_str, "</ErrorNum>" ) - strpos ( $resp_str, "<ErrorNum>" ) - 10 ) == 0) {
+			$result=array('status'=>'success','code'=>'0');
+		} else {
+			$errornumber= substr ( $resp_str, strpos ( $resp_str, "<ErrorNum>" ) + 10, strpos ( $resp_str, "</ErrorNum>" ) - strpos ( $resp_str, "<ErrorNum>" ) - 10 ); // 处理返回值.
+			$result=array('status'=>'faild','code'=>$errornumber,'message'=>$_SESSION ["ReturnString"]);
+			$_SESSION ["ReturnString"] = substr ( $resp_str, strpos ( $resp_str, "<ErrorNum>" ) + 10, strpos ( $resp_str, "</ErrorNum>" ) - strpos ( $resp_str, "<ErrorNum>" ) - 10 );
+		}
+	}
+	fclose ( $fp );
+	return $result;
 }
-
-
 
 function cloud_build() {
 
