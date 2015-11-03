@@ -563,7 +563,11 @@ function mc_fields() {
 		$avafields='';
 		foreach ($memberFields as $key=>$value){
 			if ($value['available'])
-				$avafields[$sysFields[$value['fieldid']]['field']]=$value['title'];
+				if($sysFields[$value['fieldid']]['field']=='birthyear')
+					$avafields['birth']=$value['title'];
+				elseif ($sysFields[$value['fieldid']]['field']=='resideprovince')
+					$avafields['reside']=$value['title'];
+				else $avafields[$sysFields[$value['fieldid']]['field']]=$value['title'];
 		}
 		return $avafields;	
 }
