@@ -18,6 +18,13 @@
 {if $do == 'display'}
 	<div class="mnav-box">
 		<ul>
+			<li>      
+				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
+					<i class="fa fa-heart-o"></i>
+					<span>会员卡号</span>
+          <span class="right">{$mcard['cardsn']}</span>
+				</a>
+			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
 					<i class="fa fa-money"></i>
@@ -106,7 +113,7 @@
 				</a>
 			</li>
 			{if $reregister}
-				<li class="alert-li">
+				<li class="alert-li hide">
 					<a class="mnav-box-list" href="{php echo url('mc/bond/email')}">
 						<i class="fa fa-unlock-alt"></i>
 						<span class="">重置重要资料</span>
@@ -114,7 +121,7 @@
 					</a>
 				</li>
 			{/if}
-			<li>
+			<li class="hide">
 				<a class="mnav-box-list" href="{php echo url('mc/bond/address');}">
 					<i class="fa fa-map-marker"></i>
 					<span class="">收货地址</span>

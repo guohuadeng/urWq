@@ -79,7 +79,11 @@
 			<div class="form-group">
 				<label class="col-xs-12 col-sm-12 control-label">{$mcFields['birthyear']['title']}</label>
 				<div class="col-sm-12 col-xs-12">
-					{php echo tpl_fans_form('birth',array('year' => $profile['birthyear'],'month' => $profile['birthmonth'],'day' => $profile['birthday']));}
+          <!--将生日设置为只读-->					
+	        <input type="text" class="form-control" name="birthall" readonly="true" value="{php echo $profile['birthyear']. '年'. $profile['birthmonth']. '月 '.$profile['birthday'] . '日' ;}">
+					<div class ="hide">
+          {php echo tpl_fans_form('birth',array('year' => $profile['birthyear'],'month' => $profile['birthmonth'],'day' => $profile['birthday']));}
+          </div>				
 				</div>
 			</div>
 			{/if}
