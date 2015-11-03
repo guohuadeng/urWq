@@ -837,7 +837,8 @@
 	require(['util'], function(u){
 		$(function(){
 			$('.btn-sender').on('click', function(){
-				var scope = angular.element('.ng-container').scope();
+				var reg = /^\d{11}$/;
+				var re = new RegExp(reg);
 				if($.trim($('input[name="mobile"]').val()) == '' || !re.test($.trim($('input[name="mobile"]').val()))) {
 					u.message('请输入正确的手机号');
 					return;
@@ -863,6 +864,10 @@
 				}
 				if($.trim($('input[name="mobile"]').val()) == '' || !re.test($.trim($('input[name="mobile"]').val()))) {
 					u.message('新手机号格式有误');
+					return false;
+				}
+				if($.trim($('input[name="ret.code"]').val()) == '') {
+					u.message('验证码不能为空');
 					return false;
 				}
 				return true;
