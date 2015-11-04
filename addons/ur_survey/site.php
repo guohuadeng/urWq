@@ -369,6 +369,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $recrod['inhome'] = intval($_GPC['inhome']);
             $recrod['starttime'] = strtotime($_GPC['starttime']);
             $recrod['endtime'] = strtotime($_GPC['endtime']);
+            $recrod['credit'] = intval($_GPC['credit']);
             if (empty($sid)) {
                 $recrod['status'] = 1;
                 $recrod['createtime'] = TIMESTAMP;
@@ -526,6 +527,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             }
             if (empty($datas)) {
                 message('非法访问.', '', 'error');
+
             }
             if (pdo_insert('survey_rows', $row) != 1) {
                 message('保存失败.');
@@ -533,6 +535,11 @@ class Ur_surveyModuleSite extends WeModuleSite {
             $srid = pdo_insertid();
             if (empty($srid)) {
                 message('保存失败.');
+            } else if ($activity['credit'] > 0) {
+                $log = "用户参加调查问卷赠送【{$activity['credit']}】积分";
+                $result = mc_credit_update(mc_openid2uid($row['openid']), 'credit1', $activity['credit'], array(0, $log, 'survey'));
+                echo 'id:' . mc_openid2uid($row['openid']) . $log . '<br>';
+                echo '结果：' . $result;
             }
             foreach ($datas as &$r) {
                 $r['srid'] = $srid;

@@ -45,6 +45,7 @@ CREATE TABLE IF NOT EXISTS `ims_survey` (
   `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `only_once` tinyint(1) unsigned NOT NULL DEFAULT '1',
   `activity_store` tinyint(1) unsigned NOT NULL DEFAULT '1',
+  `credit` int(10) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`sid`),
   KEY `weid` (`weid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;
