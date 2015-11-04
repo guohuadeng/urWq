@@ -107,7 +107,7 @@
 				<label class="col-xs-12 col-sm-12 control-label">{$mcFields['mobile']['title']}</label>
 				<div class="col-sm-12 col-xs-12">
 					{if $profile['mobile']}
-					<input type="text" disabled value="{$profile['mobile']}" class="form-control">
+					<input type="text" readonly value="{$profile['mobile']}" class="form-control">
 					{else}
 					{php echo tpl_fans_form('mobile',$profile['mobile']);}
 					{/if}
