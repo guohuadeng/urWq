@@ -55,11 +55,20 @@ if ($do == 'display') {
 			);
 		}
 	}
-	if (empty($setting['passport']['focusreg'])) {
+	if (empty($setting['passport']['focusreg'])) { 
+		//$setting['passport'] 这个是和ucenter有关的
 		$reregister = false;
+		/*根据ur实际情况，无须处理email，这里改为检查是否已领取会员卡，没领取就提示		
 		if ($_W['member']['email'] == md5($_W['openid']).'@we7.cc') {
 			$reregister = true;
 		}
+		*/
 	}
+	//begin 检查是否领会员卡		
+	if(empty($mcard)) {
+			$reregister = true;
+	}
+	//end  检查是否领会员卡
+	$cardinfo = (empty($mcard)) ? '快来领会员卡抢优惠'  : $mcard['cardsn'];
 }
 template('mc/home');

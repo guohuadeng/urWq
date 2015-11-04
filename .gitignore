@@ -4,6 +4,7 @@ s.*.*
 org.*
 /.settings
 /.idea
+dwsync.*
 
 # Windows image file caches
 Thumbs.db

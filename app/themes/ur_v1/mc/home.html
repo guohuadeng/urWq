@@ -2,7 +2,7 @@
 {template 'mc/header'}
 <style>
 	.mnav-box ul,.mnav-box ul li{padding:0px; margin:0px;}
-	.mnav-box{color:#606366; background:transparent url('resource/images/home-bg.jpg') no-repeat; background-size:100% 100%;}
+	.mnav-box{color:#606366; background:transparent url('{$_W['styles']['indexbgimg']}') no-repeat; background-size:100% 100%;}
 	.mnav-box ul{border-top:10px solid #e4e9e8; list-style:none; background:transparent -webkit-gradient(linear,0 0, 0 10%,from(rgba(175,148,51,1)), to(rgba(175,148,51,1))) center top; -webkit-background-size:100% 2px; padding-top:2px; background-repeat:no-repeat;}
 	.mnav-box ul:first-child{background:none; border-top:0; padding-top:0;}
 	.mnav-box ul li{ border-bottom:1px solid #dddddd; position:relative; height:48px; padding: 12px 15px; overflow:hidden;}
@@ -10,6 +10,7 @@
 	.mnav-box ul li .mnav-box-list>i{width:25px; margin-right:10px; color:#af9433; text-align:center; font-size:20px;}
 	.mnav-box ul li .mnav-box-list .mnav-title{display:inline-block; padding-right:15px;}
 	.mnav-box ul li .mnav-box-list > .pull-right{display:inline-block; font-size:22px; line-height:0; color:#888; position:absolute; right:15px; top:12px;}
+  .mnav-box ul li .mnav-box-list > .right{float:right}
 	.mnav-box ul li .mnav-box-list > .pull-right .btn{background:#af9433; color:#FFF; border:0; border-radius:1px; margin-top:-5px; width:100px; height:32px; font-size:17px; white-space:pre-line;}
 	.alert-bg{background:#000; width:100%; position:absolute; top:0; z-index:100; opacity:0.5;}
 </style>
@@ -18,11 +19,11 @@
 {if $do == 'display'}
 	<div class="mnav-box">
 		<ul>
-			<li>      
-				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
+			<li class="alert-li">      
+				<a class="mnav-box-list" href="{php echo url('mc', array('a' => 'bond', 'do' => 'mycard'));}">
 					<i class="fa fa-heart-o"></i>
 					<span>会员卡号</span>
-          <span class="right">{$mcard['cardsn']}</span>
+          <span class="right">{$cardinfo}</span>
 				</a>
 			</li>
 			<li>
@@ -33,7 +34,7 @@
 				</a>
 			</li>
 			{if $_W['card_permission']}
-				<li>
+				<li class="hidden">
 					<a class="mnav-box-list" href="{php echo url('wechat/card');}">
 						<i class="fa fa-tags"></i>
 						<span>微信卡券</span>
@@ -57,8 +58,8 @@
 			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('activity/goods/mine');}">
-					<i class="fa fa-money"></i>
-					<span>我的消费记录</span>
+					<i class="fa fa-gift"></i>
+					<span>奖品兑换记录</span>
 					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
@@ -112,15 +113,13 @@
 					<span class="pull-right"><span class="btn btn-default">{if !empty($profile['mobile'])}修改{else}绑定{/if}</span></span>
 				</a>
 			</li>
-			{if $reregister}
-				<li class="alert-li hide">
-					<a class="mnav-box-list" href="{php echo url('mc/bond/email')}">
-						<i class="fa fa-unlock-alt"></i>
-						<span class="">重置重要资料</span>
-						<span class="pull-right"><span class="btn btn-default">重置</span></span>
-					</a>
-				</li>
-			{/if}
+      <li class="">
+        <a class="mnav-box-list" href="{php echo url('mc/profile')}">
+          <i class="fa fa-unlock-alt"></i>
+          <span class="">修改会员资料</span>
+          <span class="pull-right"><span class="btn btn-default">修改</span></span>
+        </a>
+      </li>
 			<li class="hide">
 				<a class="mnav-box-list" href="{php echo url('mc/bond/address');}">
 					<i class="fa fa-map-marker"></i>
@@ -131,7 +130,7 @@
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/home/login_out');}">
 					<i class="fa fa-sign-out"></i>
-					<span class="">退出系统</span>
+					<span class="">退出系统（测试期开启）</span>
 					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
@@ -142,6 +141,31 @@
 
 <script>
 	{if $reregister}
+		//begin是否领卡并提示
+		function alert_close(a) {
+			a.parents('.alert').remove();
+			$('.alert-bg').remove();
+			$('.alert-li').removeClass("alert-li");
+			require(['util'], function(util) {
+				util.cookie.set('urcardtips', 1, 3600);
+			});
+		}
+		$(function() {
+			require(['util'], function(util) {
+				var alert_html;
+				var alert_url = $('.alert-li').find('a').attr('href');
+				alert_html = '<div class="alert alert-warning" role="alert" style="position:absolute; z-index:101; margin:-150px 30px 0 30px;">';
+				alert_html += '<span>尊敬的微信客户，UR时尚荟为您准备了大量优惠，快来领取一张我们的会员卡吧！</span>';
+				alert_html += '<div style="margin-top:10px;"><button type="button" class="btn btn-warning pull-left" onclick="alert_close($(this));">稍后提醒我</button><a class="btn btn-info pull-right" href="'+alert_url+'">现在就领卡</a></div>';
+				alert_html += '</div>';
+				if(!util.cookie.get('urcardtips') && $('.alert-li').html().length > 0) {
+					$('body').append('<div class="alert-bg" style="height:'+(parseInt($('body').height())+63)+'px;"></div>');
+					$('.alert-li').parent().prepend(alert_html);
+				}
+			});
+		});
+		//end是否领卡并提示
+	/*根据ur实际情况，换成领卡相关
 		function alert_close(a) {
 			a.parents('.alert').remove();
 			$('.alert-bg').remove();
@@ -153,7 +177,8 @@
 		$(function() {
 			require(['util'], function(util) {
 				var alert_html;
-				var alert_url = $('.alert-li').find('a').attr('href');
+				var alert_url = url('mc/bond/card');
+				//$('.alert-li').find('a').attr('href');
 				alert_html = '<div class="alert alert-warning" role="alert" style="position:absolute; z-index:101; margin:-150px 30px 0 30px;">';
 				alert_html += '<span>尊敬的微信用户，为了您的账号安全，请及时完善重要资料，以防账号被非法份子利用！</span>';
 				alert_html += '<div style="margin-top:10px;"><button type="button" class="btn btn-warning pull-left" onclick="alert_close($(this));">稍后提醒我</button><a class="btn btn-info pull-right" href="'+alert_url+'">现在就完善</a></div>';
@@ -164,6 +189,7 @@
 				}
 			});
 		});
+		*/
 	{/if}
 </script>
 

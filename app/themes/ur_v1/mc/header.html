@@ -1,5 +1,5 @@
 <style>
-body{background:#efe5b1; padding-bottom:63px;}
+body{padding-bottom:63px;}
 /*个人中心*/
 .pcenter-main .head{position:relative; height:170px; width:100%; background:url({if !empty($ucpage['params'][0]['params']['bgImage'])}'{$ucpage['params'][0]['params']['bgImage']}'{else}'resource/images/head-bg.png'{/if}) no-repeat center center; background-size:100% auto; -moz-background-size:100% auto; -webkit-background-size:100% auto;}
 .pcenter-main .head .ptool{float:right; display:inline-block; text-decoration:none; height:50px; line-height:50px; width:50px; text-align:center;font-size:25px; color:#749caa;}
@@ -16,7 +16,7 @@ body{background:#efe5b1; padding-bottom:63px;}
 /*竖排导航条 通用*/
 .mnav-box ul{padding:10px 15px 0 15px;font-family:Helvetica, Arial, sans-serif;}
 .mnav-box ul li{padding:10px 15px;}
-.pcenter-main .profile{width:100%;background:transparent url('resource/images/home-bg.jpg') no-repeat; background-size:cover;}
+.pcenter-main .profile{width:100%; background-size:cover;}
 .pcenter-main .profile .tabbable>ul{padding:10px 15px 0px 15px;}
 .pcenter-main .profile .tabbable .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{color:#5ac5d4;background-color:#E9F7F8;}
 .pcenter-main .profile label{color:#555; font-weight:lighter; margin-top:5px;}
@@ -25,7 +25,10 @@ body{background:#efe5b1; padding-bottom:63px;}
 	<div class="head">
 		<a class="ptool" href="{php echo url('mc/profile')}"><i class="fa fa-cog fa-spin"></i></a>
 		<div class="pdetail">
-			<div class="img-circle"><img src="{php echo tomedia($profile['avatar']);}" onerror="this.src='resource/images/heading.jpg'"></div>
+			<div class="img-circle">
+      <a href="{php echo url('mc/home');}">
+      <img src="{php echo tomedia($profile['avatar']);}" onerror="this.src='resource/images/heading.jpg'"></div>
+      </a>
 			<div class="pull-left">
 				<span class="name">{if !empty($profile['nickname'])}{$profile['nickname']}{else}<a href="{php echo url('mc/profile')}" style="color:red;">设置昵称</a>{/if}</span>
 				<span class="type"><i class="fa fa-certificate"></i> {$profile['group']['title']}</span>
