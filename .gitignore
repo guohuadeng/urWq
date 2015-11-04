@@ -5,6 +5,7 @@ org.*
 /.settings
 /.idea
 dwsync.*
+workspace.xml
 
 # Windows image file caches
 Thumbs.db
