@@ -795,16 +795,15 @@
 	</div>
 	<div class="panel-body">
 		<form name="theform" method="post" role="form" id="form1">
-			<ul class="nav nav-tabs" role="tablist">
-				<li class="active"><a href="javascript:;" role="tab" data-toggle="tab">{if $mobile_exist == 0}绑定{else}修改{/if}手机号</a></li>
-			</ul>
 			<div class="tab-content">	
 				{if $mobile_exist == 1}
 					<div class="tab-pane active">
-						<div class="form-group">
-							<input type="text" name="oldmobile" value="{$profile['mobile']}" class="form-control" placeholder="原手机号">
+						<div class="form-group">            
+							<label class="col-xs-12 col-sm-12 control-label">原手机号</label>
+							<input type="text" name="oldmobile" value="{$profile['mobile']}" class="form-control" placeholder="原手机号" readonly>
 						</div>
 						<div class="form-group">
+							<label class="col-xs-12 col-sm-12 control-label">新手机号</label>
 							<input type="text" name="mobile" class="form-control" placeholder="新手机号">
 						</div>
 						<div class="form-group">
