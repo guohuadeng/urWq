@@ -538,7 +538,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             } else if ($activity['credit'] > 0) {
                 $log = "参加调研问卷，赠送{$activity['credit']}积分";
                 $result = mc_credit_update(mc_openid2uid($row['openid']), 'credit1', $activity['credit'], array(mc_openid2uid($row['openid']), $log, 'ur_survey'));
-                echo 'id:' . mc_openid2uid($row['openid']) . $log . '<br>';
+                //echo 'id:' . mc_openid2uid($row['openid']) . $log . '<br>';
                 //echo '结果：' . $result;
             }
             foreach ($datas as &$r) {
@@ -550,7 +550,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
                 $record['starttime'] = TIMESTAMP;
                 pdo_update('survey', $record, array('sid' => $sid));
             }
-            message($activity['information'], url('mc/home')); //完成后跳转到会员中心
+            message($log . "</br>" .$activity['information'], url('mc/home')); //完成后跳转到会员中
         }
         foreach ($ds as &$r) {
             if ($r['value']) {

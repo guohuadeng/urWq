@@ -154,7 +154,7 @@
 			require(['util'], function(util) {
 				var alert_html;
 				var alert_url = $('.alert-li').find('a').attr('href');
-				alert_html = '<div class="alert alert-warning" role="alert" style="position:absolute; z-index:101; margin:-150px 30px 0 30px;">';
+				alert_html = '<div class="alert alert-warning" role="alert" style="position:absolute; z-index:101; margin:-150px 30px 0 30px; bottom:30%;">';
 				alert_html += '<span>尊敬的微信客户，UR时尚荟为您准备了大量优惠，快来领取一张我们的会员卡吧！</span>';
 				alert_html += '<div style="margin-top:10px;"><button type="button" class="btn btn-warning pull-left" onclick="alert_close($(this));">稍后提醒我</button><a class="btn btn-info pull-right" href="'+alert_url+'">现在就领卡</a></div>';
 				alert_html += '</div>';
