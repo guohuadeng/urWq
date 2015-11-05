@@ -151,9 +151,10 @@
                 <span class="text-danger">*</span>调研内容管理
                 {if $hasData}
                 	<span class="text-danger">已经有用户完成了调研，如要进行调研内容更改，必须                  
-                  <a href="{php echo $this->createWebUrl('surveyclear', array('id' => $row['sid']))}" onclick="return confirm('清理调研结果将清理所有用户的回答信息，确认吗？');
+                  <a href="{php echo $this->createWebUrl('surveyclear', array('id' => $activity['sid']))}" onclick="return confirm('清理调研结果将清理所有用户的回答信息，确认吗？');
                                         return false;" data-toggle="tooltip" data-placement="bottom" class="btn  btn-default btn-small" title="清除所有用户调研结果！"><i class="fa fa-eraser"></i>&nbsp;清除所有用户调研结果！</a>
                   </span>
+                  &nbsp;此操作不影响用户已经获得的积分！
                 {/if}
             </div>
             <div class="panel-body table-responsive">
