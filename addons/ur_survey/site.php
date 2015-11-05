@@ -343,6 +343,16 @@ class Ur_surveyModuleSite extends WeModuleSite {
         message('操作成功.', referer());
     }
 
+    public function doWebSurveyclear() {//清除指定调研的所有用户回答
+        global $_W, $_GPC;
+        $id = intval($_GPC['id']);
+        if (!empty($id)) {
+            pdo_delete('survey_rows', array('sid' => $id));
+            pdo_delete('survey_data', array('sid' => $id));
+        }
+        message('清理调研结果，操作成功.', referer());
+    }
+
     public function doWebPost() {
         global $_W, $_GPC;
         $sid = intval($_GPC['id']); //调研id

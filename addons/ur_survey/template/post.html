@@ -20,8 +20,8 @@
 				'<tr class="moresetting">'+
 				'	<td></td>'+
 				'	<td colspan="4">'+
-				'		<div><textarea  class="form-control" name="descriptions[]" onfocus="" onfocusout="" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案"></textarea></div>'+
-				'		<div><textarea  class="form-control" name="options[]" onfocus="" onfocusout="" style="width:820px; height:35px;" placeholder="填写可选择的答案，每行一个答案，用回车/换行分开"></textarea><span class="help-block">请把每个选择答案控制在个18个字内，超出无法正常显示 </span></div>'+
+				'		<div><textarea  class="form-control hidden" name="descriptions[]" onfocus="" onfocusout="" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案"></textarea></div>'+
+				'		<div><textarea  class="form-control" name="options[]" onfocus="" onfocusout="" style="width:820px; height:80px;" placeholder="填写可选择的答案，每行一个答案，用回车/换行分开"></textarea><span class="help-block">请把每个选择答案控制在个18个字内，超出无法正常显示 </span></div>'+
 				'	</td>'+
 				'</tr>';
 		$('#form-items').append(html);
@@ -30,7 +30,7 @@
 			$(this).css("height", "90px");
 		});
 		$(".moresetting").delegate("textarea", "focusout", function() {
-			$(this).css("height", "35px");
+			$(this).css("height", "80px");
 		});
 	}
 </script>
@@ -55,7 +55,7 @@
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span>简介</label>
                     <div class="col-xs-12 col-sm-9">
-                         <textarea style="height:200px;" class="form-control" id="description" name="description" cols="70">{$activity['description']}</textarea>
+                         <textarea style="height:80px;" class="form-control" id="description" name="description" cols="70">{$activity['description']}</textarea>
 	        			<span class="help-block">如果设置了图文回复，这个会显示在图文回复信息的描述中</span>
                     </div>
                 </div>
@@ -149,13 +149,19 @@
 		<div class="panel panel-default">
             <div class="panel-heading">
                 <span class="text-danger">*</span>调研内容管理
+                {if $hasData}
+                	<span class="text-danger">已经有用户完成了调研，如要进行调研内容更改，必须                  
+                  <a href="{php echo $this->createWebUrl('surveyclear', array('id' => $row['sid']))}" onclick="return confirm('清理调研结果将清理所有用户的回答信息，确认吗？');
+                                        return false;" data-toggle="tooltip" data-placement="bottom" class="btn  btn-default btn-small" title="清除所有用户调研结果！"><i class="fa fa-eraser"></i>&nbsp;清除所有用户调研结果！</a>
+                  </span>
+                {/if}
             </div>
             <div class="panel-body table-responsive">
             	<table class="table">
 					<thead class="navbar-inner">
 					<tr>
 						<th  class="row-first" style="width:50px;">排序</th>
-						<th  class="row-hover" style="width:200px;">名称 <span title="必填项" class="text-error">*</span><i></i></th>
+						<th  class="row-hover" style="width:200px;">调研标题 <span title="必填项" class="text-error">*</span><i></i></th>
 						<th style="width:150px;">必填项<i></i></th>
 						<th style="width:100px">类型<i></i></th>
 						<th style="width:200px;">操作</th>
@@ -166,7 +172,7 @@
 					{loop $ds $field}
 					<tr >
 						<td><input type="text" class="form-control" readonly name="displayorder[{$field['sfid']}]" value="{$field['displayorder']}"></td>
-						<td><input type="text" class="form-control" readonly  name="titles[{$field['sfid']}]" value="{$field['title']}" placeholder="请认真填写名称"></td>
+						<td><input type="text" class="form-control" readonly  name="titles[{$field['sfid']}]" value="{$field['title']}" placeholder="请认真填写调研标题"></td>
 						<td><input type="checkbox" readonly name="essentials[{$field['sfid']}]" {if $field['essential'] == '1'}checked{/if} value="1"></td>
 						<td>
 							<select readonly name="type[{$field['sfid']}]" class="form-control">
@@ -178,8 +184,8 @@
 					<tr class="moresetting">
 						<td></td>
 						<td colspan="4">
-							<div><textarea class='form-control' readonly name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案">{$field['description']}</textarea></div>
-							<div><textarea class='form-control' readonly name="options[{$field['sfid']}]" style="width:820px; height:35px;" placeholder="填写可选择的答案，每行一个答案，用回车/换行分开">{$field['value']}</textarea></div>
+							<div><textarea class='form-control hidden' readonly name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案">{$field['description']}</textarea></div>
+							<div><textarea class='form-control' readonly name="options[{$field['sfid']}]" style="width:820px; height:80px;" placeholder="可选答案列表，一行一个答案，使用[_]符号可以进行填空，用回车/换行分开每个答案。文本类型则留空。">{$field['value']}</textarea></div>
 						</td>
 					</tr>
 					{/loop}
@@ -187,7 +193,7 @@
 					{loop $ds $field}
 					<tr >
 						<td><input type="text" class="form-control"   name="displayorder[{$field['sfid']}]" value="{$field['displayorder']}"></td>
-						<td><input type="text" class="form-control"    name="titles[{$field['sfid']}]" value="{$field['title']}" placeholder="请认真填写名称"></td>
+						<td><input type="text" class="form-control"    name="titles[{$field['sfid']}]" value="{$field['title']}" placeholder="请认真填写调研标题"></td>
 						<td><input type="checkbox"   name="essentials[{$field['sfid']}]" {if $field['essential'] == '1'}checked{/if} value="1"></td>
 						<td>
 							<select   name="type[{$field['sfid']}]" class="form-control">
@@ -199,8 +205,8 @@
 					<tr class="moresetting">
 						<td></td>
 						<td colspan="4">
-							<div><textarea   class='form-control' name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="请认真填写描述信息">{$field['description']}</textarea></div>
-							<div><textarea   class='form-control' name="options[{$field['sfid']}]" style="width:820px; height:35px;" placeholder="请认真填写扩展项信息，扩展项用回车/换行分开">{$field['value']}</textarea></div>
+							<div><textarea   class='form-control hidden' name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案">{$field['description']}</textarea></div>
+							<div><textarea   class='form-control' name="options[{$field['sfid']}]" style="width:820px; height:80px;" placeholder="可选答案列表，一行一个答案，使用[_]符号可以进行填空，用回车/换行分开每个答案。文本类型则留空。">{$field['value']}</textarea></div>
 						</td>
 					</tr>
 					{/loop}
@@ -303,7 +309,7 @@
 			$(this).css("height", "90px");
 		});
 		$(".moresetting").delegate("textarea", "focusout", function() {
-			$(this).css("height", "35px");
+			$(this).css("height", "80px");
 		});
                 });
 </script>

@@ -80,6 +80,8 @@
 							<a href="{php echo $this->createWebUrl('post', array('id' => $row['sid']))}" data-toggle="tooltip" data-placement="bottom" class="btn btn-default btn-small" title="编辑"><i class="fa fa-edit"></i></a>
 							<a href="{php echo $this->createWebUrl('delete', array('id' => $row['sid']))}" onclick="return confirm('删除调研活动将删除所有关联的调研记录，确认吗？');
                                     return false;" data-toggle="tooltip" data-placement="bottom" class="btn  btn-default btn-small" title="删除"><i class="fa fa-remove"></i></a>
+							<a href="{php echo $this->createWebUrl('surveyclear', array('id' => $row['sid']))}" onclick="return confirm('清理调研结果将清理所有用户的回答信息，确认吗？');
+                                    return false;" data-toggle="tooltip" data-placement="bottom" class="btn  btn-default btn-small" title="清理"><i class="fa fa-eraser"></i></a>
 							<span data-toggle="tooltip" data-placement="bottom" class="btn btn-default btn-small switch" value="{$row['sid']}" {if $row['switch'] == 0}title="开启"><i class="fa fa-play"></i>
 							{else}title="关闭"><i class="fa fa-stop"></i>{/if}</span>
 						</td>
