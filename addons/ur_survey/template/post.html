@@ -20,8 +20,8 @@
 				'<tr class="moresetting">'+
 				'	<td></td>'+
 				'	<td colspan="4">'+
-				'		<div><textarea  class="form-control" name="descriptions[]" onfocus="" onfocusout="" style="width:820px; height:35px; margin-bottom:10px;" placeholder="请认真填写描述信息"></textarea></div>'+
-				'		<div><textarea  class="form-control" name="options[]" onfocus="" onfocusout="" style="width:820px; height:35px;" placeholder="请认真填写扩展项信息，扩展项用回车/换行分开"></textarea><span class="help-block">请把扩展项信息控制在个18个字内，超出无法正常显示 </span></div>'+
+				'		<div><textarea  class="form-control" name="descriptions[]" onfocus="" onfocusout="" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案"></textarea></div>'+
+				'		<div><textarea  class="form-control" name="options[]" onfocus="" onfocusout="" style="width:820px; height:35px;" placeholder="填写可选择的答案，每行一个答案，用回车/换行分开"></textarea><span class="help-block">请把每个选择答案控制在个18个字内，超出无法正常显示 </span></div>'+
 				'	</td>'+
 				'</tr>';
 		$('#form-items').append(html);
@@ -47,33 +47,34 @@
             </div>
             <div class="panel-body">
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">调研名称</label>
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span>调研名称</label>
                     <div class="col-xs-12 col-sm-9">
                          <input type="text" class="form-control" placeholder="" name="title" value="{$activity['title']}" />
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">简介</label>
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span>简介</label>
                     <div class="col-xs-12 col-sm-9">
                          <textarea style="height:200px;" class="form-control" id="description" name="description" cols="70">{$activity['description']}</textarea>
+	        			<span class="help-block">如果设置了图文回复，这个会显示在图文回复信息的描述中</span>
                     </div>
                 </div>
                 <div class="form-group">
                     <label class="col-xs-12 col-sm-3 col-md-2 control-label">调研内容</label>
                     <div class="col-xs-12 col-sm-9">
                        	<textarea  id="content" type="text" class="form-control richtext-clone" placeholder="" name="content">{$activity['content']}</textarea>
-	        			<span class="help-block">此调研活动的说明信息. 例如: 请提交你的联系方式, 和要咨询的产品信息. 我们会尽快联系你</span>
+	        			<span class="help-block">此调研活动的说明信息，会显示在用户打开调研的首页。例如: 请提交你的联系方式, 和要咨询的产品信息. 我们会尽快联系你</span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">提交提示信息</label>
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span>提交提示信息</label>
                     <div class="col-xs-12 col-sm-9">
                     	<textarea type="text" class="form-control"  placeholder="" name="information">{$activity['information']}</textarea>
                         <span class="help-block">调研提交成功以后提示的信息. 例如: 您的信息我们已经收到, 很快会有专人联系你. </span>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-12 col-sm-3 col-md-2 control-label">调研活动封面</label>
+                    <label class="col-xs-12 col-sm-3 col-md-2 control-label"><span class="text-danger">*</span>调研活动封面</label>
                     <div class="col-xs-12 col-sm-9">
                          {php echo tpl_form_field_image('thumb',$activity['thumb']);}
 	       				<span class="help-block">用一张图片来更好的表现你的调研主题</span>
@@ -147,7 +148,7 @@
         </div>
 		<div class="panel panel-default">
             <div class="panel-heading">
-                调研内容管理
+                <span class="text-danger">*</span>调研内容管理
             </div>
             <div class="panel-body table-responsive">
             	<table class="table">
@@ -177,8 +178,8 @@
 					<tr class="moresetting">
 						<td></td>
 						<td colspan="4">
-							<div><textarea class='form-control' readonly name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="请认真填写描述信息">{$field['description']}</textarea></div>
-							<div><textarea class='form-control' readonly name="options[{$field['sfid']}]" style="width:820px; height:35px;" placeholder="请认真填写扩展项信息，每行一个扩展项">{$field['value']}</textarea></div>
+							<div><textarea class='form-control' readonly name="descriptions[{$field['sfid']}]" style="width:820px; height:35px; margin-bottom:10px;" placeholder="说明项，会显示在题目最下方，帮助用户理解题目和答案">{$field['description']}</textarea></div>
+							<div><textarea class='form-control' readonly name="options[{$field['sfid']}]" style="width:820px; height:35px;" placeholder="填写可选择的答案，每行一个答案，用回车/换行分开">{$field['value']}</textarea></div>
 						</td>
 					</tr>
 					{/loop}
@@ -291,7 +292,7 @@
 				}
 			});
 			if(isError) {
-				message('单选, 多选或下拉选择项目必须要设定扩展项.', '', 'error');
+				message('单选, 多选或下拉选择项目必须要设定扩展答案项.', '', 'error');
 				return false;
 			}
 

@@ -6,7 +6,7 @@
 <div class="content-w1 survey-title">
 	<div class="content-w2">
 		<div class="content">
-			<div class="title">{$activity['title']}</div>
+			<h3 class="title">{$activity['title']}</h3>
 			<img class="connect" src="../addons/ur_survey/template/mobile/connect.png">
 			<div class="desc-cont">
 				{$activity['content']}
@@ -43,56 +43,54 @@
 	{/if}
 	{if $activity['activity_store']=='1'}
 		<div class="xuan">
-			<div class="content-w1 stores">
-				<div class="content-w2">
-					<div class="content content-w3">
-						<div class="qtitle">请先选择门店：</div>
+			<div class="content stores">
+        <h4 class="title">请选择您所光临的门店</h4>
 
-						<div class="field-contain">
-							{php echo tpl_fans_form('reside');}
-						</div>
-						<div class="field-contain">
-							<table id="stores"></table>
-							<input type="hidden" name="store">
-						</div>
-						<div class="btn-wrapper">
-							<input type="button" class="submit next-btn" value="下一步">
-						</div>
-					</div>
-				</div>
+        <div class="field-contain">
+          {php echo tpl_fans_form('reside');}
+        </div>
+        <div class="field-contain">
+          <table id="stores"></table>
+          <input type="hidden" name="store">
+        </div>
+        <div class="btn-wrapper">
+          <input type="button" class="submit next-btn" value="下一步">
+        </div>
 			</div>
 		</div>
 	{/if}
 	{loop $ds $key $row}
 		{if $row['type']=="radio" || $row['type']=="checkbox"}
-			<div class="xuan">
-				<div class="title">{$row['title']}</div>
-				<div class="tip">{if $row['type']=="radio"}注：本题最多能选择1个答案！{elseif $row['type']=="checkbox"}注：本题可选择多个答案！{/if}</div>
-				<div class="options"{if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="2"{/if} >
-					{loop $row['options'] $v}
-						<div class="option">
-							<img class="oimg" src="../addons/ur_survey/template/mobile/option_bg.png">
-							<img class="oimg-sel" src="../addons/ur_survey/template/mobile/option_sel_bg.png">
-							<div class="text">
-								<div class="otext" data-value="{$v}" data-type="{$row['type']}">
-									{php echo preg_replace('/\[_\]/', '<input type="text">', $v);}
-								</div>
-							</div>
-						</div>
-					{/loop}
-					<input type="hidden" name="field_{$row['sfid']}" class="hidden" id="hidden_{$key}">
-				</div>
-				<div class="tip" style="padding-right:20px">说明：{$row['description']}</div>
-				<div class="submit" {if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="100"{/if}>
-					<img src="../addons/ur_survey/template/mobile/next_btn.png">
-					<span>下一步</span>
-				</div>
+			<div class="xuan">      
+        <div class="content">
+          <h4 class="title">{$row['title']}</h4>
+          <div class="tip">{if $row['type']=="radio"}注：本题最多能选择1个答案！{elseif $row['type']=="checkbox"}注：本题可选择多个答案！{/if}</div>
+          <div class="options"{if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="2"{/if} >
+            {loop $row['options'] $v}
+              <div class="option">
+                <img class="oimg" src="../addons/ur_survey/template/mobile/option_bg.png">
+                <img class="oimg-sel" src="../addons/ur_survey/template/mobile/option_sel_bg.png">
+                <div class="text">
+                  <div class="otext" data-value="{$v}" data-type="{$row['type']}">
+                    {php echo preg_replace('/\[_\]/', '<input type="text">', $v);}
+                  </div>
+                </div>
+              </div>
+            {/loop}
+            <input type="hidden" name="field_{$row['sfid']}" class="hidden" id="hidden_{$key}">
+          </div>
+          <div class="tip" style="padding-right:20px">说明：{$row['description']}</div>
+          <div class="submit" {if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="100"{/if}>
+            <img src="../addons/ur_survey/template/mobile/next_btn.png">
+            <span>下一步</span>
+          </div>   
+        </div>
 			</div>
 		{else}
 			<div class="content-w1 xuan">
 				<div class="content-w2">
 					<div class="content">
-						<div class="title" style="font-size:16px;font-weight:bold">{$row['title']}</div>
+						<h4 class="title" style="font-size:16px;font-weight:bold">{$row['title']}</h4>
 						<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">
 						<div class="desc-cont">
 							<textarea  class="form-control" name="field_{$row['sfid']}" rows="5" style="color:#ccc;border:1px solid #ccc;width:100%"></textarea>
@@ -108,7 +106,7 @@
 		<div class="content-w1 xuan">
 			<div class="content-w2">
 				<div class="content">
-					<div class="title" style="font-size:16px;font-weight:bold;color:#000;">意见和建议</div>
+					<h3 class="title" style="font-size:16px;font-weight:bold;color:#000;">意见和建议</h3>
 					<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">
 					<div class="desc-cont">
 						<textarea id="suggest" name="suggest" rows="5" style="color:#ccc;border:1px solid #ccc;width:100%">有什么建议给我们？</textarea>
@@ -123,7 +121,7 @@
 		<div class="content-w1 xuan">
 			<div class="content-w2">
 				<div class="content">
-					<div class="title" style="font-size:16px;font-weight:bold"></div>
+					<h3 class="title" style="font-size:16px;font-weight:bold"></h3>
 					<img class="connect" src="../addons/ur_survey/template/mobile//connect.png">	
 					<div>感谢您的参与</div>
 						<input type="hidden" name="token" value="{$_W['token']}" />
@@ -291,7 +289,7 @@ $(function() {
 
 	$store.bootstrapTable({
 		classes: 'table table-hover table-no-bordered',
-		height: 400,
+		height: 300,
 		showHeader: false,
 		clickToSelect: true,
 		columns: [{
