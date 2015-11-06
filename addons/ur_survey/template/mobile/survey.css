@@ -156,7 +156,10 @@ html,body {
 .question{z-index:2; position:relative;}
 .index{position: absolute;color: #b40000;top: 75px;left: 80px;font-size: 10px;}
 .index strong{font-size: 12px;}
-.question .option{position: relative;height: 45px;}
+.question .options {
+	text-align: left;
+}
+.question .option{position: relative;display: block;}
 .question .option .text{position: relative;line-height: 40px;overflow: hidden;}
 .question .option .i{float: left;margin-left: 20px;}
 .question .option .otext{
@@ -180,7 +183,7 @@ html,body {
 }
 .submit{
 	width: 80px;
-	margin: 20px 20px 0px 0px;
+	/*margin: 20px 20px 0px 0px;*/
 	float: right;
 	position: relative;
 }
@@ -248,4 +251,9 @@ body {text-align:center; background:url('bg.jpg') no-repeat center; background-s
 
 .tpl-district {
 	display: none !important;
+}
+
+.text {
+	background: transparent;
+	border: 1px solid #ccc;
 }

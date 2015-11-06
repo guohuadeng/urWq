@@ -1,6 +1,7 @@
 {template 'header'}
+<link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/css/flat-ui.min.css" media="all">
 <link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/common.css" media="all">
-<link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/bootstrap-table.css" media="all">
+<link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/css/bootstrap-table.css" media="all">
 <link rel="stylesheet" type="text/css" href="../addons/ur_survey/template/mobile/survey.css" media="all">
 <div style="height: 25px;"></div>
 <div class="content-w1 survey-title">
@@ -67,17 +68,13 @@
           <div class="tip">{if $row['type']=="radio"}注：本题最多能选择1个答案！{elseif $row['type']=="checkbox"}注：本题可选择多个答案！{/if}</div>
           <div class="options"{if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="2"{/if} >
             {loop $row['options'] $v}
-              <div class="option">
-                <img class="oimg" src="../addons/ur_survey/template/mobile/option_bg.png">
-                <img class="oimg-sel" src="../addons/ur_survey/template/mobile/option_sel_bg.png">
-                <div class="text">
-                  <div class="otext" data-value="{$v}" data-type="{$row['type']}">
-                    {php echo preg_replace('/\[_\]/', '<input type="text">', $v);}
-                  </div>
-                </div>
-              </div>
+              <label class="option">
+                <input type="{$row['type']}" name="field_{$row['sfid']}" id="hidden_{$key}" value="{$v}">
+			    <span data-value="{$v}" data-type="{$row['type']}">
+				  {php echo preg_replace('/\[_\]/', '<input type="text" class="text">', $v);}
+			    </span>
+			  </label>
             {/loop}
-            <input type="hidden" name="field_{$row['sfid']}" class="hidden" id="hidden_{$key}">
           </div>
           <div class="tip" style="padding-right:20px">说明：{$row['description']}</div>
           <div class="submit" {if $row['type']=="radio"}title="1"{elseif $row['type']=="checkbox"}title="100"{/if}>
@@ -134,9 +131,11 @@
 </form>
 <audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>
 
-<script src="../addons/ur_survey/template/mobile/bootstrap-table.js"></script>
+<script src="../addons/ur_survey/template/mobile/js/flat-ui.min.js"></script>
+<script src="../addons/ur_survey/template/mobile/js/bootstrap-table.js"></script>
 <script>
 $(function(){
+	$('.option :radio, .option :checkbox').radiocheck();
 	$(".content-w1,.question").hide();
 	$(".content-w1").css("display", "inline-block");
 	$(".xuan").hide();
@@ -156,79 +155,51 @@ $(function(){
 		return value;
 	};
 	$(".option").on("click",function(e){
-		if ($(e.target).is('input')) {
+		if ($(e.target).hasClass('text')) {
 			return;
-		}
-		var $option = $(this);
-		var parent=$(this).parent();
-		var type=parent.attr("title");
-		if(type=='1'){
-			//单选赋值
-			parent.find('.option').removeClass('option-sel');
-			$option.toggleClass("option-sel");
-
-			parent.find(".hidden").val(getInputText(parent.find(".option-sel .otext")));
-		}else if(type=='2'){
-			//多选赋值
-			$option.toggleClass("option-sel");
-			var valarr=new Array();
-			parent.find(".option-sel .otext").each(function(index){
-				valarr[index]=getInputText($(this));
-			});
-			var valstr=valarr.join('||');
-			parent.find(".hidden").val(valstr);		
 		}
 		$("#musicClick")[0].play();
 	});
-	$(".otext input").on("change", function () {
-		var $parent=$(this).parent();
-		var type=$parent.data("type");
-		if(type=='1'){
-			//单选赋值
-			$parent.find(".hidden").val(getInputText(parent.find(".option-sel .otext")));
-		}else if(type=='2'){
-			//多选赋值
-			var valarr=new Array();
-			$parent.closest("options").find(".option-sel .otext").each(function(index){
-				valarr[index]=getInputText($(this));
-			});
-			var valstr=valarr.join('||');
-			$parent.closest("options").find(".hidden").val(valstr);
-		}
+	$("input.text").on("change", function () {
+		$(this).closest('.option').find('>input').val(getInputText($(this).parent()));
 	});
 	
 	$(".submit").click(function(){
-		var parent=$(this).closest(".xuan");
+		var $parent = $(this).closest(".xuan");
 		var maxsel = $(this).attr("title");
 		var $btn = $(this);
-		if($btn.hasClass("disabled")) return;
-		var $answer = parent.find(".options .option-sel");
+		if ($btn.hasClass("disabled")) return;
+
 		if ($('#stores').is(':visible')) {
 			if (!$('#stores').bootstrapTable('getSelections').length) {
 				alert('请选择一个门店！');
 				return;
 			}
 		} else {
-			if($answer.size() == 0){
+			var answers = [];
+			var checkInput = true;
+			$parent.find('.option>input:checked').each(function () {
+				answers.push($(this).val());
+				$(this).parent().find('input.text').each(function () {
+					checkInput = checkInput && $.trim($(this).val()) !== '';
+				});
+			});
+			if (answers.length === 0) {
 				alert("请选择一个答案!");
 				return;
 			}
-			if($answer.size() > maxsel){
-				alert("本题最多只能选择个"+maxsel+"答案!");
+			if (answers.length > maxsel) {
+				alert("本题最多只能选择个" + maxsel + "答案!");
 				return;
 			}
-			var checkInput = true;
-			$answer.find('.otext input').each(function () {
-				checkInput = $.trim($(this).val()) !== '';
-			});
 			if(!checkInput) {
 				alert("选项内容不能为空!");
 				return;
 			}
 		}
-		
+
 		$(".xuan").hide();
-		parent.next().show();
+		$parent.next().show();
 	});
 	
 	$("#suggest").focus(function(){
@@ -275,7 +246,18 @@ $(function(){
 	});
 	
 	$("#finish").click(function(){
-		$("#form").submit();
+		var $form = $('#form');
+		$form.find('.options').each(function () {
+			var $checkboxs = $(this).find(':checkbox:checked');
+			if ($checkboxs.length) {
+				var values = [];
+				$checkboxs.each(function () {
+					values.push($(this).val());
+				});
+				$checkboxs.last().val(values.join('||'));
+			}
+		});
+		$form.submit().reset();
 	});
 });
 //调整高度
