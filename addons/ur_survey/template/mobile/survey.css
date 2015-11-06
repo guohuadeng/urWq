@@ -145,8 +145,8 @@ html,body {
 }
 .question .title{    
 }
-.question .form-control	{
-    background-color:#B6A54B;
+.xuan select	{
+    background-color:transparent;
     color:#FFF;
     border:1px solid #FFF;
   }
@@ -160,7 +160,6 @@ html,body {
 	text-align: left;
 }
 .question .option{position: relative;display: block;}
-.question .option .text{position: relative;line-height: 40px;overflow: hidden;}
 .question .option .i{float: left;margin-left: 20px;}
 .question .option .otext{
 	margin-left: 45px;
@@ -246,7 +245,7 @@ html,body {
 	background: rgba(0,0,0,0);
 }
 .xuan{display:none}
-body {text-align:center; background:url('bg.jpg') no-repeat center; background-size:100%;}
+body {text-align:center; background:url('bg.jpg') no-repeat center; background-attachment: fixed;background-size:100%;}
 #footer, #footer a{position:inherit; color:#FFF;}
 
 .tpl-district {
@@ -256,4 +255,10 @@ body {text-align:center; background:url('bg.jpg') no-repeat center; background-s
 .text {
 	background: transparent;
 	border: 1px solid #ccc;
+	width: 70px;
+}
+
+label {
+	font-weight: normal;
+	margin: 15px 0;
 }
