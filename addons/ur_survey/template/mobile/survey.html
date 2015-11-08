@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/base.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/bootstrap-table.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/awesome-bootstrap-checkbox.css">
-<link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css">
+<link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v=1.0.1">
 
 <form class="content ur_survey" action="" method="post" id="form">
 	<div class="page active">
@@ -70,6 +70,7 @@
 </form>
 <!--<audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>-->
 
+<script src="../addons/ur_survey/template/mobile/assets/fastclick.js"></script>
 <script src="../addons/ur_survey/template/mobile/assets/bootstrap-table.js"></script>
 <script src="../addons/ur_survey/template/mobile/survey.js"></script>
 <script>
@@ -156,8 +157,8 @@
 			});
 			$city.change(function () {
 				var data = $.grep(stores, function (store) {
-					return ($province.val() === '' || store.province === $province.val()) &&
-							($city.val() === '' || store.city === $city.val());
+					return store.province === $province.val() &&
+							(store.city === $city.val() || $city.val() === '');
 				});
 				$store.bootstrapTable('load', data);
 			});
