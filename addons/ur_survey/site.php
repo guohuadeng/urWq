@@ -572,7 +572,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             " WHERE uniacid = :uniacid",
             array(':uniacid' => $_W['uniacid']));
 
-        include $this->template('submit');
+        include $this->template('survey');
     }
 
     public function doMobileMysurvey() {
