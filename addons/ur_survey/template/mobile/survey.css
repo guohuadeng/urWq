@@ -1,11 +1,17 @@
 body {
-	background: url('bg.png') no-repeat top #c6b565;
+	background: url('bg.jpg') repeat-y top #c6b565;
 	background-attachment: fixed;
 	background-size: 100%;
 	color: #fff;
 }
 a {
 	color: #fff;
+}
+.ur_survey .form-control	{
+	background-color: #c6b565;
+	color: #ffffff;
+	border: 1px solid #fff;
+	margin-bottom: 5px;
 }
 .footer {
 	position: absolute;
