@@ -5,9 +5,9 @@
     <description><![CDATA[建新科技]]></description>
     <author><![CDATA[jxTech Team]]></author>
     <url><![CDATA[http://bbs.we7.cc]]></url>
-		<type><![CDATA[often]]></type>
-    <sections><![CDATA[1]]></sections>
-		<settings>
-			<item variable="indexbgcolor" content="#fff" description="背景白色"/>
-		</settings>
+    <type><![CDATA[often]]></type>
+    <sections><![CDATA[9]]></sections>
+    <settings>
+        <item variable="indexbgcolor" content="#fff" description="背景白色"/>
+    </settings>
 </manifest>
