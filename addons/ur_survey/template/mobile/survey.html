@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/base.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/bootstrap-table.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/awesome-bootstrap-checkbox.css">
-<link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v=1.0.1">
+<link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v={php echo time();}">
 
 <form class="content ur_survey" action="" method="post" id="form">
 	<div class="page active">
@@ -72,7 +72,7 @@
 
 <script src="../addons/ur_survey/template/mobile/assets/fastclick.js"></script>
 <script src="../addons/ur_survey/template/mobile/assets/bootstrap-table.js"></script>
-<script src="../addons/ur_survey/template/mobile/survey.js"></script>
+<script src="../addons/ur_survey/template/mobile/survey.js?v={php echo time();}"></script>
 <script>
 	$(function () {
 		Helpers.swipeDetect($('.content'), function (swipeDir) {
