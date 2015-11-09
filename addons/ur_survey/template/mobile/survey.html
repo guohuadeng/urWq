@@ -17,7 +17,6 @@
 			<!-- 箭头指示引导 end-->
 		</div>
 		<div class="slide">
-			<div class="scroll">
             <div class="fp-content">
 				<h3 class="title hidden">{$activity['title']}</h3>
 				<p>尊贵的{$user['realname']}会员：</p>
@@ -28,7 +27,7 @@
 				{else}
 				<div>{$activity['content']}</div>
 				{/if}
-			</div></div>
+			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
 				<p class="next-page">下一步 <em>>></em></p>
@@ -36,7 +35,7 @@
 			<!-- 箭头指示引导 end-->
 		</div>
 		{if $userinfo=='0'}
-		<div class="slide" data-check="user"><div class="scroll">
+		<div class="slide" data-check="user">
 			<div class="fp-content">
 				<h3 class="title">请先填写您的资料：</h3>
 				<div class="form-group">
@@ -54,11 +53,10 @@
 				</div>
 				<!-- 箭头指示引导 end-->
 			</div>
-		</div></div>
+		</div>
 		{/if}
 		{if $activity['activity_store']=='1'}
 		<div class="slide has-title" data-check="store">
-			<div class="scroll">
 			<div class="fp-content">
 				<table class="title">
 					<tr>
@@ -69,7 +67,6 @@
 				<div>{php echo tpl_fans_form('reside');}</div>
 				<table id="stores"></table>
 				<input type="hidden" name="store">
-			</div>
 			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
@@ -91,16 +88,19 @@
 					</tr>
 				</table>
 				{php $i = 0;}
+				<div class="row">
 				{loop $row['options'] $v}
-				<div class="option {$row['type']}">
-					<input type="{$row['type']}" name="field_{$row['sfid']}" id="id_{$key}_{$i}" value="{$v}">
-					<label data-value="{$v}" for="id_{$key}_{$i}">
-						{php echo preg_replace('/\[_\]/', '<input type="text" class="text">', $v);}
-					</label>
-				</div>
+					<div class="col-xs-{php echo $count == 13 ? '12': '12';} option {$row['type']}">
+						<input type="{$row['type']}" name="field_{$row['sfid']}" id="id_{$key}_{$i}" value="{$v}">
+						<label data-value="{$v}" for="id_{$key}_{$i}">
+							{php echo preg_replace('/\[_\]/', '<input type="text" class="text">', $v);}
+						</label>
+					</div>
 				{php $i++;}
 				{/loop}
-			</div></div>
+				</div>
+			</div>
+			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
 				<p class="next-page">下一步 <em>>></em></p>
@@ -109,7 +109,7 @@
 		</div>
 		{/loop}
 		{if !$reregister}
-		<div class="slide tc"><div class="scroll">
+		<div class="slide tc">
             <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
                 <p>感谢您完成本次问卷</p>
@@ -123,9 +123,9 @@
                     </button>
                 </p>
             </div>
-		</div></div>
+		</div>
 		{else}
-        <div class="slide tc"><div class="scroll">
+        <div class="slide tc">
             <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
                 <p>感谢您完成本次问卷</p>
@@ -137,7 +137,7 @@
                     </button>
                 </p>
 		    </div>
-        </div></div>
+        </div>
 		{/if}
 	</div>
 </form>
@@ -149,8 +149,11 @@
 		$('#fullpage').show().fullpage({
 			controlArrows: false,
 			loopHorizontal: false,
-            resize: true,
-			normalScrollElements: '.scroll, .fixed-table-body',
+            resize: false,
+			scrollingSpeed: 300,
+			scrollOverflow: true,
+			//slidesNavigation: true,
+			normalScrollElements: '.scroll,.fixed-table-body',
 			onSlideLeave: function (anchorLink, index, slideIndex, direction) {
 				if (direction === 'right') {
 					return checkNext();

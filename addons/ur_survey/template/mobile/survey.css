@@ -28,6 +28,9 @@ a {
 .ur_survey .lastpage	{
 	margin-top: 30%;
 }
+.ur_survey .scroll .row  {
+	margin-left: 10%;
+}
 .footer {
 	position: absolute;
 	bottom: 10px;
@@ -86,10 +89,11 @@ a {
 	border: none;
 	border-bottom: 1px solid #fff;
 	background-color: transparent;
+	width: 80px;
 }
-.option  {
-	padding-top: 5px;
-	padding-left: 20%;
+.radio, .checkbox,.radio+.radio, .checkbox+.checkbox	{
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 .option label  {
 	padding-bottom: 5px;
@@ -134,7 +138,7 @@ a {
  */
 .u-arrow {
 	position: absolute;
-	bottom: 10px;
+	bottom: 5px;
 	padding-right:5%;
 	z-index: 150;
 	width: 100%;

@@ -18,10 +18,10 @@
 <!--  默认显示 -->
 {if $do == 'display'}
 	<div class="card-barcode">
-		<img src="{php echo url('mc/bond/barcode').'&cardsn='.$cardinfo;}" />
+		<img src="{php echo url('mc/bond/barcode').'cardsn='.$cardinfo;}" />
 	</div>
 	<div class="card-qrcode">
-		<img src="{php echo url('mc/bond/qrcode').'&cardsn='.$cardinfo;}" />
+		<img src="{php echo url('mc/bond/qrcode').'cardsn='.$cardinfo;}" />
 	</div>
 	<div class="mnav-box">
 		<ul>
