@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v={php echo time();}">
 
 <form class="content ur_survey" action="" method="post" id="form">
-	<div class="page active">
+	<div class="page ">
 		<h3>{$activity['title']}</h3>
 		<p>尊贵的{$user['realname']}会员：</p>
 		{if $pererror == "1"}
@@ -59,14 +59,33 @@
 		<p class="next-page tc mt50">下一步 >>>></p>
 	</div>
 	{/loop}
-	<div class="page">
-		<h3 class="tc">THANK YOU</h3>
-		<p class="tc">感谢您完成本次问卷</p>
+	{if !$reregister}
+	<div class="page tc">
+		<h3>THANK YOU</h3>
+		<p>感谢您完成本次问卷</p>
+		<p>尊贵的{$user['realname']}会员：</p>
+		<p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
+		<p class="f16">即可获 {$activity['credit']} 会员积分</p>
 		<input type="hidden" name="token" value="{$_W['token']}" />
 		<p class="tc mt50">
-			<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">提交问卷</button>
+			<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+				领取积分
+			</button>
 		</p>
 	</div>
+	{else}
+	<div class="page tc">
+		<h3>THANK YOU</h3>
+		<p>感谢您完成本次问卷</p>
+		<input type="hidden" name="token" value="{$_W['token']}" />
+		<p class="tc mt50">
+			<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+				<small>注册 UR 时尚会员，</small><br>
+				领取 {$activity['credit']} 会员积分
+			</button>
+		</p>
+	</div>
+	{/if}
 </form>
 <!--<audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>-->
 

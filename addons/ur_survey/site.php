@@ -572,6 +572,10 @@ class Ur_surveyModuleSite extends WeModuleSite {
             " WHERE uniacid = :uniacid",
             array(':uniacid' => $_W['uniacid']));
 
+        $mcard = pdo_fetch('SELECT * FROM ' . tablename('mc_card_members') .
+            ' WHERE uniacid = :uniacid AND uid = :uid', array(':uniacid' => $_W['uniacid'], ':uid' => $_W['member']['uid']));
+        $reregister = empty($mcard);
+
         include $this->template('survey');
     }
 

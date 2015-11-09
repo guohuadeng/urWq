@@ -8,9 +8,9 @@ body {
 a {
 	color: #fff;
 }
-.ur_survey .form-control	{
+.ur_survey select.form-control	{
 	background-color: #c6b565;
-	color: #ffffff;
+	color: #333;
 	border: 1px solid #fff;
 	margin-bottom: 5px;
 }
