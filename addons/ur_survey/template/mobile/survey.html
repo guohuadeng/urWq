@@ -1,114 +1,132 @@
 {template 'header'}
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/base.css">
+<link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/jquery.fullpage.min.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/bootstrap-table.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/awesome-bootstrap-checkbox.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v={php echo time();}">
 
-<form class="content ur_survey" action="" method="post" id="form">
-	<div class="page ">
-		<h3>{$activity['title']}</h3>
-		<p>尊贵的{$user['realname']}会员：</p>
-		{if $pererror == "1"}
-		<p class="error">您已经参与过该调研，请下次再来哦！ ^_^</p>
-		{else if $pererror == "2"}
-		<p class="error">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</p>
+<form class="content ur_survey" action="" method="post" id="fullpage">
+	<div class="section">
+		<div class="slide">
+			<div class="fp-content">
+				<h3>{$activity['title']}</h3>
+				<p>尊贵的{$user['realname']}会员：</p>
+				{if $pererror == "1"}
+				<p class="error">您已经参与过该调研，请下次再来哦！ ^_^</p>
+				{else if $pererror == "2"}
+				<p class="error">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</p>
+				{else}
+				<div>{$activity['content']}</div>
+				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
+				{/if}
+			</div>
+		</div>
+		{if $userinfo=='0'}
+		<div class="slide" data-check="user">
+			<div class="fp-content">
+				<h3>请先填写您的资料：</h3>
+				<div class="form-group">
+					<label for="username">请输入您的名称:</label>
+					<input type="text" name="username" id="username" class="form-control" value="{$user['realname']}">
+				</div>
+				<div class="form-group">
+					<label for="phone">请输入您的手机号码:</label>
+					<input type="tel" name="telephone" id="phone" class="form-control" value="{$user['mobile']}">
+					<div class="tip">*请务必填写正确，此信息将作为您以后领奖的依据</div>
+				</div>
+				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
+			</div>
+		</div>
+		{/if}
+		{if $activity['activity_store']=='1'}
+		<div class="slide has-title">
+			<div class="fp-content">
+				<div class="title"><span>01</span>请选择您所惠临的店铺</div>
+				<div>{php echo tpl_fans_form('reside');}</div>
+				<table id="stores"></table>
+				<input type="hidden" name="store">
+				<p class="next-page tc mt50">下一步 >>>></p>
+			</div>
+		</div>
+		{/if}
+		{php $count = 1;}
+		{loop $ds $key $row}
+		{php $count++;}
+		<div class="slide has-title" data-check="option" data-type="{$row['type']}">
+			<div class="fp-content">
+				<div class="title"><span>{php echo $count < 10 ? '0' . $count : $count;}</span>{$row['title']}</div>
+				{php $i = 0;}
+				{loop $row['options'] $v}
+				<div class="option {$row['type']}">
+					<input type="{$row['type']}" name="field_{$row['sfid']}" id="id_{$key}_{$i}" value="{$v}">
+					<label data-value="{$v}" for="id_{$key}_{$i}">
+						{php echo preg_replace('/\[_\]/', '<input type="text" class="text">', $v);}
+					</label>
+				</div>
+				{php $i++;}
+				{/loop}
+				<p class="next-page tc mt50">下一步 >>>></p>
+			</div>
+		</div>
+		{/loop}
+		{if !$reregister}
+		<div class="slide tc">
+			<h3>THANK YOU</h3>
+			<p>感谢您完成本次问卷</p>
+			<p>尊贵的{$user['realname']}会员：</p>
+			<p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
+			<p class="f16">即可获 {$activity['credit']} 会员积分</p>
+			<input type="hidden" name="token" value="{$_W['token']}" />
+			<p class="tc mt50">
+				<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+					领取积分
+				</button>
+			</p>
+		</div>
 		{else}
-		<div>{$activity['content']}</div>
-		<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
+		<div class="slide tc">
+			<h3>THANK YOU</h3>
+			<p>感谢您完成本次问卷</p>
+			<input type="hidden" name="token" value="{$_W['token']}" />
+			<p class="tc mt50">
+				<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+					<small>注册 UR 时尚会员，</small><br>
+					领取 {$activity['credit']} 会员积分
+				</button>
+			</p>
+		</div>
 		{/if}
 	</div>
-	{if $userinfo=='0'}
-	<div class="page" data-check="user">
-		<h3>请先填写您的资料：</h3>
-		<div class="form-group">
-			<label for="username">请输入您的名称:</label>
-			<input type="text" name="username" id="username" class="form-control" value="{$user['realname']}">
-		</div>
-		<div class="form-group">
-			<label for="phone">请输入您的手机号码:</label>
-			<input type="tel" name="telephone" id="phone" class="form-control" value="{$user['mobile']}">
-			<div class="tip">*请务必填写正确，此信息将作为您以后领奖的依据</div>
-		</div>
-		<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
-	</div>
-	{/if}
-	{if $activity['activity_store']=='1'}
-	<div class="page">
-		<div class="title"><span>01</span>请选择您所惠临的店铺</div>
-		<div>{php echo tpl_fans_form('reside');}</div>
-		<table id="stores"></table>
-		<input type="hidden" name="store">
-		<p class="next-page tc mt50">下一步 >>>></p>
-	</div>
-	{/if}
-	{php $count = 1;}
-	{loop $ds $key $row}
-	{php $count++;}
-	<div class="page" data-check="option" data-type="{$row['type']}">
-		<div class="title"><span>{php echo $count < 10 ? '0' . $count : $count;}</span>{$row['title']}</div>
-		{php $i = 0;}
-		{loop $row['options'] $v}
-		<div class="option {$row['type']}">
-			<input type="{$row['type']}" name="field_{$row['sfid']}" id="id_{$key}_{$i}" value="{$v}">
-			<label data-value="{$v}" for="id_{$key}_{$i}">
-				{php echo preg_replace('/\[_\]/', '<input type="text" class="text">', $v);}
-			</label>
-		</div>
-		{php $i++;}
-		{/loop}
-		<p class="next-page tc mt50">下一步 >>>></p>
-	</div>
-	{/loop}
-	{if !$reregister}
-	<div class="page tc">
-		<h3>THANK YOU</h3>
-		<p>感谢您完成本次问卷</p>
-		<p>尊贵的{$user['realname']}会员：</p>
-		<p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
-		<p class="f16">即可获 {$activity['credit']} 会员积分</p>
-		<input type="hidden" name="token" value="{$_W['token']}" />
-		<p class="tc mt50">
-			<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
-				领取积分
-			</button>
-		</p>
-	</div>
-	{else}
-	<div class="page tc">
-		<h3>THANK YOU</h3>
-		<p>感谢您完成本次问卷</p>
-		<input type="hidden" name="token" value="{$_W['token']}" />
-		<p class="tc mt50">
-			<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
-				<small>注册 UR 时尚会员，</small><br>
-				领取 {$activity['credit']} 会员积分
-			</button>
-		</p>
-	</div>
-	{/if}
 </form>
 <!--<audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>-->
 
-<script src="../addons/ur_survey/template/mobile/assets/fastclick.js"></script>
+<script src="../addons/ur_survey/template/mobile/assets/jquery.fullpage.min.js"></script>
+<script src="../addons/ur_survey/template/mobile/assets/jquery.slimscroll.min.js"></script>
 <script src="../addons/ur_survey/template/mobile/assets/bootstrap-table.js"></script>
-<script src="../addons/ur_survey/template/mobile/survey.js?v={php echo time();}"></script>
 <script>
 	$(function () {
-		Helpers.swipeDetect($('.content'), function (swipeDir) {
-			if (swipeDir === 'left') {
-				checkNext();
-			} else if (swipeDir === 'right') {
-				Helpers.prevPage();
+		$('#fullpage').fullpage({
+			scrollOverflow: true,
+			controlArrows: false,
+			loopHorizontal: false,
+			onSlideLeave: function (anchorLink, index, slideIndex, direction) {
+				if (direction === 'right') {
+					return checkNext();
+				}
 			}
 		});
 
-		$('.next-page').click(checkNext);
+		$('.next-page').click(function () {
+			if (checkNext()) {
+				$.fn.fullpage.moveSlideRight();
+			}
+		});
 
 		function checkNext() {
-			Helpers.checkPage({
+			var check = {
 				user: function () {
 					var $username = $('#username'),
-						$phone = $('#phone');
+							$phone = $('#phone');
 					if (!$.trim($username.val())) {
 						alert('请输入您的名称!');
 						$username.focus();
@@ -126,9 +144,9 @@
 					}
 					return true;
 				},
-				option: function ($page) {
-					var $selects = $page.find(':' + $page.data('type') + ':checked'),
-						checkInput = true;
+				option: function ($slide) {
+					var $selects = $slide.find(':' + $slide.data('type') + ':checked'),
+							checkInput = true;
 
 					if (!$selects.length) {
 						alert('请选择一个答案!');
@@ -145,7 +163,12 @@
 					}
 					return true;
 				}
-			});
+			};
+			var $slide = $('.slide').filter('.active');
+			if (!$slide.data('check') || check[$slide.data('check')]($slide)) {
+				return true;
+			}
+			return false;
 		}
 
 		function initStores() {
@@ -198,7 +221,7 @@
 		});
 
 		$('.submit').click(function(){
-			var $form = $('#form');
+			var $form = $('#fullpage');
 			$form.find('.page').each(function () {
 				var $checkboxs = $(this).find(':checkbox:checked');
 				if ($checkboxs.length) {
