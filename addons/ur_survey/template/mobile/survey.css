@@ -87,10 +87,12 @@ a {
 	border-bottom: 1px solid #fff;
 	background-color: transparent;
 }
-.option {
+.option  {
 	padding-top: 5px;
-	padding-bottom: 5px;
 	padding-left: 20%;
+}
+.option label  {
+	padding-bottom: 5px;
 }
 .scroll {
 	position: absolute;
