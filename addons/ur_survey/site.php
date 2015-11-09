@@ -449,6 +449,9 @@ class Ur_surveyModuleSite extends WeModuleSite {
         $activity = pdo_fetch($sql, $params);
         $activity['content'] = htmlspecialchars_decode($activity['content']);
         $title = $activity['title'];
+        $mcard = pdo_fetch('SELECT * FROM ' . tablename('mc_card_members') .
+            ' WHERE uniacid = :uniacid AND uid = :uid', array(':uniacid' => $_W['uniacid'], ':uid' => $_W['member']['uid']));
+        $reregister = empty($mcard);
         //分享处理
         $_share_img = $_W['attachurl'] . $activity['thumb'];
         if ($activity['status'] != '1') {
@@ -572,9 +575,6 @@ class Ur_surveyModuleSite extends WeModuleSite {
             " WHERE uniacid = :uniacid",
             array(':uniacid' => $_W['uniacid']));
 
-        $mcard = pdo_fetch('SELECT * FROM ' . tablename('mc_card_members') .
-            ' WHERE uniacid = :uniacid AND uid = :uid', array(':uniacid' => $_W['uniacid'], ':uid' => $_W['member']['uid']));
-        $reregister = empty($mcard);
 
         include $this->template('survey');
     }

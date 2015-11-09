@@ -8,9 +8,18 @@
 <div class="loading tc">加载中...</div>
 <form class="content ur_survey" action="" method="post" id="fullpage">
 	<div class="section">
-		<div class="slide"><div class="scroll">
+		<div class="slide landing">
+			<img class="next-page" src="../addons/ur_survey/template/mobile/bg_landing.jpg"></img>
+			<!-- 箭头指示引导 -->
+			<div class='u-arrow'>
+				<p class="next-page">下一步 <em>>></em></p>
+			</div>
+			<!-- 箭头指示引导 end-->
+		</div>
+		<div class="slide">
+			<div class="scroll">
             <div class="fp-content">
-				<h3>{$activity['title']}</h3>
+				<h3 class="title hidden">{$activity['title']}</h3>
 				<p>尊贵的{$user['realname']}会员：</p>
 				{if $pererror == "1"}
 				<p class="error">您已经参与过该调研，请下次再来哦！ ^_^</p>
@@ -18,14 +27,18 @@
 				<p class="error">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</p>
 				{else}
 				<div>{$activity['content']}</div>
-				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
 				{/if}
+			</div></div>
+			<!-- 箭头指示引导 -->
+			<div class='u-arrow'>
+				<p class="next-page">下一步 <em>>></em></p>
 			</div>
-		</div></div>
+			<!-- 箭头指示引导 end-->
+		</div>
 		{if $userinfo=='0'}
 		<div class="slide" data-check="user"><div class="scroll">
 			<div class="fp-content">
-				<h3>请先填写您的资料：</h3>
+				<h3 class="title">请先填写您的资料：</h3>
 				<div class="form-group">
 					<label for="username">请输入您的名称:</label>
 					<input type="text" name="username" id="username" class="form-control" value="{$user['realname']}">
@@ -35,27 +48,48 @@
 					<input type="tel" name="telephone" id="phone" class="form-control" value="{$user['mobile']}">
 					<div class="tip">*请务必填写正确，此信息将作为您以后领奖的依据</div>
 				</div>
-				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
+				<!-- 箭头指示引导 -->
+				<div class='u-arrow'>
+					<p class="next-page">下一步 ></p>
+				</div>
+				<!-- 箭头指示引导 end-->
 			</div>
 		</div></div>
 		{/if}
 		{if $activity['activity_store']=='1'}
-		<div class="slide has-title" data-check="store"><div class="scroll">
+		<div class="slide has-title" data-check="store">
+			<div class="scroll">
 			<div class="fp-content">
-				<div class="title"><span>01</span>请选择您所惠临的店铺</div>
+				<table class="title">
+					<tr>
+						<td width="20%"><span>01</span></td>
+						<td>请选择您所惠临的店</td>
+					</tr>
+				</table>
 				<div>{php echo tpl_fans_form('reside');}</div>
 				<table id="stores"></table>
 				<input type="hidden" name="store">
-				<p class="next-page tc mt50">下一步 >>>></p>
 			</div>
-		</div></div>
+			</div>
+			<!-- 箭头指示引导 -->
+			<div class='u-arrow'>
+				<p class="next-page">下一步 <em>>></em></p>
+			</div>
+			<!-- 箭头指示引导 end-->
+		</div>
 		{/if}
 		{php $count = 1;}
 		{loop $ds $key $row}
 		{php $count++;}
-		<div class="slide has-title" data-check="option" data-type="{$row['type']}"><div class="scroll">
+		<div class="slide has-title" data-check="option" data-type="{$row['type']}">
+			<div class="scroll">
 			<div class="fp-content">
-				<div class="title"><span>{php echo $count < 10 ? '0' . $count : $count;}</span>{$row['title']}</div>
+				<table class="title">
+					<tr>
+						<td width="20%"><span>{php echo $count < 10 ? '0' . $count : $count;}</span></td>
+						<td>{$row['title']}</td>
+					</tr>
+				</table>
 				{php $i = 0;}
 				{loop $row['options'] $v}
 				<div class="option {$row['type']}">
@@ -66,17 +100,21 @@
 				</div>
 				{php $i++;}
 				{/loop}
-				<p class="next-page tc mt50">下一步 >>>></p>
+			</div></div>
+			<!-- 箭头指示引导 -->
+			<div class='u-arrow'>
+				<p class="next-page">下一步 <em>>></em></p>
 			</div>
-		</div></div>
+			<!-- 箭头指示引导 end-->
+		</div>
 		{/loop}
 		{if !$reregister}
 		<div class="slide tc"><div class="scroll">
-            <div class="fp-content">
+            <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
                 <p>感谢您完成本次问卷</p>
                 <p>尊贵的{$user['realname']}会员：</p>
-                <p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
+                <p><small>感谢您完成本次问卷，点击下方“领取积分”按钮，</small></p>
                 <p class="f16">即可获 {$activity['credit']} 会员积分</p>
                 <input type="hidden" name="token" value="{$_W['token']}" />
                 <p class="tc mt50">
@@ -88,7 +126,7 @@
 		</div></div>
 		{else}
         <div class="slide tc"><div class="scroll">
-            <div class="fp-content">
+            <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
                 <p>感谢您完成本次问卷</p>
                 <input type="hidden" name="token" value="{$_W['token']}" />
@@ -120,6 +158,7 @@
 			}
 		});
 		$('.loading').hide();
+		setTimeout(function(){$('.landing').addClass('sectionEnter');},100);
 
 		$('.next-page').click(function () {
 			if (checkNext()) {
