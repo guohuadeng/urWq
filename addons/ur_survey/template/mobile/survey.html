@@ -5,10 +5,11 @@
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/assets/awesome-bootstrap-checkbox.css">
 <link rel="stylesheet" href="../addons/ur_survey/template/mobile/survey.css?v={php echo time();}">
 
+<div class="loading tc">加载中...</div>
 <form class="content ur_survey" action="" method="post" id="fullpage">
 	<div class="section">
-		<div class="slide">
-			<div class="fp-content">
+		<div class="slide"><div class="scroll">
+            <div class="fp-content">
 				<h3>{$activity['title']}</h3>
 				<p>尊贵的{$user['realname']}会员：</p>
 				{if $pererror == "1"}
@@ -20,9 +21,9 @@
 				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
 				{/if}
 			</div>
-		</div>
+		</div></div>
 		{if $userinfo=='0'}
-		<div class="slide" data-check="user">
+		<div class="slide" data-check="user"><div class="scroll">
 			<div class="fp-content">
 				<h3>请先填写您的资料：</h3>
 				<div class="form-group">
@@ -36,10 +37,10 @@
 				</div>
 				<p class="next-page tc mt50">向右滑动开始问卷 >>>></p>
 			</div>
-		</div>
+		</div></div>
 		{/if}
 		{if $activity['activity_store']=='1'}
-		<div class="slide has-title">
+		<div class="slide has-title" data-check="store"><div class="scroll">
 			<div class="fp-content">
 				<div class="title"><span>01</span>请选择您所惠临的店铺</div>
 				<div>{php echo tpl_fans_form('reside');}</div>
@@ -47,12 +48,12 @@
 				<input type="hidden" name="store">
 				<p class="next-page tc mt50">下一步 >>>></p>
 			</div>
-		</div>
+		</div></div>
 		{/if}
 		{php $count = 1;}
 		{loop $ds $key $row}
 		{php $count++;}
-		<div class="slide has-title" data-check="option" data-type="{$row['type']}">
+		<div class="slide has-title" data-check="option" data-type="{$row['type']}"><div class="scroll">
 			<div class="fp-content">
 				<div class="title"><span>{php echo $count < 10 ? '0' . $count : $count;}</span>{$row['title']}</div>
 				{php $i = 0;}
@@ -67,54 +68,58 @@
 				{/loop}
 				<p class="next-page tc mt50">下一步 >>>></p>
 			</div>
-		</div>
+		</div></div>
 		{/loop}
 		{if !$reregister}
-		<div class="slide tc">
-			<h3>THANK YOU</h3>
-			<p>感谢您完成本次问卷</p>
-			<p>尊贵的{$user['realname']}会员：</p>
-			<p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
-			<p class="f16">即可获 {$activity['credit']} 会员积分</p>
-			<input type="hidden" name="token" value="{$_W['token']}" />
-			<p class="tc mt50">
-				<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
-					领取积分
-				</button>
-			</p>
-		</div>
+		<div class="slide tc"><div class="scroll">
+            <div class="fp-content">
+                <h3>THANK YOU</h3>
+                <p>感谢您完成本次问卷</p>
+                <p>尊贵的{$user['realname']}会员：</p>
+                <p>感谢您完成本次问卷，点击下方“领取积分”按钮，</p>
+                <p class="f16">即可获 {$activity['credit']} 会员积分</p>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <p class="tc mt50">
+                    <button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+                        领取积分
+                    </button>
+                </p>
+            </div>
+		</div></div>
 		{else}
-		<div class="slide tc">
-			<h3>THANK YOU</h3>
-			<p>感谢您完成本次问卷</p>
-			<input type="hidden" name="token" value="{$_W['token']}" />
-			<p class="tc mt50">
-				<button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
-					<small>注册 UR 时尚会员，</small><br>
-					领取 {$activity['credit']} 会员积分
-				</button>
-			</p>
-		</div>
+        <div class="slide tc"><div class="scroll">
+            <div class="fp-content">
+                <h3>THANK YOU</h3>
+                <p>感谢您完成本次问卷</p>
+                <input type="hidden" name="token" value="{$_W['token']}" />
+                <p class="tc mt50">
+                    <button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
+                        <small>注册 UR 时尚会员，</small><br>
+                        领取 {$activity['credit']} 会员积分
+                    </button>
+                </p>
+		    </div>
+        </div></div>
 		{/if}
 	</div>
 </form>
 <!--<audio id="musicClick" src="../addons/ur_survey/template/mobile/click.mp3" preload="auto"></audio>-->
-
 <script src="../addons/ur_survey/template/mobile/assets/jquery.fullpage.min.js"></script>
-<script src="../addons/ur_survey/template/mobile/assets/jquery.slimscroll.min.js"></script>
 <script src="../addons/ur_survey/template/mobile/assets/bootstrap-table.js"></script>
 <script>
 	$(function () {
-		$('#fullpage').fullpage({
-			scrollOverflow: true,
+		$('#fullpage').show().fullpage({
 			controlArrows: false,
 			loopHorizontal: false,
+            resize: true,
+			normalScrollElements: '.scroll, .fixed-table-body',
 			onSlideLeave: function (anchorLink, index, slideIndex, direction) {
 				if (direction === 'right') {
 					return checkNext();
 				}
 			}
 		});
+		$('.loading').hide();
 
 		$('.next-page').click(function () {
 			if (checkNext()) {
@@ -140,6 +145,13 @@
 					if (!/^[0-9]{11}$/.test($phone.val())) {
 						alert('请输入正确的手机号码!');
 						$phone.focus();
+						return false;
+					}
+					return true;
+				},
+				store: function () {
+					if (!$('#stores').bootstrapTable('getSelections').length) {
+						alert('请选择一个店铺！');
 						return false;
 					}
 					return true;
