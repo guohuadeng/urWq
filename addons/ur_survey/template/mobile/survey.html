@@ -272,7 +272,14 @@
 			$(this).closest('.option').find('>input').val(getInputText($(this).parent()));
 		});
 
-		$('.submit').click(function(){
+		$(window).keydown(function(event) {
+			if (event.keyCode === 13) {
+				event.preventDefault();
+				return false;
+			}
+		});
+
+		$('.submit').click(function () {
 			var $form = $('#fullpage');
 			$form.find('.page').each(function () {
 				var $checkboxs = $(this).find(':checkbox:checked');
