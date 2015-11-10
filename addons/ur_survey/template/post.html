@@ -202,7 +202,11 @@
 								{loop $types $k $v}{if !empty($v)}<option {if $field['type'] == $k}selected{/if} value="{$k}">{$v}</option>{/if}{/loop}
 							</select>
 						</td>
-						<td  style="text-align:right;min-width:500px"><a onclick="$(this).parent().parent().next().remove();$(this).parent().parent().remove();" class="btn btn-small" title="删除"><i class="icon-remove"></i></a></td>
+						<td>
+							<button onclick="$(this).parent().parent().next().remove();$(this).parent().parent().remove();" class="btn btn-default btn-small" title="删除">
+								<i class="fa fa-times">删除</i>
+							</button>
+						</td>
 					</tr>
 					<tr class="moresetting">
 						<td></td>
