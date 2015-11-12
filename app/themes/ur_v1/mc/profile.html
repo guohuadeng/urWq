@@ -28,6 +28,18 @@
 				}
 			});
 		});
+		$('#profile').submit(function () {
+			var flag = true;
+			$('[name^="confirm-"]').each(function () {
+				var $el = $('[name="' + $(this).attr('name').substring(8) + '"]');
+				if ($el.val() !== $(this).val()) {
+					alert('两次' + $el.closest('.form-group').find('label').text() + '输入不一致！');
+					flag = false;
+					return false;
+				}
+			});
+			return flag;
+		});
 	});
 </script>
 {template 'common/toolbar'}
@@ -40,7 +52,7 @@
 			</div>
 		</div>
 		<div class="profile-box">
-		<form class="tab-content clearfix" action="{url 'mc/profile'}" method="post" enctype="multipart/form-data">
+		<form id="profile" class="tab-content clearfix" action="{url 'mc/profile'}" method="post" enctype="multipart/form-data">
 		<input type="hidden" name="from_user" value="{$_W['fans']['from_user']}" />
 		<div class="tab-pane active animated" id="tab1">
 			{if !empty($mcFields['avatar'])}
@@ -160,6 +172,12 @@
 				{php echo tpl_fans_form('taobao',$profile['taobao']);}
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-xs-12 col-sm-12 control-label">确认账户</label>
+			<div class="col-sm-12 col-xs-12">
+				{php echo tpl_fans_form('confirm-taobao',$profile['taobao']);}
+			</div>
+		</div>
 		{/if}
 		{if !empty($mcFields['alipay'])}
 		<div class="form-group">
@@ -168,12 +186,24 @@
 				{php echo tpl_fans_form('alipay',$profile['alipay']);}
 			</div>
 		</div>
+		<div class="form-group">
+			<label class="col-xs-12 col-sm-12 control-label">确认账户</label>
+			<div class="col-sm-12 col-xs-12">
+				{php echo tpl_fans_form('confirm-alipay',$profile['alipay']);}
+			</div>
+		</div>
 		{/if}
 		{if !empty($mcFields['jd_account'])}
 		<div class="form-group">
 			<label class="col-xs-12 col-sm-12 control-label">{$mcFields['jd_account']['title']}</label>
 			<div class="col-sm-12 col-xs-12">
 				{php echo tpl_fans_form('jd_account',$profile['jd_account']);}
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-12 col-sm-12 control-label">确认账户</label>
+			<div class="col-sm-12 col-xs-12">
+				{php echo tpl_fans_form('confirm-jd_account',$profile['jd_account']);}
 			</div>
 		</div>
 		{/if}
