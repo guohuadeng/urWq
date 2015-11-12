@@ -1575,7 +1575,7 @@
         }
 
         // click to select by column
-        this.$body.find('> tr[data-index] > td').off('click dblclick').on('click dblclick', function (e) {
+        this.$body.find('> tr[data-index] > td').off('click dblclick touch').on('click dblclick touch', function (e) {
             var $td = $(this),
                 $tr = $td.parent(),
                 item = that.data[$tr.data('index')],
