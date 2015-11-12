@@ -12,32 +12,40 @@
 			<img class="next-page" src="../addons/ur_survey/template/mobile/bg_landing.jpg"></img>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
-				<p class="next-page">下一步 <em>>></em></p>
+				<p class="next-page">进入 <em>>></em>&nbsp;&nbsp;</p>
 			</div>
 			<!-- 箭头指示引导 end-->
 		</div>
 		<div class="slide">
             <div class="fp-content">
 				<h3 class="title hidden">{$activity['title']}</h3>
-				<p>尊贵的{$user['realname']}会员：</p>
+				<p>{if !$reregister}尊贵的 {$user['realname']} 会员：{/if}</p>
 				{if $pererror == "1"}
 				<p class="error">您已经参与过该调研，请下次再来哦！ ^_^</p>
 				{else if $pererror == "2"}
 				<p class="error">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</p>
 				{else}
 				<div>{$activity['content']}</div>
+				<div>
+					{if !$reregister}
+					<p>完成问卷即可获赠&nbsp;<em-tip> {$activity['credit']}会员积分，</em-tip></p>
+					{else}
+					<p>完成问卷，注册会员即可获赠 <em-tip> {$activity['credit']}会员积分，</em-tip></p>
+					{/if}
+					<p>谢谢！</p>
+				</div>
 				{/if}
 			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
-				<p class="next-page">下一步 <em>>></em></p>
+				<p class="next-page">往右滑动开始问卷 <em>>></em></p>
 			</div>
 			<!-- 箭头指示引导 end-->
 		</div>
 		{if $userinfo=='0'}
 		<div class="slide" data-check="user">
 			<div class="fp-content">
-				<h3 class="title">请先填写您的资料：</h3>
+				<h3 class="title title-user">请先填写您的资料：</h3>
 				<div class="form-group">
 					<label for="username">请输入您的名称:</label>
 					<input type="text" name="username" id="username" class="form-control" value="{$user['realname']}">
@@ -49,7 +57,7 @@
 				</div>
 				<!-- 箭头指示引导 -->
 				<div class='u-arrow'>
-					<p class="next-page">下一步 ></p>
+					<p class="next-page">下一步 <em>>></em><</p>
 				</div>
 				<!-- 箭头指示引导 end-->
 			</div>
@@ -103,7 +111,13 @@
 			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
-				<p class="next-page">下一步 <em>>></em></p>
+				<p class="next-page">
+					{if $count == $dscount+1 }
+					完成问卷 <em>>></em>
+					{else}
+					下一步 <em>>></em>
+					{/if}
+				</p>
 			</div>
 			<!-- 箭头指示引导 end-->
 		</div>
@@ -112,10 +126,9 @@
 		<div class="slide tc">
             <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
-                <p>感谢您完成本次问卷</p>
-                <p>尊贵的{$user['realname']}会员：</p>
+                <p>尊贵的 {$user['realname']} 会员</p>
                 <p><small>感谢您完成本次问卷，点击下方“领取积分”按钮，</small></p>
-                <p class="f16">即可获 {$activity['credit']} 会员积分</p>
+                <p class="f16">即可获 {$activity['credit']} 会员积分！</p>
                 <input type="hidden" name="token" value="{$_W['token']}" />
                 <p class="tc mt50">
                     <button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
@@ -128,12 +141,12 @@
         <div class="slide tc">
             <div class="fp-content lastpage">
                 <h3>THANK YOU</h3>
-                <p>感谢您完成本次问卷</p>
+                <p><small>感谢您完成本次问卷，点击下方“注册会员”按钮，</small></p>
+				<p class="f16">即可获 {$activity['credit']} 会员积分！</p>
                 <input type="hidden" name="token" value="{$_W['token']}" />
                 <p class="tc mt50">
                     <button type="submit" name="submit" value="立即提交" class="submit btn btn-success">
-                        <small>注册 UR 时尚会员，</small><br>
-                        领取 {$activity['credit']} 会员积分
+                        <small>注册会员</small><br>
                     </button>
                 </p>
 		    </div>
@@ -151,6 +164,7 @@
 			loopHorizontal: false,
             resize: false,
 			scrollingSpeed: 300,
+			//slidesNavigation: true, //调试时用方便
 			normalScrollElements: '.scroll,.fixed-table-body',
 			onSlideLeave: function (anchorLink, index, slideIndex, direction) {
 				if (direction === 'right') {

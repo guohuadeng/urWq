@@ -470,6 +470,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
         $params = array();
         $params[':sid'] = $sid;
         $ds = pdo_fetchall($sql, $params);
+        $dscount = count($ds);
         if (!$ds) {
             message('非法访问.');
         }
@@ -549,10 +550,14 @@ class Ur_surveyModuleSite extends WeModuleSite {
             if (empty($srid)) {
                 message('保存失败.');
             } else if ($activity['credit'] > 0) {
-                $log = "参加调研问卷，赠送{$activity['credit']}积分";
-                $result = mc_credit_update(mc_openid2uid($row['openid']), 'credit1', $activity['credit'], array(mc_openid2uid($row['openid']), $log, 'ur_survey'));
-                //echo 'id:' . mc_openid2uid($row['openid']) . $log . '<br>';
-                //echo '结果：' . $result;
+                //if (!$reregister) { //只有领取了会员卡的，才有积分
+                    $log = "参加调研问卷，赠送{$activity['credit']}积分";
+                    $result = mc_credit_update(mc_openid2uid($row['openid']), 'credit1', $activity['credit'], array(mc_openid2uid($row['openid']), $log, 'ur_survey'));
+                 /*   }
+                else    {   //没有注册会员卡的，无积发
+                    $log = "参加调研问卷，因未领卡获得0积分";
+                    $result = mc_credit_update(mc_openid2uid($row['openid']), 'credit1', 0, array(mc_openid2uid($row['openid']), $log, 'ur_survey'));
+                }*/
             }
             foreach ($datas as &$r) {
                 $r['srid'] = $srid;
