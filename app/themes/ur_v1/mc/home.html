@@ -2,41 +2,66 @@
 {template 'mc/header'}
 <style>
 .mnav-box ul,.mnav-box ul li{padding:0px; margin:0px;}
-.mnav-box{color:#606366; background:transparent url('{$_W['styles']['indexbgimg']}') no-repeat; background-size:100% 100%;}
-.mnav-box ul{border-top:10px solid #e4e9e8; list-style:none; background:transparent -webkit-gradient(linear,0 0, 0 10%,from(rgba(175,148,51,1)), to(rgba(175,148,51,1))) center top; -webkit-background-size:100% 2px; padding-top:2px; background-repeat:no-repeat;}
-.mnav-box ul:first-child{background:none; border-top:0; padding-top:0;}
-.mnav-box ul li{ border-bottom:1px solid #dddddd; position:relative; height:48px; padding: 12px 15px; overflow:hidden;}
-.mnav-box ul li .mnav-box-list{color:#606366; font-size:15px; text-decoration:none; -webkit-box-sizing:border-box; overflow:hidden;}
-.mnav-box ul li .mnav-box-list>i{width:25px; margin-right:10px; color:#af9433; text-align:center; font-size:20px;}
+.mnav-box{
+	padding-top: 10px;
+	color:#606366; background:transparent url('{$_W['styles']['indexbgimg']}') no-repeat; background-size:100% 100%;
+}
+.mnav-box ul{list-style:none; -webkit-background-size:100% 2px; padding-top:2px; background-repeat:no-repeat;}
+.mnav-box ul li .mnav-box-list{
+	color:#606366; 
+	font-size:15px; 
+	text-decoration:none; 
+	-webkit-box-sizing:border-box; 
+	overflow:hidden;
+	display: block;
+    height: 100%;
+    width: 100%;
+    text-align:center;
+    background-color: rgb(246, 246, 246);
+    border: #fff solid 1px;
+}
+.mnav-box ul li .mnav-box-list>i{
+	width:30px; 
+	margin-top:10px; 
+	color:#af9433; 
+	font-size:20px;
+}
+.mnav-box ul li .mnav-box-list>span{
+	display: block;
+	font-weight: bold;
+	font-size: 13px;
+}
 .mnav-box ul li .mnav-box-list .mnav-title{display:inline-block; padding-right:15px;}
 .mnav-box ul li .mnav-box-list > .pull-right{display:inline-block; font-size:22px; line-height:0; color:#888; position:absolute; right:15px; top:12px;}
 .mnav-box ul li .mnav-box-list > .right{float:right}
 .mnav-box ul li .mnav-box-list > .pull-right .btn{background:#af9433; color:#FFF; border:0; border-radius:1px; margin-top:-5px; width:100px; height:32px; font-size:17px; white-space:pre-line;}
 .alert-bg{background:#000; width:100%; position:absolute; top:0; z-index:100; opacity:0.5;}
+
+.mnav-box ul li{
+	float: left;
+	height: 58px;
+	width: 120px;
+	position:relative; 
+	overflow:hidden;
+}
+
+
 </style>
 
 <!--  默认显示 -->
 {if $do == 'display'}
-	<div class="card-barcode">
-		<img src="{php echo url('mc/bond/barcode').'cardsn='.$cardinfo;}" />
-	</div>
-	<div class="card-qrcode">
-		<img src="{php echo url('mc/bond/qrcode').'cardsn='.$cardinfo;}" />
-	</div>
 	<div class="mnav-box">
 		<ul>
 			<li class="alert-li">      
 				<a class="mnav-box-list" href="{php echo url('mc', array('a' => 'bond', 'do' => 'mycard'));}">
 					<i class="fa fa-heart-o"></i>
 					<span>会员卡号</span>
-          <span class="right">{$cardinfo}</span>
 				</a>
 			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
 					<i class="fa fa-money"></i>
 					<span>余额充值</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
 			{if $_W['card_permission']}
@@ -44,7 +69,6 @@
 					<a class="mnav-box-list" href="{php echo url('wechat/card');}">
 						<i class="fa fa-tags"></i>
 						<span>微信卡券</span>
-						<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 					</a>
 				</li>
 			{/if}
@@ -52,32 +76,26 @@
 				<a class="mnav-box-list" href="{php echo url('activity/coupon/mine');}">
 					<i class="fa fa-money"></i>
 					<span>我的折扣券</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
 			<li class="hidden">
 				<a class="mnav-box-list" href="{php echo url('activity/token/mine');}">
 					<i class="fa fa-money"></i>
 					<span>我的代金券</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('activity/goods/mine');}">
 					<i class="fa fa-gift"></i>
 					<span>奖品兑换记录</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
-		</ul>
-		<ul>
 		{if !empty($others)}
 			{loop $others $nav}
 			<li>
 				<a class="mnav-box-list" href="{$nav['url']}">
 					<i class="fa fa-fw {if empty($nav['css']['icon']['icon'])} fa-money{else} {$nav['css']['icon']['icon']}{/if}"></i>
-					{$nav['name']}
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
+					<span>{$nav['name']}</span>
 				</a>
 			</li>
 			{/loop}
@@ -88,26 +106,23 @@
 				<a class="mnav-box-list" href="{$nav['url']}">
 					<i class="fa fa-fw {if empty($nav['css']['icon']['icon'])} fa-money{else} {$nav['css']['icon']['icon']}{/if}"></i>
 					<span class="mnav-title">{$nav['name']}</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
 				</a>
 			</li>
 			{/loop}
 		{/loop}
-		</ul>
-		<ul>
 			{if isset($setting['uc']['status']) && $setting['uc']['status'] == '1'}
 			{if !empty($ucUser)}
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/uc', array('foo' => 'unbind'))}">
 					<i class="fa fa-fw fa-user"></i>
-					已绑定{$setting['uc']['title']}账号({$ucUser['username']}), 点击解除绑定
+					<span>解除{$setting['uc']['title']}账号</span>
 				</a>
 			</li>
 			{else}
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/uc', array('foo' => 'bind'))}">
 					<i class="fa fa-fw fa-user"></i>
-					绑定{$setting['uc']['title']}账号
+					<span>绑定{$setting['uc']['title']}账号</span>
 				</a>
 			</li>
 			{/if}
@@ -115,29 +130,25 @@
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/bond/mobile')}">
 					<i class="fa fa-mobile-phone"></i>
-					<span class="">{if !empty($profile['mobile'])}修改{else}绑定{/if}手机号</span>
-					<span class="pull-right"><span class="btn btn-default">{if !empty($profile['mobile'])}修改{else}绑定{/if}</span></span>
+					<span>{if !empty($profile['mobile'])}修改{else}绑定{/if}手机号</span>
 				</a>
 			</li>
-      <li class="">
+      <li>
         <a class="mnav-box-list" href="{php echo url('mc/profile')}">
           <i class="fa fa-unlock-alt"></i>
-          <span class="">修改会员资料</span>
-          <span class="pull-right"><span class="btn btn-default">修改</span></span>
+          <span>修改会员资料</span>
         </a>
       </li>
 			<li class="hide">
 				<a class="mnav-box-list" href="{php echo url('mc/bond/address');}">
 					<i class="fa fa-map-marker"></i>
-					<span class="">收货地址</span>
-					<span class="pull-right"><span class="btn btn-default">修改</span></span>
+					<span>收货地址</span>
 				</a>
 			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/home/login_out');}">
 					<i class="fa fa-sign-out"></i>
-					<span class="">退出系统（测试期开启）</span>
-					<span class="pull-right"><i class="fa fa-angle-right"></i></span>
+					<span>退出系统</span>
 				</a>
 			</li>
 		</ul>
