@@ -1,6 +1,10 @@
 {template 'common/header'}
+{template 'mc/header'}
 <style>
 	body{padding-bottom:63px;}
+	.pcenter-main .head .pdetail {display: none;}
+	.pcenter-main .head .head-nav {display: none;}
+	.pcenter-main .head .ptool {display: none;}
 </style>
 <script>
 	$(".list-coupon").delegate("li","click",function(){
@@ -205,7 +209,9 @@
 <!-- 会员卡中心 -->
 {if $do == 'card'}
 	<style>
-	.card-img{width:100%; height:185px; padding-top:10px; overflow:hidden; -webkit-box-sizing:border-box;background-size:100% 100%; margin-bottom: 1px;}
+	.card-img{
+		background:url('./themes/ur_v1/images/card-img-bg.jpg') no-repeat;
+		width:100%; height:220px; padding-top:10px; overflow:hidden; -webkit-box-sizing:border-box;background-size:100% 100%; margin-bottom: 1px;}
 	.card{position:relative; width:280px; max-height:165px; overflow:hidden; margin:0 auto;}
 	.cardsn{position:absolute; color:#666; right:20px; bottom:10px; text-shadow:0 -1px 0 rgba(255, 255, 255, 0.5); font-size:16px; z-index:1;}
 	.cardtitle{position:absolute; right:20px; top:10px; color:#ffffff; font-size:16px; text-shadow:0 -1px 0 rgba(255, 255, 255, 0.5); z-index:1;}
@@ -215,7 +221,8 @@
 	.form-horizontal .form-group{margin-left:0px; margin-right:0px;}
 	</style>
 	<form action="" class="form-horizontal form" method="post" enctype="multipart/form-data">
-		<div class="form-group" style="margin-bottom:0px;">
+		<!--ur调整-->
+		<div class="form-group hidden" style="margin-bottom:0px;">
 			<div class="col-xs-12 card-img text-center">
 				<div class="card img-rounded">
 					<div class="cardsn" style="color:{if !empty($setting['color']['number'])}{$setting['color']['number']}{/if}">卡号：{$setting['format']}</div>
@@ -235,6 +242,7 @@
 				</div>
 			</div>
 		</div>
+		<!--end ur调整-->
 		<div class="card-box">
 			{if !empty($setting['grant']) && ($setting['grant']['credit1'] || $setting['grant']['credit2'] || !empty($coupon))}
 				<div class="form-group" style="margin-bottom:0">
@@ -333,7 +341,8 @@
 	</div>
 	{else}
 	<div style="margin-bottom:0;">
-		<div class="card-img text-center">
+		<!--ur调整-->
+		<div class="hidden card-img text-center">
 			<div class="card img-rounded">
 				<div class="prev" onclick="$(this).hide();$('.back').show()">
 					<div class="cardsn" style="color:{if !empty($setting['color']['number'])}{$setting['color']['number']}{/if}">{$mcard['cardsn']}</div>
@@ -371,6 +380,7 @@
 				></div>
 			</div>
 		</div>
+		<!--ur调整-->
 	</div>
 	<div class="btns hidden">
 		<a href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">充值</a>
@@ -462,7 +472,7 @@
 					</table>
 				</li>
 			{/if}
-			<li class="next-show">
+			<li class="hidden next-show">
 				<a class="mnav-box-list">
 					<span class="mnav-title"><i class="fa fa-eye"></i> 使用说明</span>
 					<span class="pull-right"><i class="fa fa-angle-down"></i></span>

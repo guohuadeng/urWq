@@ -32,15 +32,15 @@
 				</a>
 			</div>
 		</div>
+		<div class="head-nav">
+			<a class="head-nav-list" href="{php echo url('mc/bond/credits', array('credittype' => $behavior['activity']));}"><span>{php echo number_format($credits[$behavior['activity']]);}</span><b>我的{$creditnames[$behavior['activity']]['title']}</b></a>
+			<a class="head-nav-list" href=""><span>0</span><b>我的优惠券</b></a>
+		</div>
 		<div class="head-nav hidden"> <!--原来的，暂时不用-->
 			<a class="head-nav-list" href="{php echo url('activity/coupon/mine');}">折扣券<span>{$coupons['total']}</span></a>
 			<a class="head-nav-list" href="{php echo url('activity/token/mine');}">代金券<span>{$tokens['total']}</span></a>
 			<a class="head-nav-list" href="{php echo url('mc/bond/credits', array('credittype' => $behavior['activity']));}">{$creditnames[$behavior['activity']]['title']}<span>{$credits[$behavior['activity']]}</span></a>
 			<a class="head-nav-list" href="{php echo url('mc/bond/credits', array('credittype' => $behavior['currency']));}">{$creditnames[$behavior['currency']]['title']}<span>{$credits[$behavior['currency']]}</span></a>
-		</div>
-		<div class="head-nav">
-			<a class="head-nav-list" href="{php echo url('mc/bond/credits', array('credittype' => $behavior['activity']));}"><span>{php echo number_format($credits[$behavior['activity']]);}</span><b>我的{$creditnames[$behavior['activity']]['title']}</b></a>
-			<a class="head-nav-list" href=""><span>0</span><b>我的优惠券</b></a>
 		</div>
 	</div>
 	<div class="clearfix"></div>
