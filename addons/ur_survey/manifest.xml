@@ -3,7 +3,7 @@
 	<application setting="false">
 		<name><![CDATA[ur调研]]></name>
 		<identifie><![CDATA[ur_survey]]></identifie>
-		<version><![CDATA[1.1]]></version>
+		<version><![CDATA[1.2]]></version>
 		<type><![CDATA[customer]]></type>
 		<ability><![CDATA[调研]]></ability>
 		<description><![CDATA[ur专用调研，可积分，可混合单选多选填空类型]]></description>
