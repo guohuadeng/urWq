@@ -1,0 +1,96 @@
+{template 'common/header'}
+<style>
+
+</style>
+{if $do == 'display'}
+<div class="container">
+    <div class="form-horizontal">
+        <div class="glyphicon-lg">
+           <h3 class="pull-left"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;消费查询</h3>
+           <h3 class="pull-right"><a href="{php echo url('mc/home/display/')}" class="glyphicon glyphicon-arrow-left r_btn01" title="回退"></a></h3>
+        </div>
+        <div class="clearfix"></div>
+        <hr />
+        <div class="bs-example">
+	        <div class="form-group col-md-4 nomargin">
+	            <label for="ddlCard" class="col-md-3 control-label noleftpad">会员卡{$cardinfo}</label>
+
+	        </div>
+	        <div class="clearfix"></div>
+            <br />
+        </div>
+        <div class="clearfix"></div>
+            <ul class="media-list list-group">
+			{loop $result['list'] $item}
+                <li class="list-group-item">
+                    <a class="pull-right btn-lg" href="{php echo url('mc/urgoods/info/', array('no' => $item['billNo']))}">
+                        <div class="glyphicon glyphicon-chevron-right"></div>
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">店铺名称：{php echo htmlspecialchars_decode($item['storeName'])}</h4>
+                        订单号：{$item['billNo']}<br />
+                        日期：{php echo substr($item['billTime'],0,19)}<br />
+                        金额：￥{php echo floatval($item['orderAmount'])}&nbsp;&nbsp;&nbsp;&nbsp;状态：{$item['tradeState']}
+                    </div>
+                    <div class="clearfix"></div>
+                </li>
+			{/loop}
+            </ul>
+            <p>共找到{$result['recordsCnt']}笔记录&nbsp;&nbsp;金额小计：{$result['totalAmount']}元</p>
+
+            <div class="clearfix"></div>
+    </div>
+</div>
+{elseif $do == 'info'}
+<div class="container">
+    <div class="form-horizontal">
+        <div class="glyphicon-lg">
+            <h3 class="pull-left"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;消费明细</h3>
+            <h3 class="pull-right"><a href="{php echo url('mc/urgoods/display/')}" class="glyphicon glyphicon-arrow-left r_btn01" title="回退"></a></h3>
+        </div>
+        <div class="clearfix"></div>
+        <hr />
+        <ul class="media-list list-group">
+            <li class="list-group-item">
+                <div class="media-body">
+                    店铺名称：{$result['storeName']}<br />
+                    日期：{php echo substr($result['billTime'],0,19)}<br />
+                    订单号：{$result['billNo']}<br />
+                    金额：￥{php echo floatval($result['orderAmount'])}&nbsp;&nbsp;&nbsp;&nbsp;状态：{$result['tradeState']}
+                </div>
+            </li>
+        </ul>
+            <div class="panel panel-default">
+                <div class="panel-heading">货品清单</div>
+                <table class="table">
+                    <tr>
+                        
+                        <th>货品</th>
+                        <th>明细</th>
+                        <th>金额</th>
+                    </tr>
+					{loop $result['list'] $item}
+                        <tr>
+                            
+                            <td class="col-xs-4 col-sm-4 col-md-4">货号：{$item['materialCode']}<br />
+                                名称：{$item['materialShortName']}
+                            </td>
+                            <td class="col-xs-4 col-sm-4 col-md-4">颜色：浅灰<br />
+                                尺码：{$item['size']}<br />
+                                数量：{php echo intval($item['qty'])}
+                            </td>
+                            <td class="col-xs-4 col-sm-4 col-md-4">单价：{php echo floatval($item['price'])}<br />
+                                金额：{php echo floatval($item['amount'])}
+                            </td>
+                        </tr>
+					{/loop}
+                </table>
+                
+
+                <div class="clearfix"></div>
+            </div>
+    </div>
+</div>
+{/if}
+{template 'common/toolbar'}
+{template 'common/footer'}
