@@ -9,6 +9,12 @@ $dos = array('display', 'login_out');
 $do = in_array($do, $dos) ? $do : 'display';
 load()->func('tpl');
 
+if (empty($_W['fans']['follow'])){
+	template('mc/checkpage');
+	exit();
+   
+}
+
 $mcard = pdo_fetch('SELECT * FROM ' . tablename('mc_card_members') . ' WHERE uniacid = :uniacid AND uid = :uid', array(':uniacid' => $_W['uniacid'], ':uid' => $_W['member']['uid']));
 
 if($do == 'login_out') {
