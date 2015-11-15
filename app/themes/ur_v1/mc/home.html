@@ -3,7 +3,7 @@
 <style>
 .mnav-box ul,.mnav-box ul li{padding:0px; margin:0px;}
 .mnav-box{
-	padding-top: 10px;
+	padding-top: 0px;
 	color:#606366; background:transparent url('{$_W['styles']['indexbgimg']}') no-repeat; background-size:100% 100%;
 }
 .mnav-box ul{list-style:none; -webkit-background-size:100% 2px; padding-top:2px; background-repeat:no-repeat;}
@@ -40,7 +40,7 @@
 .mnav-box ul li{
 	float: left;
 	height: 58px;
-	width: 120px;
+	width: 33.3%;
 	position:relative; 
 	overflow:hidden;
 }
@@ -52,42 +52,46 @@
 {if $do == 'display'}
 	<div class="mnav-box">
 		<ul>
-			<li class="alert-li">      
-				<a class="mnav-box-list" href="{php echo url('mc', array('a' => 'bond', 'do' => 'mycard'));}">
-					<i class="fa fa-heart-o"></i>
-					<span>会员卡号</span>
-				</a>
-			</li>
 			<li>
-				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
-					<i class="fa fa-money"></i>
-					<span>余额充值</span>
-				</a>
-			</li>
-			{if $_W['card_permission']}
-				<li class="hidden">
-					<a class="mnav-box-list" href="{php echo url('wechat/card');}">
-						<i class="fa fa-tags"></i>
-						<span>微信卡券</span>
-					</a>
-				</li>
-			{/if}
-			<li class="hidden">
-				<a class="mnav-box-list" href="{php echo url('activity/coupon/mine');}">
-					<i class="fa fa-money"></i>
-					<span>我的折扣券</span>
-				</a>
-			</li>
-			<li class="hidden">
-				<a class="mnav-box-list" href="{php echo url('activity/token/mine');}">
-					<i class="fa fa-money"></i>
-					<span>我的代金券</span>
+				<a class="mnav-box-list" href="{php echo url('mc', array('a' => 'profile'));}">
+					<i class="fa fa-plus-circle"></i>
+					<span>其它帐号绑定</span>
 				</a>
 			</li>
 			<li>
 				<a class="mnav-box-list" href="{php echo url('mc/urgoods/display');}">
 					<i class="fa fa-shopping-cart"></i>
-					<span>消费记录</span>
+					<span>消费查询</span>
+				</a>
+			</li>
+			<li>
+				<a class="mnav-box-list" href="{php echo url('bond', array('do' => 'credits','credittype' => 'credits1'));}">
+					<i class="fa fa-cubes"></i>
+					<span>积分</span>
+				</a>
+			</li>
+			<li>
+				<a class="mnav-box-list" href="{php echo url('bond', array('do' => 'credits','credittype' => 'credits1'));}">
+					<i class="fa fa-star"></i>
+					<span>领券</span>
+				</a>
+			</li>
+			<li>
+				<a class="mnav-box-list" href="{php echo url('bond', array('do' => 'credits','credittype' => 'credits1'));}">
+					<i class="fa fa-tags"></i>
+					<span>优惠券</span>
+				</a>
+			</li>
+			<li>
+				<a class="mnav-box-list" href="{php echo url('bond', array('do' => 'credits','credittype' => 'credits1'));}">
+					<i class="fa fa-map-marker"></i>
+					<span>网点</span>
+				</a>
+			</li>
+			<li>
+				<a class="mnav-box-list" href="{php echo url('bond', array('do' => 'credits','credittype' => 'credits1'));}">
+					<i class="fa fa-comments"></i>
+					<span>投诉建议</span>
 				</a>
 			</li>
 		{if !empty($others)}
@@ -133,13 +137,13 @@
 					<span>{if !empty($profile['mobile'])}修改{else}绑定{/if}手机号</span>
 				</a>
 			</li>
-      <li>
-        <a class="mnav-box-list" href="{php echo url('mc/profile')}">
-          <i class="fa fa-unlock-alt"></i>
-          <span>修改会员资料</span>
-        </a>
-      </li>
-			<li class="hide">
+			  <li>
+				<a class="mnav-box-list" href="{php echo url('mc/profile')}">
+				  <i class="fa fa-unlock-alt"></i>
+				  <span>修改会员资料</span>
+				</a>
+			  </li>
+			<li class="hidden">
 				<a class="mnav-box-list" href="{php echo url('mc/bond/address');}">
 					<i class="fa fa-map-marker"></i>
 					<span>收货地址</span>
@@ -151,6 +155,40 @@
 					<span>退出系统</span>
 				</a>
 			</li>
+			<!-- 隐藏不用的-->
+			<li class="alert-li hidden">
+				<a class="mnav-box-list" href="{php echo url('mc', array('a' => 'bond', 'do' => 'mycard'));}">
+					<i class="fa fa-heart-o"></i>
+					<span>会员卡号</span>
+				</a>
+			</li>
+			<li class="hidden">
+				<a class="mnav-box-list" href="{php echo url('entry', array('m' => 'recharge', 'do' => 'pay'));}">
+					<i class="fa fa-money"></i>
+					<span>余额充值</span>
+				</a>
+			</li>
+			{if $_W['card_permission']}
+			<li class="hidden">
+				<a class="mnav-box-list" href="{php echo url('wechat/card');}">
+					<i class="fa fa-tags"></i>
+					<span>微信卡券</span>
+				</a>
+			</li>
+			{/if}
+			<li class="hidden">
+				<a class="mnav-box-list" href="{php echo url('activity/coupon/mine');}">
+					<i class="fa fa-money"></i>
+					<span>我的折扣券</span>
+				</a>
+			</li>
+			<li class="hidden">
+				<a class="mnav-box-list" href="{php echo url('activity/token/mine');}">
+					<i class="fa fa-money"></i>
+					<span>我的代金券</span>
+				</a>
+			</li>
+			<!--end 隐藏不用的-->
 		</ul>
 		{$ucpage['html']}
 	</div>

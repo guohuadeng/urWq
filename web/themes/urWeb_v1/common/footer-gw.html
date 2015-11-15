@@ -10,7 +10,7 @@
 					}
 					$.getJSON("{url 'utility/checkupgrade/system'}", function(ret){
 						if (ret && ret.message && ret.message.upgrade == '1') {
-							$('body').prepend('<div id="upgrade-tips" class="upgrade-tips hide"><a href="./index.php?c=cloud&a=upgrade&">系统检测到新版本 '+ret.message.version+' ('+ ret.message.release +') ，请尽快更新！</a><span class="tips-close" style="background:#d03e14;" onclick="checkupgrade_hide();"><i class="fa fa-times-circle"></i></span></div>');
+							$('body').prepend('<div id="upgrade-tips" class="upgrade-tips hidden"><a href="./index.php?c=cloud&a=upgrade&">系统检测到新版本 '+ret.message.version+' ('+ ret.message.release +') ，请尽快更新！</a><span class="tips-close" style="background:#d03e14;" onclick="checkupgrade_hide();"><i class="fa fa-times-circle"></i></span></div>');
 							if ($('#upgrade-tips-module').size()) {
 								$('#upgrade-tips').css('top', '25px');
 							}

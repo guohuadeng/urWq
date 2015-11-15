@@ -1,8 +1,5 @@
 @charset "utf-8";
 /* CSS Document */
-.hide {
-  visibility:hidden;
-  }
 a	{
     color: #af9433;
   }
@@ -20,6 +17,96 @@ a	{
     left: 60px;
 }
 
+.modal-code .bar img {
+    width: 100%;
+    height: 86px;
+    min-height: 86px;
+}
+.modal-code .qr img {
+    width: 100%;
+}
+/*个人中心*/
+.pcenter-main .head{
+    position:relative;
+    width:100%;
+}
+.pcenter-main .head .plogo{
+    position: relative;
+    height: 220px;
+    background:url('../images/card-img-bg.jpg') no-repeat;
+    background-position: top center;
+    background-size:100% 100%;
+}
+.pcenter-main .head .ptool{
+    float:right;
+    display:inline-block;
+    text-decoration:none;
+    height:50px;
+    line-height:50px;
+    width:50px;
+    text-align:center;
+    font-size:25px;
+    color:#eeeeee;
+    margin-right:5%;
+    margin-top:10px;
+}
+.pcenter-main .head .plogo .card-logo{
+    position: absolute;
+    right: 40px;
+    top: 80px;
+}
+.pcenter-main .head .plogo .card-barcode{
+    position: absolute;
+    left: 15%;
+    bottom: 20px;
+    width: 75%;
+}
+.pcenter-main .head .plogo .card-number{
+    position: absolute;
+    left: 100px;
+    top: 60px;
+    color: #FFFFFF;
+    text-shadow: none;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+.pcenter-main .head .pdetail{
+    height:85px;
+    padding: 10px;
+    background-color: rgb(244, 238, 207);
+    -webkit-box-sizing:border-box;
+}
+.pcenter-main .head .pdetail .card-qrcode{
+    padding-top: 14px;
+}
+.pcenter-main .head .pdetail .card-qrcode img{
+    width: 40px;
+    height: 40px;
+}
+.pcenter-main .head .pdetail .img-circle{float:left; width:66px; height:66px; overflow:hidden; margin-right:20px; border:1px rgba(255,255,255,0.2) solid;}
+.pcenter-main .head .pdetail .img-circle img{width:66px;}
+.pcenter-main .head .pdetail .pull-left span{
+    display:block;
+    color: rgb(102, 102, 102);
+    line-height:20px;
+}
+.pcenter-main .head .pdetail .pull-left span.name{display:inline-block; max-width:150px; height:20px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-break:keep-all;}
+.pcenter-main .head .pdetail .pull-left span.type{font-size:12px;}
+.pcenter-main .head .head-nav{
+    height:60px; line-height:20px; padding-top:7px; background:rgb(191, 162, 59);
+}
+.pcenter-main .head .head-nav .head-nav-list{display:inline-block; float:left; text-decoration:none; color:#FFF;  width:50%; text-align:center; font-size:16px; background:-webkit-gradient(linear, 0 0, 0 100, from(rgba(255,255,255,0.5)), to(rgba(255,255,255,0.5)) ) no-repeat left center; -webkit-background-size:1px 75%;}
+.pcenter-main .head .head-nav .head-nav-list:first-child{background:none;}
+.pcenter-main .head .head-nav .head-nav-list > span{display:block; font-size:16px; color: yellow;}
+/*竖排导航条 通用*/
+.mnav-box ul{padding:10px 15px 0 15px;font-family:Helvetica, Arial, sans-serif;}
+.mnav-box ul li{padding:10px 15px;}
+.pcenter-main .profile{width:100%; background-size:cover;}
+.pcenter-main .profile .tabbable>ul{padding:10px 15px 0px 15px;}
+.pcenter-main .profile .tabbable .nav-tabs>li.active>a, .nav-tabs>li.active>a:hover, .nav-tabs>li.active>a:focus{color:#5ac5d4;background-color:#E9F7F8;}
+.pcenter-main .profile label{color:#555; font-weight:lighter; margin-top:5px;}
+
+/*操作面板*/
 .panel{margin-bottom:0px; border:none;}
 .panel.panel-default{color:#606366;}
 .panel>.list-group:last-child .list-group-item:last-child{border-bottom:1px solid #dddddd;}

@@ -48,7 +48,7 @@
 		<div class="btn-group-top-box">
 			<div class="btn-group btn-group-top">
 				<a href="#tab1" data-toggle="tab" class="btn btn-default basic active">基本资料</a>
-				<a href="#tab2" data-toggle="tab" class="btn btn-default more">更多资料</a>
+				<a href="#tab2" data-toggle="tab" class="btn btn-default more">其他账号绑定</a>
 			</div>
 		</div>
 		<div class="profile-box">
@@ -93,7 +93,7 @@
 				<div class="col-sm-12 col-xs-12">
           <!--将生日设置为只读-->					
 	        <input type="text" class="form-control" name="birthall" readonly="true" value="{php echo $profile['birthyear']. '年'. $profile['birthmonth']. '月 '.$profile['birthday'] . '日' ;}">
-					<div class ="hide">
+					<div class ="hidden">
           {php echo tpl_fans_form('birth',array('year' => $profile['birthyear'],'month' => $profile['birthmonth'],'day' => $profile['birthday']));}
           </div>				
 				</div>
