@@ -23,9 +23,11 @@
 				<h3 class="title hidden">{$activity['title']}</h3>
 				<p>{if !$reregister}尊贵的 {$user['realname']} 会员：{/if}</p>
 				{if $pererror == "1"}
-				<p class="error">您已经参与过该调研，请下次再来哦！ ^_^</p>
+				<p>感谢您完成本次问卷！</p>
+				<p>同一微信ID只能参与 {$activity['pertotal']} 次调研。</p>
 				{else if $pererror == "2"}
-				<p class="error">抱歉，您当月已经提交过该调研，请下个月再来哦！ ^_^</p>
+				<p>感谢您完成本次问卷！</p>
+				<p>同一微信ID每月只能参与 1 次调研。</p>
 				{else}
 				<div>{$activity['content']}</div>
 				<div>
@@ -40,7 +42,7 @@
 			</div>
 			<!-- 箭头指示引导 -->
 			<div class='u-arrow'>
-				<p class="next-page">往右滑动开始问卷 <em>>></em></p>
+				<p class="next-page">滑动开始问卷 <em>>></em></p>
 			</div>
 			<!-- 箭头指示引导 end-->
 		</div>
