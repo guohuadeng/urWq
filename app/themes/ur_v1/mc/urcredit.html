@@ -1,0 +1,99 @@
+{template 'common/header'}
+<style>
+a:hover {
+    text-decoration: none;
+}
+</style>
+{if $do == 'display'}
+<div class="container">
+    <div class="form-horizontal">
+        <div class="glyphicon-lg">
+           <h3 class="pull-left"><span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;积分查询</h3>
+           <h3 class="pull-right"><a href="{php echo url('mc/home/display/')}" class="glyphicon glyphicon-arrow-left r_btn01" title="回退"></a></h3>
+        </div>
+        <div class="clearfix"></div>
+        <hr />
+        <div class="bs-example">
+	        <div class="form-group col-md-4 nomargin">
+	            <label for="ddlCard" class="col-md-3 control-label noleftpad">会员卡{$cardinfo}</label>
+
+	        </div>
+	        <div class="clearfix"></div>
+            <br />
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <ul class="media-list list-group">
+                <li class="list-group-item">
+                    <div class="pull-right btn-lg">
+                        <div>{php echo number_format($result['total']);}</div>
+                    </div>
+                    <h4 class="media-body">您的剩余积分：
+                    </h4>
+                    <div class="clearfix"></div>
+                </li>
+                <li class="list-group-item hidden">
+                    <div class="pull-right btn-lg">
+                        <div>0</div>
+                    </div>
+                    <h4 class="media-body">已兑换积分：
+                    </h4>
+                    <div class="clearfix"></div>
+                </li>
+            </ul>
+        </div>
+        <div class="input-group" id="myTab">
+            <a href="#today" data-toggle="tab" class="input-group-btn"><span data-loading-text="正在加载..." class="btn btn-primary btn-lg btn-block">获得积分记录</span></a>
+            <a href="#history" data-toggle="tab" class="input-group-btn"><span data-loading-text="正在加载..." class="btn btn-info btn-lg btn-block">兑换积分记录</span></a>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane fade in active" id="today">
+                <h4>获得积分记录</h4>
+                {if count($result['gain']) > 0}
+                    <ul class="media-list list-group">
+						{loop $result['gain'] $item}
+                            <li class="list-group-item">
+                                <div class="media-body">
+                                    <h4 class="media-heading">日期：{php echo substr($item['billDate'],0,19)}</h4>
+                                    积分：{php echo intval($item['bonus'])}
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+						{/loop}
+                    </ul>
+				{else}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            暂无查询信息
+                        </div>
+                    </div>
+				{/if}
+                    <div class="clearfix"></div>
+            </div>
+            <div class="tab-pane fade" id="history">
+                <h4>兑换积分记录</h4>
+                {if count($result['use']) > 0}
+                    <ul class="media-list list-group">
+						{loop $result['use'] $item}
+                            <li class="list-group-item">
+                                <div class="media-body">
+                                    <h4 class="media-heading">日期：{php echo substr($item['billDate'],0,19)}</h4>
+                                    积分：{php echo intval($item['bonus'])}
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+						{/loop}
+                    </ul>
+				{else}
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            暂无查询信息
+                        </div>
+                    </div>
+				{/if}
+            </div>
+        </div>
+    </div>
+</div>
+{/if}
+{template 'common/footer'}

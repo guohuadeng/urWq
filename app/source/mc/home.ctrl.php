@@ -72,9 +72,17 @@ if ($do == 'display') {
 	}
 	//begin 检查是否领会员卡		
 	if(empty($mcard)) {
-			$reregister = true;
+		$reregister = true;
+		$cardinfo = '快来领会员卡抢优惠';
+		$creditstotal = 0;
+	}else{
+		$cardinfo = $mcard['cardsn'];
+		load()->func('communication');
+		//$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid='.$_W['openid'].'&VIPNo='.$mcard['cardsn']);
+		$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid=o4r_GjifJCuXmcvKKef7j6VKiJxY&VIPNo=8urP0000087');
+		$creditstotal = json_decode($creditstotal['content'],true)['total'];
 	}
 	//end  检查是否领会员卡
-	$cardinfo = (empty($mcard)) ? '快来领会员卡抢优惠'  : $mcard['cardsn'];
+
 }
 template('mc/home');
