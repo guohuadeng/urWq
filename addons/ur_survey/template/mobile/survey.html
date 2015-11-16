@@ -18,7 +18,8 @@
 			</div>
 			<!-- 箭头指示引导 end-->
 		</div>
-		<div class="slide">
+
+		<div class="slide" data-check="error">
             <div class="fp-content">
 				<h3 class="title hidden">{$activity['title']}</h3>
 				<p>{if !$reregister}尊贵的 {$user['realname']} 会员：{/if}</p>
@@ -41,9 +42,11 @@
 				{/if}
 			</div>
 			<!-- 箭头指示引导 -->
+			{if $pererror == "0"}
 			<div class='u-arrow'>
 				<p class="next-page">滑动开始问卷 <em>>></em></p>
 			</div>
+			{/if}
 			<!-- 箭头指示引导 end-->
 		</div>
 		{if $userinfo=='0'}
@@ -191,6 +194,12 @@
 
 		function checkNext() {
 			var check = {
+				error: function ($slide) {
+					if ($slide.find('.error').length) {
+						return false;
+					}
+					return true;
+				},
 				user: function () {
 					var $username = $('#username'),
 							$phone = $('#phone');
