@@ -25,10 +25,10 @@
 				<p>{if !$reregister}尊贵的 {$user['realname']} 会员：{/if}</p>
 				{if $pererror == "1"}
 				<p>感谢您完成本次问卷！</p>
-				<p>同一微信ID只能参与 {$activity['pertotal']} 次调研。</p>
+				<p class="has-error">同一微信ID只能参与 {$activity['pertotal']} 次调研。</p>
 				{else if $pererror == "2"}
 				<p>感谢您完成本次问卷！</p>
-				<p>同一微信ID每月只能参与 1 次调研。</p>
+				<p class="has-error">同一微信ID每月只能参与 1 次调研。</p>
 				{else}
 				<div>{$activity['content']}</div>
 				<div>
@@ -195,7 +195,7 @@
 		function checkNext() {
 			var check = {
 				error: function ($slide) {
-					if ($slide.find('.error').length) {
+					if ($slide.find('.has-error').length) {
 						return false;
 					}
 					return true;
