@@ -3,6 +3,10 @@
 a	{
     color: #af9433;
   }
+.btn-primary    {
+    background-color: #af9433;
+    border-color: #af9433;
+}
 .btn-group-top-box{padding:10px 0; border-bottom:1px solid #af9433;}
 .btn-group-top .btn.active  {
     background: #af9433;
@@ -15,11 +19,6 @@ a	{
 }
 .card-img   {
     border-bottom:1px solid #af9433;
-}
-.card-card-barcode img  {
-    width: 80%;
-    padding-left: 10%;
-    height:40px;
 }
 .card-card-qrcode img  {
     width: 200px;
@@ -37,15 +36,9 @@ a	{
 }
 /*个人中心*/
 .pcenter-main .head{
+    position:relative; height:240px; width:100%;
     position:relative;
     width:100%;
-}
-.pcenter-main .head .plogo{
-    position: relative;
-    height: 220px;
-    background:url('../images/card-img-bg.jpg') no-repeat;
-    background-position: top center;
-    background-size:100% 100%;
 }
 .pcenter-main .head .ptool{
     float:right;
@@ -60,6 +53,13 @@ a	{
     margin-right:5%;
     margin-top:10px;
 }
+.pcenter-main .head .plogo{
+    position: relative;
+    height: 220px;
+    background:url('../images/card-img-bg.jpg') no-repeat;
+    background-position: top center;
+    background-size:100% 100%;
+}
 .pcenter-main .head .plogo .card-logo{
     position: absolute;
     right: 40px;
@@ -70,6 +70,10 @@ a	{
     left: 15%;
     bottom: 20px;
     width: 75%;
+}
+.pcenter-main .head .plogo .card-barcode img {
+    width: 100%;
+    height: 40px;
 }
 .pcenter-main .head .plogo .card-number{
     position: absolute;

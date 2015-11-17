@@ -8,49 +8,7 @@
     width: 100%;
 }
 /*个人中心*/
-.pcenter-main .head{position:relative; height:170px; width:100%; background:url({if !empty($ucpage['params'][0]['params']['bgImage'])}'{$ucpage['params'][0]['params']['bgImage']}'{else}'themes/ur_v1/images/head-bg.png'{/if}) no-repeat center center; background-size:100% auto; -moz-background-size:100% auto; -webkit-background-size:100% auto;}
-.pcenter-main .head .ptool{float:right; display:inline-block; text-decoration:none; height:50px; line-height:50px; width:50px; text-align:center;font-size:25px; color:#eeeeee;}
-.pcenter-main .head .plogo{
-	height: 240px;
-	position: relative;
-}
-.pcenter-main .head .plogo .card-number{
-	position: absolute;
-	left: 100px;
-	top: 70px;
-	color: #808080;
-    text-shadow: none;
-    font-size: 20px;
-    letter-spacing: 2px;
-}
-.pcenter-main .head .pdetail{
-	height:85px; 
-	padding: 10px;
-	background-color: rgb(244, 238, 207);
-	-webkit-box-sizing:border-box;
-}
-.pcenter-main .head .pdetail .card-qrcode{
-	padding-top: 14px;
-}
-.pcenter-main .head .pdetail .card-qrcode img{
-	width: 40px;
-	height: 40px;
-}
-.pcenter-main .head .pdetail .img-circle{float:left; width:66px; height:66px; overflow:hidden; margin-right:20px; border:1px rgba(255,255,255,0.2) solid;}
-.pcenter-main .head .pdetail .img-circle img{width:66px;}
-.pcenter-main .head .pdetail .pull-left span{
-	display:block; 
-	color: rgb(102, 102, 102);
-	line-height:20px;
-}
-.pcenter-main .head .pdetail .pull-left span.name{display:inline-block; max-width:150px; height:20px; line-height:20px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; word-break:keep-all;}
-.pcenter-main .head .pdetail .pull-left span.type{font-size:12px;}
-.pcenter-main .head .head-nav{
-	height:60px; line-height:20px; padding-top:7px; background:rgb(191, 162, 59);
-}
-.pcenter-main .head .head-nav .head-nav-list{display:inline-block; float:left; text-decoration:none; color:#FFF;  width:50%; text-align:center; font-size:16px; background:-webkit-gradient(linear, 0 0, 0 100, from(rgba(255,255,255,0.5)), to(rgba(255,255,255,0.5)) ) no-repeat left center; -webkit-background-size:1px 75%;}
-.pcenter-main .head .head-nav .head-nav-list:first-child{background:none;}
-.pcenter-main .head .head-nav .head-nav-list > span{display:block; font-size:16px; color: yellow;}
+.pcenter-main .head{background:url({if !empty($ucpage['params'][0]['params']['bgImage'])}'{$ucpage['params'][0]['params']['bgImage']}'{else}'themes/ur_v1/images/head-bg.png'{/if}) no-repeat center center; background-size:100% auto; -moz-background-size:100% auto; -webkit-background-size:100% auto;}
 /*竖排导航条 通用*/
 .mnav-box ul{padding:10px 15px 0 15px;font-family:Helvetica, Arial, sans-serif;}
 .mnav-box ul li{padding:10px 15px;}
@@ -67,9 +25,9 @@
 			<div class="card-logo">
 				<img src="./themes/ur_v1/images/card-logo.png" />
 			</div>
-			<div class="card-barcode">
+			<div class="card-barcode {if !$cardinfo}hidden{/if}">
 				<a href="javascript:void(0)" data-toggle="modal" data-target="#scan">
-					<img height="60" width="100%" src="{php echo url('mc/bond/ur-barcode').'cardsn='.$cardinfo;}" />
+					<img src="{php echo url('mc/bond/ur-barcode').'cardsn='.$cardinfo;}" />
 				</a>
 			</div>
 		</div>
@@ -86,7 +44,8 @@
 				<span class="type">卡类别：UR普卡</span>
 				<span class="type">有效期：{php echo date('Y-m-d', $mcard['endtime']);}</span>
 			</div>
-			<div class="pull-right card-qrcode">
+			<div class="pull-right card-qrcode {if !$cardinfo}hidden{/if}">
+
 				<a href="javascript:void(0)" data-toggle="modal" data-target="#scan">
 					<img src="{php echo url('mc/bond/ur-qrcode').'cardsn='.$cardinfo;}" />
 				</a>

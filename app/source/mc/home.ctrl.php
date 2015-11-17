@@ -73,7 +73,7 @@ if ($do == 'display') {
 	//begin 检查是否领会员卡		
 	if(empty($mcard)) {
 		$reregister = true;
-		$cardinfo = '快来领会员卡抢优惠';
+		$cardinfo = null;
 		$creditstotal = 0;
 	}else{
 		$cardinfo = $mcard['cardsn'];
