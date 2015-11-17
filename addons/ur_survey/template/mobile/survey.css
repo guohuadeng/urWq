@@ -1,7 +1,8 @@
 body {
-	background: url('bg.jpg') repeat-y top #c6b565;
-	background-attachment: fixed;
-	background-size: 100%;
+	background: url('bg.jpg') no-repeat #A89256;
+	background-position: top;
+	background-size: 100% auto;
+	background-color: #A89256;
 	height: 100%;
 	color: #fff;
 }
@@ -28,10 +29,14 @@ em-tip {
 	color: #333333;
 }
 .ur_survey select.form-control	{
-	background-color: #c6b565;
-	color: #fff;
+	background: url('bgcolor.jpg') no-repeat #c6b565;
+	color: #ddd;
 	border: 1px solid #fff;
 	margin-bottom: 5px;
+}
+.form-control	{
+	background-color: #c6b565;
+
 }
 .ur_survey .btn-success	{
 	background-color: #B19819;

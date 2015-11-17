@@ -21,7 +21,9 @@ $dos = array (
 		'mobile',
 		'email',
 		'barcode',
+		'ur-barcode',
 		'qrcode',
+		'ur-qrcode',
 		'consume',
 		'card_qrcode' 
 );
@@ -721,6 +723,65 @@ if ($do == 'barcode') {
 	$drawing->finish ( BCGDrawing::IMG_FORMAT_PNG );
 }
 
+if ($do == 'ur-barcode') {
+
+	$cardsn = $_GET["cardsn"];
+
+	$barcode_path = '../framework/library/barcode/';
+
+	require_once ($barcode_path . 'class/BCGFontFile.php');
+
+	require_once ($barcode_path . 'class/BCGColor.php');
+
+	require_once ($barcode_path . 'class/BCGDrawing.php');
+
+	require_once ($barcode_path . 'class/BCGcode39.barcode.php');
+
+	$color_black = new BCGColor ( 0, 0, 0 );
+
+	$color_white = new BCGColor ( 255, 255, 255 );
+
+	$drawException = null;
+
+	try {
+
+		$code = new BCGcode39 ();
+
+		$code->setScale ( 2 );
+
+		$code->setThickness ( 30 );
+
+		$code->setForegroundColor ( $color_black );
+
+		$code->setBackgroundColor ( $color_white );
+
+		$code->setFont ( $font );
+
+		$code->parse ( $cardsn );
+	} catch ( Exception $exception ) {
+
+		$drawException = $exception;
+	}
+
+	$drawing = new BCGDrawing ( '', $color_white );
+
+	if ($drawException) {
+
+		$drawing->drawException ( $drawException );
+	} else {
+
+		$drawing->setBarcode ( $code );
+
+		$drawing->draw ();
+	}
+
+	header ( 'Content-Type: image/png' );
+
+	header ( 'Content-Disposition: inline; filename="barcode.png"' );
+
+	$drawing->finish ( BCGDrawing::IMG_FORMAT_PNG );
+}
+
 if ($do == 'qrcode') {
 	
 	require_once ('../framework/library/qrcode/phpqrcode.php');
@@ -731,6 +792,19 @@ if ($do == 'qrcode') {
 	
 	$cardsn = $_W ['member'] ['uid'];
 	
+	QRcode::png ( $cardsn, false, $errorCorrectionLevel, $matrixPointSize );
+}
+
+if ($do == 'ur-qrcode') {
+
+	require_once ('../framework/library/qrcode/phpqrcode.php');
+
+	$errorCorrectionLevel = "L";
+
+	$matrixPointSize = "8";
+
+	$cardsn = $_GET["cardsn"];
+
 	QRcode::png ( $cardsn, false, $errorCorrectionLevel, $matrixPointSize );
 }
 
