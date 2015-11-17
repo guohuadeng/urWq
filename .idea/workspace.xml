@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="42a860e4-6de0-49dc-b5d8-c69ca5a60826" name="Default" comment="">
-      <change type="DELETED" beforePath="D:\PjWeb\urWq\addons\ur_survey\template\mobile\bg.png" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/themes/ur_v1/mc/header.html" afterPath="$PROJECT_DIR$/app/themes/ur_v1/mc/header.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/source/mc/home.ctrl.php" afterPath="$PROJECT_DIR$/app/source/mc/home.ctrl.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/themes/ur_v1/mc/store.html" afterPath="$PROJECT_DIR$/app/themes/ur_v1/mc/store.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css" afterPath="$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/themes/ur_v1/css/ur.css" afterPath="$PROJECT_DIR$/app/themes/ur_v1/css/ur.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -30,7 +30,7 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <marker date="1447683547309" expanded="true" signature="6156:6226" placeholder="..." />
@@ -40,41 +40,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.ctrl.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/source/mc/home.ctrl.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.756757">
-              <caret line="75" column="17" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="survey.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="34" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="34" />
+            <state vertical-scroll-proportion="-3.8823528">
+              <caret line="12" column="33" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="site.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/addons/ur_survey/site.php">
+      <file leaf-file-name="survey.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="487" column="9" selection-start-line="487" selection-start-column="9" selection-end-line="487" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.83458644">
+              <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ur.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/css/ur.css">
+      <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/header.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14686248">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state vertical-scroll-proportion="-9.935484">
+              <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="store.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/store.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -83,7 +85,7 @@
       <file leaf-file-name="bond.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/bond.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -93,7 +95,7 @@
       <file leaf-file-name="bond.ctrl.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/source/mc/bond.ctrl.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="651.6486">
+            <state vertical-scroll-proportion="0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -126,18 +128,18 @@
         <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/bond.html" />
         <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/profile.html" />
         <option value="$PROJECT_DIR$/app/themes/ur_v1/common/toolbar.html" />
-        <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/store.html" />
         <option value="$PROJECT_DIR$/addons/ur_survey/manifest.xml" />
         <option value="$PROJECT_DIR$/addons/weisrc_feedback/manifest.xml" />
         <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/home.html" />
         <option value="$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.html" />
-        <option value="$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css" />
         <option value="$PROJECT_DIR$/app/themes/default/mc/footer.html" />
         <option value="$PROJECT_DIR$/app/source/mc/bond.ctrl.php" />
         <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/footer.html" />
         <option value="$PROJECT_DIR$/app/source/mc/home.ctrl.php" />
-        <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/header.html" />
         <option value="$PROJECT_DIR$/app/themes/ur_v1/css/ur.css" />
+        <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/store.html" />
+        <option value="$PROJECT_DIR$/app/themes/ur_v1/mc/header.html" />
+        <option value="$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css" />
       </list>
     </option>
   </component>
@@ -183,7 +185,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -502,8 +503,31 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urWq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="urWq" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="addons" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ur_survey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="style" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -567,11 +591,11 @@
     <editor active="true" />
     <layout>
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23200859" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2669173" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2706767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.49785176" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5568054" sideWeight="0.5128894" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07536558" sideWeight="0.48120302" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1721035" sideWeight="0.48120302" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32881355" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24986653" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299435" sideWeight="0.49785176" order="7" side_tool="false" content_ui="tabs" />
@@ -788,13 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/store.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06111111">
-          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24512535">
@@ -869,7 +886,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="3" selection-start-line="20" selection-start-column="3" selection-end-line="20" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -880,35 +896,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.5675673">
-          <caret line="31" column="24" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/footer.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="7" column="82" selection-start-line="7" selection-start-column="82" selection-end-line="7" selection-end-column="82" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/images/card-logo.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="34" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="34" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/addons/ur_survey/site.php">
@@ -921,7 +918,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/source/mc/home.ctrl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.756757">
+        <state vertical-scroll-proportion="0.0">
           <caret line="75" column="17" selection-start-line="75" selection-start-column="8" selection-end-line="75" selection-end-column="17" />
           <folding />
         </state>
@@ -940,7 +937,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/source/mc/bond.ctrl.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="651.6486">
+        <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -950,7 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.387097">
           <caret line="9" column="47" selection-start-line="9" selection-start-column="47" selection-end-line="9" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -962,10 +958,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/store.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="16" column="25" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/mc/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37880793">
-          <caret line="29" column="25" selection-start-line="29" selection-start-column="25" selection-end-line="29" selection-end-column="25" />
+        <state vertical-scroll-proportion="-9.935484">
+          <caret line="22" column="28" selection-start-line="22" selection-start-column="28" selection-end-line="22" selection-end-column="28" />
           <folding>
             <element signature="n#style#0;n#a#0;n#span#0;n#div#1;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
@@ -974,8 +978,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/themes/ur_v1/css/ur.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14686248">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="22" selection-start-line="38" selection-start-column="22" selection-end-line="38" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8823528">
+          <caret line="12" column="33" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addons/ur_survey/template/mobile/survey.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83458644">
+          <caret line="176" column="27" selection-start-line="176" selection-start-column="27" selection-end-line="176" selection-end-column="27" />
           <folding />
         </state>
       </provider>
