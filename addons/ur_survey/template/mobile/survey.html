@@ -98,7 +98,7 @@
 			<div class="fp-content">
 				<table class="title">
 					<tr>
-						<td width="20%"><span>{php echo $count < 10 ? '0' . $count : $count;}</span></td>
+						<td width="20%"><span data-count="{$count}">{php echo $count < 10 ? '0' . $count : $count;}</span></td>
 						<td>{$row['title']}</td>
 					</tr>
 				</table>
@@ -244,6 +244,13 @@
 //						alert("选项内容不能为空!");
 //						return false;
 //					}
+					// 15题特殊处理
+					if ($('[data-count="15"]').is(':visible')) {
+						if ($selects.length > 3) {
+							alert('最多只能选择3个答案!');
+							return false;
+						}
+					}
 					return true;
 				}
 			};
