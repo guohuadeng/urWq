@@ -1,12 +1,25 @@
 @charset "utf-8";
 /* CSS Document */
+body    {
+    background:url('../images/home-bg.jpg') repeat;
+}
 a	{
     color: #af9433;
   }
-.btn-primary    {
+.btn-primary,.btn-info {
+    background-color: #FFFFFF;
+    border-color: #af9433;
+    color: #000000;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary    {
     background-color: #af9433;
     border-color: #af9433;
 }
+.btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open>.dropdown-toggle.btn-info    {
+    background-color: #af9433;
+    border-color: #af9433;
+}
+
 .btn-group-top-box{padding:10px 0; border-bottom:1px solid #af9433;}
 .btn-group-top .btn.active  {
     background: #af9433;
@@ -41,7 +54,7 @@ a	{
     width:100%;
 }
 .pcenter-main .head .ptool{
-    float:right;
+    float:left;
     display:inline-block;
     text-decoration:none;
     height:50px;
@@ -49,9 +62,8 @@ a	{
     width:50px;
     text-align:center;
     font-size:25px;
-    color:#eeeeee;
-    margin-right:5%;
-    margin-top:10px;
+    color: #af9433;
+    padding-top: 155px;
 }
 .pcenter-main .head .plogo{
     position: relative;
@@ -62,8 +74,8 @@ a	{
 }
 .pcenter-main .head .plogo .card-logo{
     position: absolute;
-    right: 40px;
-    top: 85px;
+    right: 8%;
+    top: 25px;
 }
 .pcenter-main .head .plogo .card-barcode{
     position: absolute;
@@ -77,8 +89,8 @@ a	{
 }
 .pcenter-main .head .plogo .card-number{
     position: absolute;
-    left: 100px;
-    top: 60px;
+    left: 35%;
+    top: 120px;
     color: #FFFFFF;
     text-shadow: none;
     font-size: 20px;
@@ -87,7 +99,6 @@ a	{
 .pcenter-main .head .pdetail{
     height:85px;
     padding: 10px;
-    background-color: rgb(244, 238, 207);
     -webkit-box-sizing:border-box;
 }
 .pcenter-main .head .pdetail .card-qrcode{
