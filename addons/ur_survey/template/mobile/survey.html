@@ -245,7 +245,7 @@
 //						return false;
 //					}
 					// 15题特殊处理
-					if ($('[data-count="15"]').is(':visible')) {
+					if (+$slide.find('[data-count]').data('count') === 15) {
 						if ($selects.length > 3) {
 							alert('最多只能选择3个答案!');
 							return false;
