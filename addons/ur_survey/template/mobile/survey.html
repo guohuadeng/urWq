@@ -49,27 +49,6 @@
 			{/if}
 			<!-- 箭头指示引导 end-->
 		</div>
-		{if $userinfo=='0'}
-		<div class="slide" data-check="user">
-			<div class="fp-content">
-				<h3 class="title title-user">请先填写您的资料：</h3>
-				<div class="form-group">
-					<label for="username">请输入您的名称:</label>
-					<input type="text" name="username" id="username" class="form-control" value="{$user['realname']}">
-				</div>
-				<div class="form-group">
-					<label for="phone">请输入您的手机号码:</label>
-					<input type="tel" name="telephone" id="phone" class="form-control" value="{$user['mobile']}">
-					<div class="tip">*请务必填写正确，此信息将作为您以后领奖的依据</div>
-				</div>
-				<!-- 箭头指示引导 -->
-				<div class='u-arrow'>
-					<p class="next-page">下一步 <em>>></em><</p>
-				</div>
-				<!-- 箭头指示引导 end-->
-			</div>
-		</div>
-		{/if}
 		{if $activity['activity_store']=='1'}
 		<div class="slide has-title" data-check="store">
 			<div class="fp-content">
@@ -196,26 +175,6 @@
 			var check = {
 				error: function ($slide) {
 					if ($slide.find('.has-error').length) {
-						return false;
-					}
-					return true;
-				},
-				user: function () {
-					var $username = $('#username'),
-							$phone = $('#phone');
-					if (!$.trim($username.val())) {
-						alert('请输入您的名称!');
-						$username.focus();
-						return false;
-					}
-					if (!$.trim($phone.val())) {
-						alert('请输入您的手机号码!');
-						$phone.focus();
-						return false;
-					}
-					if (!/^[0-9]{11}$/.test($phone.val())) {
-						alert('请输入正确的手机号码!');
-						$phone.focus();
 						return false;
 					}
 					return true;

@@ -496,7 +496,7 @@ class Ur_surveyModuleSite extends WeModuleSite {
             }
             //更新粉丝的手机号和姓名
             if ($userinfo == '0') {
-                mc_update($_W['fans']['from_user'], array('realname' => trim($_GPC['username']), 'mobile' => trim($_GPC['telephone'])));
+                //mc_update($_W['fans']['from_user'], array('realname' => trim($_GPC['username']), 'mobile' => trim($_GPC['telephone'])));
             }
             $row = array();
             $row['sid'] = $sid;
