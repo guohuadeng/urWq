@@ -15,8 +15,10 @@ if($do == 'display') {
 	}
 	//end  检查是否领会员卡
 	$cardinfo = (empty($mcard)) ? '快来领会员卡抢优惠'  : $mcard['cardsn'];
-	$result = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getPosDataInfo?openid='.$_W['openid']
-.'&VIPNo=8urP0245111');
+	$VIPNo = (empty($mcard)) ? ''  : $mcard['cardsn'];
+	$result = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getPosDataInfo?openid='.$_W['openid'].'&VIPNo='.$VIPNo);
+	//test
+	//$result = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getPosDataInfo?openid='.$_W['openid'].'&VIPNo=8urP0245111');
 	$result = json_decode($result['content'],true);
 }else if($do == 'info'){
 	$result = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getPosDataListInfo?billNo='.$_GPC['no']);

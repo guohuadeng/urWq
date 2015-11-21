@@ -78,8 +78,9 @@ if ($do == 'display') {
 	}else{
 		$cardinfo = $mcard['cardsn'];
 		load()->func('communication');
-		//$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid='.$_W['openid'].'&VIPNo='.$mcard['cardsn']);
-		$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid=o4r_GjifJCuXmcvKKef7j6VKiJxY&VIPNo=8urP0000087');
+		$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid='.$_W['openid'].'&VIPNo='.$mcard['cardsn']);
+		//test
+		//$creditstotal = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getTotalIntegral?openid=o4r_GjifJCuXmcvKKef7j6VKiJxY&VIPNo=8urP0000087');
 		$creditstotal = json_decode($creditstotal['content'],true)['total'];
 	}
 	//end  检查是否领会员卡
