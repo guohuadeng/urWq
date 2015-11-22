@@ -13,7 +13,7 @@
 		<div class="slide landing">
 			<img class="next-page" src="../addons/ur_survey/template/mobile/bg_landing.jpg"></img>
 			<!-- 箭头指示引导 -->
-			<div class='u-arrow'>
+			<div class='u-arrow hidden'>
 				<p class="next-page">进入 <em>>></em>&nbsp;&nbsp;</p>
 			</div>
 			<!-- 箭头指示引导 end-->
@@ -58,7 +58,7 @@
 						<td>请选择您所惠临的店</td>
 					</tr>
 				</table>
-				<div>{php echo tpl_fans_form('reside');}</div>
+				<div>{php echo tpl_fans_form('resideUr');}</div>
 				<table id="stores"></table>
 				<input type="hidden" name="store">
 			</div>
@@ -224,8 +224,8 @@
 		function initStores() {
 			var stores = {php echo json_encode($stores)},
 					$store = $('#stores'),
-					$province = $('[name="reside[province]"]'),
-					$city = $('[name="reside[city]"]');
+					$province = $('[name="resideUr[province]"]'),
+					$city = $('[name="resideUr[city]"]');
 
 			$store.bootstrapTable({
 				classes: 'table table-hover table-no-bordered',
