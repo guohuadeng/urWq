@@ -72,12 +72,12 @@
 		{php $count = 1;}
 		{loop $ds $key $row}
 		{php $count++;}
-		<div class="slide has-title" data-check="option" data-type="{$row['type']}">
+		<div class="slide has-title" data-check="option" data-type="{$row['type']}" data-count="{$count}">
 			<div class="scroll">
 			<div class="fp-content">
 				<table class="title">
 					<tr>
-						<td width="20%"><span data-count="{$count}">{php echo $count < 10 ? '0' . $count : $count;}</span></td>
+						<td width="20%"><span>{php echo $count < 10 ? '0' . $count : $count;}</span></td>
 						<td>{$row['title']}</td>
 					</tr>
 				</table>
@@ -203,13 +203,6 @@
 //						alert("选项内容不能为空!");
 //						return false;
 //					}
-					// 15题特殊处理
-					if (+$slide.find('[data-count]').data('count') === 15) {
-						if ($selects.length > 3) {
-							alert('最多只能选择3个答案!');
-							return false;
-						}
-					}
 					return true;
 				}
 			};
@@ -219,6 +212,14 @@
 			}
 			return false;
 		}
+
+		// 15题特殊处理
+		$('[data-count="15"] :checkbox').click(function () {
+			if ($('[data-count="15"] :checkbox:checked').length > 3) {
+				$(this).prop('checked', false);
+				alert('最多只能选择3个答案!');
+			}
+		});
 
 		function initStores() {
 			var stores = {php echo json_encode($stores)},
