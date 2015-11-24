@@ -233,13 +233,31 @@ if ($do == 'card') {
 				'cardsn' => $cardsn,
 				'status' => '1',
 				'createtime' => TIMESTAMP,
-				'endtime' => TIMESTAMP 
-		)
-		;
+				'endtime' => TIMESTAMP + 365*24*60*60
+		);
 		$check = mc_check ( $data );
 		if (is_error ( $check )) {
 			message ( $check ['message'], '', 'error' );
 		}
+
+		if ( !empty ( $_GPC ['snpos'] )) {	//会员卡号重号的检查
+			$isexist = pdo_fetchcolumn ( 'SELECT COUNT(*) FROM ' . tablename ( 'mc_card_members' ) . ' WHERE uniacid = :uniacid AND cardsn = :cardsn', array (
+					':uniacid' => $_W ['uniacid'],
+					':cardsn' => $cardsn
+			) );
+
+			if ($isexist >= 1) {
+				pdo_update ( 'mc_card', array (
+						'snpos' => $_GPC ['snpos']++
+				), array (
+						'uniacid' => $_W ['uniacid'],
+						'id' => $_GPC ['cardid']
+				) );
+				message ( '会员卡号重复，请重新操作或联系UR客服' , '', 'error' );
+			}
+		}
+
+
 		if (pdo_insert ( 'mc_card_members', $record )) {
 			if (! empty ( $data )) {
 				mc_update ( $_W ['member'] ['uid'], $data );
