@@ -208,7 +208,7 @@ if ($do == 'card') {
 		if ($count >= 1) {
 			message ( '抱歉,您已经领取过该会员卡.', referer (), 'error' );
 		}
-		$cardsn = $_GPC ['format'];
+		$cardsn1 = $_GPC ['format'];
 		preg_match_all ( '/(\*+)/', $_GPC ['format'], $matchs );
 		if (! empty ( $matchs )) {
 			foreach ( $matchs [1] as $row ) {
@@ -218,12 +218,23 @@ if ($do == 'card') {
 		preg_match ( '/(\#+)/', $_GPC ['format'], $matchs );
 		$length = strlen ( $matchs [1] );
 		$pos = strpos ( $_GPC ['format'], '#' );
-		$cardsn = str_replace ( $matchs [1], str_pad ( $_GPC ['snpos'] ++, $length - strlen ( $number ), '0', STR_PAD_LEFT ), $cardsn );
+		//会员卡号重号的检查
+		$isexist = 1;
+		$ilimit = 1; //最多尝试5次
+		while ( $isexist and ($ilimit<=5))	{
+			$cardsn = str_replace ( $matchs [1], str_pad ( $_GPC ['snpos'] ++, $length - strlen ( $number ), '0', STR_PAD_LEFT ), $cardsn1 );
+			$isexist = pdo_fetchcolumn ( 'SELECT COUNT(*) FROM ' . tablename ( 'mc_card_members' ) . ' WHERE uniacid = :uniacid AND cardsn = :cardsn', array (
+					':uniacid' => $_W ['uniacid'],
+					':cardsn' => $cardsn
+				) );
+			$ilimit++;
+			$msg = $msg.'-'.$isexist.'-'.$ilimit.'-'.$cardsn;
+			}
 		pdo_update ( 'mc_card', array (
-				'snpos' => $_GPC ['snpos'] 
+				'snpos' => $_GPC ['snpos']
 		), array (
 				'uniacid' => $_W ['uniacid'],
-				'id' => $_GPC ['cardid'] 
+				'id' => $_GPC ['cardid']
 		) );
 		$record = array (
 				'uniacid' => $_W ['uniacid'],
@@ -240,23 +251,15 @@ if ($do == 'card') {
 			message ( $check ['message'], '', 'error' );
 		}
 
-		if ( !empty ( $_GPC ['snpos'] )) {	//会员卡号重号的检查
-			$isexist = pdo_fetchcolumn ( 'SELECT COUNT(*) FROM ' . tablename ( 'mc_card_members' ) . ' WHERE uniacid = :uniacid AND cardsn = :cardsn', array (
-					':uniacid' => $_W ['uniacid'],
-					':cardsn' => $cardsn
+		if ($isexist >= 1) { //会员卡号重号的提示并中断
+			pdo_update ( 'mc_card', array (
+					'snpos' => $_GPC ['snpos']++
+			), array (
+					'uniacid' => $_W ['uniacid'],
+					'id' => $_GPC ['cardid']
 			) );
-
-			if ($isexist >= 1) {
-				pdo_update ( 'mc_card', array (
-						'snpos' => $_GPC ['snpos']++
-				), array (
-						'uniacid' => $_W ['uniacid'],
-						'id' => $_GPC ['cardid']
-				) );
-				message ( '会员卡号重复，请重新操作或联系UR客服' , '', 'error' );
-			}
+			message ( '好多人在申请UR时尚荟，请关闭网页再试一次吧 ：)' , '', 'error' );
 		}
-
 
 		if (pdo_insert ( 'mc_card_members', $record )) {
 			if (! empty ( $data )) {

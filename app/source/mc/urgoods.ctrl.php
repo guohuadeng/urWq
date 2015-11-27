@@ -14,7 +14,7 @@ if($do == 'display') {
 			$reregister = true;
 	}
 	//end  检查是否领会员卡
-	$cardinfo = (empty($mcard)) ? '快来领会员卡抢优惠'  : $mcard['cardsn'];
+	$cardinfo = null;
 	$VIPNo = (empty($mcard)) ? ''  : $mcard['cardsn'];
 	$result = ihttp_get('http://spc.ur.com.cn:8088/PSS/@weixin/jianXin/getPosDataInfo?openid='.$_W['openid'].'&VIPNo='.$VIPNo);
 	//test

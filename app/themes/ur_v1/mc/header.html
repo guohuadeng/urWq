@@ -41,8 +41,8 @@
 				<span class="name">{if !empty($profile['nickname'])}{$profile['nickname']}{else}<a href="{php echo url('mc/profile')}" style="color:red;">设置昵称</a>{/if}</span>
 				<span class="type hidden"><i class="fa fa-certificate"></i> {$profile['group']['title']}</span>
 				<span class="type hidden"><i class="fa fa-flag-o"></i> 会员UID: {$profile['uid']}</span>
-				<span class="type">卡类别：UR普卡</span>
-				<span class="type">有效期：{php echo date('Y-m-d', $mcard['endtime']);}</span>
+				<span class="type {if !$cardinfo}hidden{/if}">卡类别：UR普卡</span>
+				<span class="type {if !$cardinfo}hidden{/if}">有效期：{php echo date('Y-m-d', $mcard['endtime']);}</span>
 			</div>
 			<div class="pull-right card-qrcode {if !$cardinfo}hidden{/if}">
 

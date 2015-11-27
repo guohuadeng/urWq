@@ -1,41 +1,41 @@
-ALTER TABLE ims_users_profile  ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'ÎÞ' COMMENT '¾©¶«ÕËºÅ' ;
+ALTER TABLE ims_users_profile  ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT NULL COMMENT 'äº¬ä¸œè´¦å·' ;
 
-ALTER TABLE ims_mc_members ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 'ÎÞ' COMMENT '¾©¶«ÕËºÅ';
+ALTER TABLE ims_mc_members ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT NULL COMMENT 'äº¬ä¸œè´¦å·';
 
-ALTER TABLE ims_mc_members ADD `modifytime` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'ÐÞ¸ÄÊ±¼ä';
+ALTER TABLE ims_mc_members ADD `modifytime` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT 'ä¿®æ”¹æ—¶é—´';
 
-INSERT INTO `ims_profile_fields` (field,available,title,description,displayorder,required,unchangeable,showinregister) VALUES ( 'jd_account', '1', '¾©¶«ÕÊºÅ', '', '0', '0', '0', '1');
+INSERT INTO `ims_profile_fields` (field,available,title,description,displayorder,required,unchangeable,showinregister) VALUES ( 'jd_account', '1', 'äº¬ä¸œå¸å·', '', '0', '0', '0', '1');
 
 
 -- ----------------------------
--- ÕËºÅ»ù´¡ÉèÖÃ£¬Ö÷ÒªÊÇ¶ÌÐÅ£¬ÖØÒª: uniacidµÄÈ·¶¨£¬µ±Ç° 
+-- è´¦å·åŸºç¡€è®¾ç½®ï¼Œä¸»è¦æ˜¯çŸ­ä¿¡ï¼Œé‡è¦: uniacidçš„ç¡®å®šï¼Œå½“å‰ 
 -- ----------------------------
 update ims_account_wechats
 -- ----------------------------
 -- Records of ims_survey
 -- ----------------------------
-INSERT INTO `ims_survey` VALUES ('5', '2', 'URÎÊ¾íµ÷ÑÐ£¨Survey£©', 'URÖÂÁ¦ÓÚÎªÄúÌá¹©¸ßÆ·ÖÊµÄÊ±ÉÐ²úÆ·ºÍÓÅÖÊ·þÎñ£¡Íê³ÉÎÊ¾í¼´¿É»ñÔù300»áÔ±»ý·Ö£¡', '&lt;p&gt;URÖÂÁ¦ÓÚÎªÄúÌá¹©&lt;/p&gt;\r\n&lt;p&gt;¸ßÆ·ÖÊµÄÊ±ÉÐ²úÆ·ºÍÓÅÖÊ·þÎñ£¡&lt;/p&gt;\r\n&lt;p&gt;ÎªÁËÌáÉýÄúµÄ¹ºÎïÌåÑé£¬ÇëÄúÌá¹©±¦¹óµÄÒâ¼û£¬&lt;/p&gt;', '¸ÐÐ»ÄúÍê³É±¾ÎÊ¾í¡£', 'images/4/2015/10/siSsfaybNmCAuCypMPf4acnYSIcCCI.png', '0', '1446735510', '1446735028', '1449327028', '3', '1', '1', '0', '1', '300');
+INSERT INTO `ims_survey` VALUES ('5', '2', 'URé—®å·è°ƒç ”ï¼ˆSurveyï¼‰', 'URè‡´åŠ›äºŽä¸ºæ‚¨æä¾›é«˜å“è´¨çš„æ—¶å°šäº§å“å’Œä¼˜è´¨æœåŠ¡ï¼å®Œæˆé—®å·å³å¯èŽ·èµ 300ä¼šå‘˜ç§¯åˆ†ï¼', '&lt;p&gt;URè‡´åŠ›äºŽä¸ºæ‚¨æä¾›&lt;/p&gt;\r\n&lt;p&gt;é«˜å“è´¨çš„æ—¶å°šäº§å“å’Œä¼˜è´¨æœåŠ¡ï¼&lt;/p&gt;\r\n&lt;p&gt;ä¸ºäº†æå‡æ‚¨çš„è´­ç‰©ä½“éªŒï¼Œè¯·æ‚¨æä¾›å®è´µçš„æ„è§ï¼Œ&lt;/p&gt;', 'æ„Ÿè°¢æ‚¨å®Œæˆæœ¬é—®å·ã€‚', 'images/4/2015/10/siSsfaybNmCAuCypMPf4acnYSIcCCI.png', '0', '1446735510', '1446735028', '1449327028', '3', '1', '1', '0', '1', '300');
 
 
 -- ----------------------------
 -- Records of ims_survey_fields
 -- ----------------------------
-INSERT INTO `ims_survey_fields` VALUES ('290', '5', 'Èç¹ûÄúÊÇVIP£¬Ï£Íû»ñµÃÄÄÏî×ðÏíÌåÑé£¨¶àÑ¡£©', 'checkbox', '1', '', 'A. É³Áú¾Û»á/Ê±ÉÐÅÉ¶Ô\r\nB. ½ÚÈÕÀñÎï\r\nC. ÇåÏ´¼°¸ÄÒÂ·þÎñ\r\nD. ÏíÊÜÆäËüÉÌ»§È¨Òæ\r\nE. ÆäËü£¨Çë×¢Ã÷£º[_]£©', '', '16');
-INSERT INTO `ims_survey_fields` VALUES ('291', '5', 'ÄúÏ£ÍûÔÚ¹Ù·½Î¢²©Î¢ÐÅÁË½âÄÄÐ©ÐÅÏ¢£¨¶àÑ¡£©', 'checkbox', '1', '', 'A. Æ·ÅÆ×îÐÂ´ÙÏú»î¶¯\r\nB. ÐÂµê¿ªÒµÐÅÏ¢\r\nC. Æ·ÅÆÐÂÆ·ÍÆ¼ö\r\nD. Ê±ÉÐ×ÊÑ¶\r\nE. ´©ÒÂ´îÅä', '', '17');
-INSERT INTO `ims_survey_fields` VALUES ('289', '5', '²»¿¼ÂÇÆ·ÅÆºÍ¼Û¸ñµÄÒòËØ£¬ÄúÔÚ¹ºÎïÊ±¿¼ÂÇ×î¶àµÄ3¸öÒòËØÊÇÊ²Ã´£¿£¨¶àÑ¡£©', 'checkbox', '1', '', 'A. ÃæÁÏ²ÄÖÊ\r\nB. ¿îÊ½Éè¼Æ\r\nC. ¼ô²ÃÐ§¹û\r\nD. ÕûÌåÑÕÉ«\r\nE. ´îÅäÐ§¹û\r\nF. ´©×ÅÐ§¹û\r\nG. Ï¸½ÚÉè¼ÆÐ§¹û\r\nH. ÐÂ»õÉÏ¼ÜËÙ¶È\r\nI. ³÷´°³ÂÁÐÐ§¹û\r\nJ. µêÔ±·þÎñÖÊÁ¿\r\nK. µêÆÌÄÚ²¿»·¾³\r\nL. ÆäËü£¨Çë×¢Ã÷£º[_]£©', '', '15');
-INSERT INTO `ims_survey_fields` VALUES ('288', '5', 'Äú¾õµÃURÉÌÆ·µÄ°æÐÍÏà±È½ÏÆäËûÆ·ÅÆ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. Æ«ÐÞÉí\r\nB. ÕýºÏÌå\r\nC. Æ«¿íËÉ', '', '14');
-INSERT INTO `ims_survey_fields` VALUES ('287', '5', 'Äú¾õµÃURÉÌÆ·µÄ³ßÂëÏà±È½ÏZARA£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. ³ßÂëÆ«Ð¡\r\nB. ³ßÂëÊÊÖÐ\r\nC. ³ßÂëÆ«´ó', '', '13');
-INSERT INTO `ims_survey_fields` VALUES ('285', '5', 'Äú³£¹ºÂòÉÌÆ·µÄ·ç¸ñ£¿£¨¶àÑ¡£©', 'checkbox', '1', '', 'A. ÓÅÑÅÃûæÂÐÍ\r\nB. ¼ÙÈÕÐÝÏÐÐÍ\r\nC. ÷ÈÁ¦³±Á÷ÐÍ\r\nD. ¶¼ÊÐ¾«Ó¢ÐÍ\r\nE. ¼òÔ¼¾­µäÐÍ\r\nF. ¿äÕÅÒÕÊõÐÍ', '', '11');
-INSERT INTO `ims_survey_fields` VALUES ('286', '5', 'Äú¾õµÃURÉÌÆ·µÄÐÔ¼Û±ÈÏà±È½ÏÆäËûÆ·ÅÆ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. ¼Û¸ñÆ«µÍ\r\nB. ¼Û¸ñºÏÀí\r\nC. ¼Û¸ñÆ«¸ß', '', '12');
-INSERT INTO `ims_survey_fields` VALUES ('284', '5', 'Äú¶ÔÊÕÒø·þÎñµÄÕûÌå¸Ð¾õÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. µêÔ±·þÎñÇ×ÇÐµ½Î»£¬ÊìÁ·ÕÆÎÕ²Ù×÷£¬Ñ¸ËÙÍê³ÉÊÕÒø\r\nB. ¶ÔÄúµÄ×ÉÑ¯Î´ÓÐÇåÎú»Ø´ð£¬ÊÕÒøËÙ¶ÈÒ»°ã\r\nC. µêÔ±²»ÊìÏ¤»î¶¯ÄÚÈÝ£¬¶ÔÄúµÄÑ¯ÎÊÎ´ÄÜÇåÎú½â´ð£¬ÊÕÒøÊ±¼ä³¤\r\nD. ³öÏÖÊÕÒøÌ¨ÅÅ¶Óµ«ÓÐ¿ÕÖÃÊÕÒø»úµÄÇé¿ö', '', '10');
-INSERT INTO `ims_survey_fields` VALUES ('283', '5', 'Äú¶ÔÊÔÒÂ¼ä»·¾³µÄÕûÌå¸Ð¾õÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. ÊÔÒÂ¼äÕû½àÊæÊÊ£¬ÊýÁ¿³ä×ã£¬µêÔ±ÓÐÇåÎúÖ¸Òý\r\nB. ÊÔÒÂ¼äÊýÁ¿ÉÙ£¬µÈ´ýÊ±¼ä³¤\r\nC. ÊÔÒÂ¼ä»·¾³²»Õû½à', '', '9');
-INSERT INTO `ims_survey_fields` VALUES ('276', '5', 'ÄúµÄÐÔ±ð', 'radio', '1', '', 'A. Å®\r\nB. ÄÐ', '', '2');
-INSERT INTO `ims_survey_fields` VALUES ('277', '5', 'ÄúµÄÄêÁä·¶Î§', 'radio', '1', '', 'A. 17ËêÒÔÏÂ\r\nB. 18-24Ëê\r\nC. 25-30Ëê\r\nD. 31-35Ëê\r\nE. 36-40Ëê\r\nF. 41ËêÒÔÉÏ', '', '3');
-INSERT INTO `ims_survey_fields` VALUES ('278', '5', 'Äú´ÓÄÄÐ©ÇþµÀ¹Ø×¢URÆ·ÅÆ£¿£¨¶àÑ¡£©', 'checkbox', '1', '', 'A. URµêÄÚ\r\nB. ¹Ù·½Î¢²©Î¢ÐÅ\r\nC. Ã÷ÐÇ½ÖÅÄ\r\nD. ÔÓÖ¾¿¯Îï\r\nE. ÅóÓÑÍÆ¼ö', '', '4');
-INSERT INTO `ims_survey_fields` VALUES ('279', '5', 'Äú¶ÔÃÅµêÐÎÏóµÄÕûÌå¸Ð¾õÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. ³÷´°ÉÝ»ª´óÆø£¬ÕûÌå²¼¾ÖÕûÆëÓÐÐò\r\nB. µêÃæÉè¼ÆÒ»°ã£¬Ã»ÓÐÉî¿ÌÓ¡Ïó\r\nC. ÃÅµêÉè¼Æ·ç¸ñ²»ÎüÒý£¬»·¾³Ò»°ã\r\nD. ÆäËü£¨Çë×¢Ã÷£º[_]£©', '', '5');
-INSERT INTO `ims_survey_fields` VALUES ('280', '5', 'Äú¶ÔÃÅµê»·¾³µÄÕûÌå¸Ð¾õÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. ÃÅµêÎÂ¶ÈÊÊÖÐ£¬ÒôÀÖÉùÈáºÍ£¬»·¾³ÕûÌå¸Ð¾õÊæÊÊ\r\nB. ÃÅµêÎÂ¶ÈÌ«Àä£¨»òÎÂ¶ÈÌ«ÈÈ£©\r\nC. µêÃæ³ÂÁÐÔÓÂÒ£¬²»ÀûÓÚÑ¡¹º\r\nD. ÒôÀÖÉùÒôÌ«´ó£¬µØÃæ²»¸É¾»\r\nE. ÆäËü£¨Çë×¢Ã÷£º[_]£©', '', '6');
-INSERT INTO `ims_survey_fields` VALUES ('281', '5', 'Äú¶ÔµêÔ±½Ó´ýµÄÕûÌå¸Ð¾õÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. Ð¦ÈÝÇ×ÇÐ×ÔÈ»£¬ÓÐÄ¿¹â½Ó´¥£¬Ö÷¶¯ÈÈÇéµØ´òÕÐºô\r\nB. ÓÐÕÐºôÓï£¬Ã»ÓÐÐ¦ÈÝºÍÄ¿¹â½Ó´¥\r\nC. Ã¦ÓÚ×Ô¼ºÒµÎñ£¬Ã»ÓÐÔ±¹¤Ö÷¶¯½Ó´ý\r\nD. ÆäËü£¨Çë×¢Ã÷£º[_]£©', '', '7');
-INSERT INTO `ims_survey_fields` VALUES ('282', '5', 'µêÔ±ÓëÄú¹µÍ¨µÄ¹ý³ÌÓëÒÔÏÂÄÄÒ»Ïî×î·ûºÏ£¿£¨µ¥Ñ¡£©', 'radio', '1', '', 'A. Ö÷¶¯¹Ø×¢ÄúµÄÐèÇó£¬ÍÆ¼öºÏÊÊµÄ²úÆ·/³ßÂë²¢Ìá¹©´îÅä½¨Òé£¬±£³ÖÊæÊÊµÄ¾àÀë\r\nB. Ö÷¶¯ÓëÄúÁÄÌì£¬Ò»Ö±Î²Ëæ£¬ÓÐÑ¹ÆÈ¸Ð\r\nC. Ã»ÓÐÖ÷¶¯ÁË½âÐèÇó£¬Ô±¹¤Ö»ÊÇ×Ô¼ºÔÚÍÆ¼ö', '', '8');
+INSERT INTO `ims_survey_fields` VALUES ('290', '5', 'å¦‚æžœæ‚¨æ˜¯VIPï¼Œå¸Œæœ›èŽ·å¾—å“ªé¡¹å°Šäº«ä½“éªŒï¼ˆå¤šé€‰ï¼‰', 'checkbox', '1', '', 'A. æ²™é¾™èšä¼š/æ—¶å°šæ´¾å¯¹\r\nB. èŠ‚æ—¥ç¤¼ç‰©\r\nC. æ¸…æ´—åŠæ”¹è¡£æœåŠ¡\r\nD. äº«å—å…¶å®ƒå•†æˆ·æƒç›Š\r\nE. å…¶å®ƒï¼ˆè¯·æ³¨æ˜Žï¼š[_]ï¼‰', '', '16');
+INSERT INTO `ims_survey_fields` VALUES ('291', '5', 'æ‚¨å¸Œæœ›åœ¨å®˜æ–¹å¾®åšå¾®ä¿¡äº†è§£å“ªäº›ä¿¡æ¯ï¼ˆå¤šé€‰ï¼‰', 'checkbox', '1', '', 'A. å“ç‰Œæœ€æ–°ä¿ƒé”€æ´»åŠ¨\r\nB. æ–°åº—å¼€ä¸šä¿¡æ¯\r\nC. å“ç‰Œæ–°å“æŽ¨è\r\nD. æ—¶å°šèµ„è®¯\r\nE. ç©¿è¡£æ­é…', '', '17');
+INSERT INTO `ims_survey_fields` VALUES ('289', '5', 'ä¸è€ƒè™‘å“ç‰Œå’Œä»·æ ¼çš„å› ç´ ï¼Œæ‚¨åœ¨è´­ç‰©æ—¶è€ƒè™‘æœ€å¤šçš„3ä¸ªå› ç´ æ˜¯ä»€ä¹ˆï¼Ÿï¼ˆå¤šé€‰ï¼‰', 'checkbox', '1', '', 'A. é¢æ–™æè´¨\r\nB. æ¬¾å¼è®¾è®¡\r\nC. å‰ªè£æ•ˆæžœ\r\nD. æ•´ä½“é¢œè‰²\r\nE. æ­é…æ•ˆæžœ\r\nF. ç©¿ç€æ•ˆæžœ\r\nG. ç»†èŠ‚è®¾è®¡æ•ˆæžœ\r\nH. æ–°è´§ä¸Šæž¶é€Ÿåº¦\r\nI. æ©±çª—é™ˆåˆ—æ•ˆæžœ\r\nJ. åº—å‘˜æœåŠ¡è´¨é‡\r\nK. åº—é“ºå†…éƒ¨çŽ¯å¢ƒ\r\nL. å…¶å®ƒï¼ˆè¯·æ³¨æ˜Žï¼š[_]ï¼‰', '', '15');
+INSERT INTO `ims_survey_fields` VALUES ('288', '5', 'æ‚¨è§‰å¾—URå•†å“çš„ç‰ˆåž‹ç›¸æ¯”è¾ƒå…¶ä»–å“ç‰Œï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. åä¿®èº«\r\nB. æ­£åˆä½“\r\nC. åå®½æ¾', '', '14');
+INSERT INTO `ims_survey_fields` VALUES ('287', '5', 'æ‚¨è§‰å¾—URå•†å“çš„å°ºç ç›¸æ¯”è¾ƒZARAï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. å°ºç åå°\r\nB. å°ºç é€‚ä¸­\r\nC. å°ºç åå¤§', '', '13');
+INSERT INTO `ims_survey_fields` VALUES ('285', '5', 'æ‚¨å¸¸è´­ä¹°å•†å“çš„é£Žæ ¼ï¼Ÿï¼ˆå¤šé€‰ï¼‰', 'checkbox', '1', '', 'A. ä¼˜é›…ååª›åž‹\r\nB. å‡æ—¥ä¼‘é—²åž‹\r\nC. é­…åŠ›æ½®æµåž‹\r\nD. éƒ½å¸‚ç²¾è‹±åž‹\r\nE. ç®€çº¦ç»å…¸åž‹\r\nF. å¤¸å¼ è‰ºæœ¯åž‹', '', '11');
+INSERT INTO `ims_survey_fields` VALUES ('286', '5', 'æ‚¨è§‰å¾—URå•†å“çš„æ€§ä»·æ¯”ç›¸æ¯”è¾ƒå…¶ä»–å“ç‰Œï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. ä»·æ ¼åä½Ž\r\nB. ä»·æ ¼åˆç†\r\nC. ä»·æ ¼åé«˜', '', '12');
+INSERT INTO `ims_survey_fields` VALUES ('284', '5', 'æ‚¨å¯¹æ”¶é“¶æœåŠ¡çš„æ•´ä½“æ„Ÿè§‰ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. åº—å‘˜æœåŠ¡äº²åˆ‡åˆ°ä½ï¼Œç†Ÿç»ƒæŽŒæ¡æ“ä½œï¼Œè¿…é€Ÿå®Œæˆæ”¶é“¶\r\nB. å¯¹æ‚¨çš„å’¨è¯¢æœªæœ‰æ¸…æ™°å›žç­”ï¼Œæ”¶é“¶é€Ÿåº¦ä¸€èˆ¬\r\nC. åº—å‘˜ä¸ç†Ÿæ‚‰æ´»åŠ¨å†…å®¹ï¼Œå¯¹æ‚¨çš„è¯¢é—®æœªèƒ½æ¸…æ™°è§£ç­”ï¼Œæ”¶é“¶æ—¶é—´é•¿\r\nD. å‡ºçŽ°æ”¶é“¶å°æŽ’é˜Ÿä½†æœ‰ç©ºç½®æ”¶é“¶æœºçš„æƒ…å†µ', '', '10');
+INSERT INTO `ims_survey_fields` VALUES ('283', '5', 'æ‚¨å¯¹è¯•è¡£é—´çŽ¯å¢ƒçš„æ•´ä½“æ„Ÿè§‰ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. è¯•è¡£é—´æ•´æ´èˆ’é€‚ï¼Œæ•°é‡å……è¶³ï¼Œåº—å‘˜æœ‰æ¸…æ™°æŒ‡å¼•\r\nB. è¯•è¡£é—´æ•°é‡å°‘ï¼Œç­‰å¾…æ—¶é—´é•¿\r\nC. è¯•è¡£é—´çŽ¯å¢ƒä¸æ•´æ´', '', '9');
+INSERT INTO `ims_survey_fields` VALUES ('276', '5', 'æ‚¨çš„æ€§åˆ«', 'radio', '1', '', 'A. å¥³\r\nB. ç”·', '', '2');
+INSERT INTO `ims_survey_fields` VALUES ('277', '5', 'æ‚¨çš„å¹´é¾„èŒƒå›´', 'radio', '1', '', 'A. 17å²ä»¥ä¸‹\r\nB. 18-24å²\r\nC. 25-30å²\r\nD. 31-35å²\r\nE. 36-40å²\r\nF. 41å²ä»¥ä¸Š', '', '3');
+INSERT INTO `ims_survey_fields` VALUES ('278', '5', 'æ‚¨ä»Žå“ªäº›æ¸ é“å…³æ³¨URå“ç‰Œï¼Ÿï¼ˆå¤šé€‰ï¼‰', 'checkbox', '1', '', 'A. URåº—å†…\r\nB. å®˜æ–¹å¾®åšå¾®ä¿¡\r\nC. æ˜Žæ˜Ÿè¡—æ‹\r\nD. æ‚å¿—åˆŠç‰©\r\nE. æœ‹å‹æŽ¨è', '', '4');
+INSERT INTO `ims_survey_fields` VALUES ('279', '5', 'æ‚¨å¯¹é—¨åº—å½¢è±¡çš„æ•´ä½“æ„Ÿè§‰ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. æ©±çª—å¥¢åŽå¤§æ°”ï¼Œæ•´ä½“å¸ƒå±€æ•´é½æœ‰åº\r\nB. åº—é¢è®¾è®¡ä¸€èˆ¬ï¼Œæ²¡æœ‰æ·±åˆ»å°è±¡\r\nC. é—¨åº—è®¾è®¡é£Žæ ¼ä¸å¸å¼•ï¼ŒçŽ¯å¢ƒä¸€èˆ¬\r\nD. å…¶å®ƒï¼ˆè¯·æ³¨æ˜Žï¼š[_]ï¼‰', '', '5');
+INSERT INTO `ims_survey_fields` VALUES ('280', '5', 'æ‚¨å¯¹é—¨åº—çŽ¯å¢ƒçš„æ•´ä½“æ„Ÿè§‰ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. é—¨åº—æ¸©åº¦é€‚ä¸­ï¼ŒéŸ³ä¹å£°æŸ”å’Œï¼ŒçŽ¯å¢ƒæ•´ä½“æ„Ÿè§‰èˆ’é€‚\r\nB. é—¨åº—æ¸©åº¦å¤ªå†·ï¼ˆæˆ–æ¸©åº¦å¤ªçƒ­ï¼‰\r\nC. åº—é¢é™ˆåˆ—æ‚ä¹±ï¼Œä¸åˆ©äºŽé€‰è´­\r\nD. éŸ³ä¹å£°éŸ³å¤ªå¤§ï¼Œåœ°é¢ä¸å¹²å‡€\r\nE. å…¶å®ƒï¼ˆè¯·æ³¨æ˜Žï¼š[_]ï¼‰', '', '6');
+INSERT INTO `ims_survey_fields` VALUES ('281', '5', 'æ‚¨å¯¹åº—å‘˜æŽ¥å¾…çš„æ•´ä½“æ„Ÿè§‰ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. ç¬‘å®¹äº²åˆ‡è‡ªç„¶ï¼Œæœ‰ç›®å…‰æŽ¥è§¦ï¼Œä¸»åŠ¨çƒ­æƒ…åœ°æ‰“æ‹›å‘¼\r\nB. æœ‰æ‹›å‘¼è¯­ï¼Œæ²¡æœ‰ç¬‘å®¹å’Œç›®å…‰æŽ¥è§¦\r\nC. å¿™äºŽè‡ªå·±ä¸šåŠ¡ï¼Œæ²¡æœ‰å‘˜å·¥ä¸»åŠ¨æŽ¥å¾…\r\nD. å…¶å®ƒï¼ˆè¯·æ³¨æ˜Žï¼š[_]ï¼‰', '', '7');
+INSERT INTO `ims_survey_fields` VALUES ('282', '5', 'åº—å‘˜ä¸Žæ‚¨æ²Ÿé€šçš„è¿‡ç¨‹ä¸Žä»¥ä¸‹å“ªä¸€é¡¹æœ€ç¬¦åˆï¼Ÿï¼ˆå•é€‰ï¼‰', 'radio', '1', '', 'A. ä¸»åŠ¨å…³æ³¨æ‚¨çš„éœ€æ±‚ï¼ŒæŽ¨èåˆé€‚çš„äº§å“/å°ºç å¹¶æä¾›æ­é…å»ºè®®ï¼Œä¿æŒèˆ’é€‚çš„è·ç¦»\r\nB. ä¸»åŠ¨ä¸Žæ‚¨èŠå¤©ï¼Œä¸€ç›´å°¾éšï¼Œæœ‰åŽ‹è¿«æ„Ÿ\r\nC. æ²¡æœ‰ä¸»åŠ¨äº†è§£éœ€æ±‚ï¼Œå‘˜å·¥åªæ˜¯è‡ªå·±åœ¨æŽ¨è', '', '8');
 
 -- ----------------------------
 -- Records of menu
