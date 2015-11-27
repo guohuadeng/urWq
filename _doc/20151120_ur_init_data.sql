@@ -1,9 +1,12 @@
 ALTER TABLE ims_users_profile  ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT NULL COMMENT '京东账号' ;
 
 ALTER TABLE ims_mc_members ADD `jd_account` VARCHAR(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT NULL COMMENT '京东账号';
-
 ALTER TABLE ims_mc_members ADD `modifytime` INT(10) UNSIGNED NOT NULL DEFAULT '0' COMMENT '修改时间';
-
+ALTER TABLE  `ims_mc_members` ADD UNIQUE (
+`uid`
+);
+ALTER TABLE  `ims_mc_card_members` ADD INDEX (  `cid` ) ;
+ALTER TABLE  `ims_mc_card_members` ADD INDEX (  `openid` ) ;
 INSERT INTO `ims_profile_fields` (field,available,title,description,displayorder,required,unchangeable,showinregister) VALUES ( 'jd_account', '1', '京东帐号', '', '0', '0', '0', '1');
 
 
