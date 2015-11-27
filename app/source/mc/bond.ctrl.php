@@ -218,24 +218,41 @@ if ($do == 'card') {
 		preg_match ( '/(\#+)/', $_GPC ['format'], $matchs );
 		$length = strlen ( $matchs [1] );
 		$pos = strpos ( $_GPC ['format'], '#' );
-		//会员卡号重号的检查
+		//常规检测
+		$check = mc_check ( $data );
+		if (is_error ( $check )) {
+			message ( $check ['message'], '', 'error' );
+		}
+		//会员卡号重号的检查,后续要加上表的行锁机制
 		$isexist = 1;
 		$ilimit = 1; //最多尝试5次
+		$snpos = 0; //这是会员卡要使用的号
 		while ( $isexist and ($ilimit<=5))	{
-			$cardsn = str_replace ( $matchs [1], str_pad ( $_GPC ['snpos'] ++, $length - strlen ( $number ), '0', STR_PAD_LEFT ), $cardsn1 );
+			//锁表，别人不可读写，获取编号
+			pdo_query ('lock tables'. tablename ( 'mc_card' ). ' write');
+			$snpos = pdo_fetchcolumn ( 'SELECT snpos FROM ' . tablename ( 'mc_card' ) . ' WHERE uniacid = :uniacid', array (
+                    					':uniacid' => $_W ['uniacid']
+                    				) );
+            //得到卡号
+			$cardsn = str_replace ( $matchs [1], str_pad ( $snpos ++, $length - strlen ( $number ), '0', STR_PAD_LEFT ), $cardsn1 );
+            //更新编号增加1
+			pdo_update ( 'mc_card', array (
+					'snpos' => $snpos
+			), array (
+					'uniacid' => $_W ['uniacid'],
+					'id' => $_GPC ['cardid']
+			) );
+			//解锁表
+			pdo_query ('unlock tables');
+			//检查卡号是不是存在
 			$isexist = pdo_fetchcolumn ( 'SELECT COUNT(*) FROM ' . tablename ( 'mc_card_members' ) . ' WHERE uniacid = :uniacid AND cardsn = :cardsn', array (
 					':uniacid' => $_W ['uniacid'],
 					':cardsn' => $cardsn
 				) );
 			$ilimit++;
-			$msg = $msg.'-'.$isexist.'-'.$ilimit.'-'.$cardsn;
+			$cardlog   = $cardlog.'#'.$ilimit.'-'.$isexist.'-'.$snpos.'-'.$cardsn;
 			}
-		pdo_update ( 'mc_card', array (
-				'snpos' => $_GPC ['snpos']
-		), array (
-				'uniacid' => $_W ['uniacid'],
-				'id' => $_GPC ['cardid']
-		) );
+
 		$record = array (
 				'uniacid' => $_W ['uniacid'],
 				'openid' => $_W ['openid'],
@@ -246,18 +263,8 @@ if ($do == 'card') {
 				'createtime' => TIMESTAMP,
 				'endtime' => TIMESTAMP + 365*24*60*60
 		);
-		$check = mc_check ( $data );
-		if (is_error ( $check )) {
-			message ( $check ['message'], '', 'error' );
-		}
 
 		if ($isexist >= 1) { //会员卡号重号的提示并中断
-			pdo_update ( 'mc_card', array (
-					'snpos' => $_GPC ['snpos']++
-			), array (
-					'uniacid' => $_W ['uniacid'],
-					'id' => $_GPC ['cardid']
-			) );
 			message ( '好多人在申请UR时尚荟，请关闭网页再试一次吧 ：)' , '', 'error' );
 		}
 
