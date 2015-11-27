@@ -6,7 +6,12 @@
 defined('IN_IA') or exit('Access Denied');
 load()->model('app');;
 
-$title = $_W['account']['name'] . '微站';
+if ($_GET['title'])	{
+	$title = $_GET['title'];
+	}
+else	{
+	$title = $_W['account']['name'] . '微站';
+	}
 
 $navs = app_navs('profile');
 load()->func('tpl');
