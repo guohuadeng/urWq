@@ -216,36 +216,36 @@
 		// 15题特殊处理
 		$('[data-count="15"] :checkbox').click(function () {
 			if ($('[data-count="15"] :checkbox:checked').length > 3) {
-				$(this).prop('checked', false);
-				alert('最多只能选择3个答案!');
-			}
-		});
+					$(this).prop('checked', false);
+					alert('最多只能选择3个答案!');
+				}
+			});
 
-		function initStores() {
-			var stores = {php echo json_encode($stores)},
-					$store = $('#stores'),
-					$province = $('[name="resideUr[province]"]'),
-					$city = $('[name="resideUr[city]"]');
+			function initStores() {
+				var stores = {php echo json_encode($stores)},
+						$store = $('#stores'),
+						$province = $('[name="resideUr[province]"]'),
+						$city = $('[name="resideUr[city]"]');
 
-			$store.bootstrapTable({
-				classes: 'table table-hover table-no-bordered',
-				height: 187,
-				showHeader: false,
-				clickToSelect: true,
-				columns: [{
-					radio: true,
-					field: 'state',
-					'class': 'needsclick'
-				}, {
-					title: 'Business Name',
-					field: 'business_name',
-					'class': 'needsclick'
-				}],
-				formatNoMatches: function () {
-					return '门店';
-				},
-				onCheck: function (row) {
-					$('[name="store"]').val(row.business_name);
+				$store.bootstrapTable({
+					classes: 'table table-hover table-no-bordered',
+					height: 187,
+					showHeader: false,
+					clickToSelect: true,
+					columns: [{
+						radio: true,
+						field: 'state',
+						'class': 'needsclick'
+					}, {
+						title: 'Business Name',
+						field: 'business_name',
+						'class': 'needsclick'
+					}],
+					formatNoMatches: function () {
+						return '门店';
+					},
+					onCheck: function (row) {
+						$('[name="store"]').val(row.business_name);
 //					$("#musicClick")[0].play();
 				}
 			});
@@ -279,9 +279,9 @@
 			}
 		});
 
-		$('.submit').click(function () {
+		$('#fullpage').submit(function () {
 			var $form = $('#fullpage');
-			$form.find('.page').each(function () {
+			$form.find('.slide').each(function () {
 				var $checkboxs = $(this).find(':checkbox:checked');
 				if ($checkboxs.length) {
 					var values = [];
@@ -291,7 +291,6 @@
 					$checkboxs.last().val(values.join('||'));
 				}
 			});
-			$form.submit();
 		});
 	});
 </script>
