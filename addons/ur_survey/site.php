@@ -208,6 +208,10 @@ class Ur_surveyModuleSite extends WeModuleSite {
 
         $pindex = max(1, intval($_GPC['page']));
         $psize = 15;
+        if (!empty($_GPC['export'])) {
+            $pindex = max(1, intval($_GPC['page']));
+            $psize = 10000;
+           }
         $sql = 'SELECT COUNT(*) FROM ' . tablename('survey_rows') . ' WHERE `sid` = :sid AND `createtime` > :starttime
                 AND `createtime` < :endtime';
         $params = array(':sid' => $sid, ':starttime' => $starttime, ':endtime' => $endtime);
